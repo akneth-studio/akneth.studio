@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Distributions and packaging
+build/
+dist/
+*.egg-info/
+*.eggs
+
+# Environments
+.env
+.venv
+.env.local # Added for sensitive env file
+
+# Temporary files
+*~
+*.swp
+.DS_Store
+Desktop.ini # Added for Windows
+
+# IDEs and editors
+.vscode/
+.idea/
+.idx/
+.settings/ # Added for Eclipse
+*.sublime-project
+*.sublime-workspace
+*.un~
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Logs
+*.log
+logs/ # Added for a logs directory
+tmp/logs/ # Added for a temporary logs directory
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+#node_modules
+node_modules/
+
+#maps
+*.maps
+*.map
+
+# Test reports and coverage
+coverage/
+.nyc_output/
+test-results/
+
+# Example of ignoring sensitive config file
+config.json
