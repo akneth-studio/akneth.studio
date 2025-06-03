@@ -1,9 +1,15 @@
 {
   "devDependencies": {
-    "gulp": "^5.0.1"
+    "fs": "^0.0.1-security",
+    "gulp": "^5.0.1",
+    "gulp-cli": "^3.1.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-ignore": "^3.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-watch": "^5.0.1"
   },
   "name": "aknethstudio",
-  "description": "Strona firmoa Akneth Studio",
+  "description": "Strona firmowa Akneth Studio",
   "version": "1.0.0",
   "main": "/docs/index.html",
   "directories": {
@@ -60,7 +66,6 @@
     "global-prefix": "^1.0.2",
     "glogg": "^2.2.0",
     "graceful-fs": "^4.2.11",
-    "gulp-cli": "^3.1.0",
     "gulplog": "^2.2.0",
     "has-flag": "^4.0.0",
     "hasown": "^2.0.2",
@@ -121,8 +126,8 @@
     "stream-composer": "^1.0.2",
     "stream-exhaust": "^1.0.2",
     "streamx": "^2.22.0",
-    "string-width": "^4.2.3",
     "string_decoder": "^1.3.0",
+    "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
     "supports-color": "^7.2.0",
     "supports-preserve-symlinks-flag": "^1.0.0",
@@ -149,6 +154,8 @@
     "yargs-parser": "^20.2.9"
   },
   "scripts": {
+    "gulp": "gulp",
+    "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AKNETH Studio",
