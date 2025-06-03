@@ -11,7 +11,7 @@
   "name": "aknethstudio",
   "description": "Strona firmowa Akneth Studio",
   "version": "1.0.0",
-  "main": "/docs/index.html",
+  "main": "/public/index.html",
   "directories": {
     "doc": "docs"
   },

@@ -4,23 +4,29 @@ const path = require('path');
 const ignore = require('gulp-ignore');
 
 const paths = {
-    src: 'src/',
-    partials: 'src/partials/',
+    html: {
+        src: 'src/**/*.html',
+        partials: 'src/partials/',
+    },
     dest: 'public/'
 };
 
 function html() {
-    return gulp.src([path.join(paths.src, '**/*.html')])
-        .pipe(ignore.exclude(paths.partials))
+    return gulp.src([
+        path.join(paths.html.src),
+    ])
         .pipe(fileInclude({
             prefix: '@@',
-            basepath: paths.partials,
+            basepath: paths.html.partials,
         }))
         .pipe(gulp.dest(paths.dest));
 }
 
 function watchFiles() {
-    gulp.watch(path.join(paths.src, '**/*.html'), html);
+    gulp.watch([
+        paths.html.src,
+        paths.html.partials,
+    ], html);
 }
 
 exports.html = html;
