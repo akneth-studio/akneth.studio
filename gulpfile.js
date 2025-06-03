@@ -6,7 +6,7 @@ const ignore = require('gulp-ignore');
 const paths = {
     src: 'src/',
     partials: 'src/partials/',
-    dest: 'docs/'
+    dest: 'public/'
 };
 
 function html() {
