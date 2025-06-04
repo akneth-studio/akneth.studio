@@ -15,9 +15,10 @@
 			<a class="navbar-brand d-flex align-items-center" href="/">
 				<img src="/img/logo_revert.svg" alt="AKNETH Studio Katarzyna Pawłowska-Malesa logo" height="55"
 					class="me-2" />
-				<span class=" d-none d-md-flex justify-content-center align-items-center flex-column autour-one-regular">
+				<span
+					class=" d-none d-md-flex justify-content-center align-items-center flex-column autour-one-regular">
 					<span class="fw-bold fs-3 lh-1">AKNETH Studio</span>
-					<span class="fw-normal text-white brand-sub">Katarzyna Pawłowska-Malesa</span>
+					<span class="fw-normal brand-sub">Katarzyna Pawłowska-Malesa</span>
 				</span>
 			</a>
 			<!-- Hamburger tylko na mobile -->
@@ -30,14 +31,14 @@
 			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
 				aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
-					<a href="/"><img src="/img/logo_revert.svg" alt="AKNETH Studio Katarzyna Pawłowska-Malesa logo" height="35"
-					class="me-2" /></a>
+					<a href="/"><img src="/img/logo_revert.svg" alt="AKNETH Studio Katarzyna Pawłowska-Malesa logo"
+							height="35" class="me-2" /></a>
 					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
 					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
 						aria-label="Zamknij"></button>
 				</div>
 				<div class="offcanvas-body">
-					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					<ul class="navbar-nav nav-pills justify-content-end flex-grow-1 pe-3" role="tablist">
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="/">Strona główna</a>
 						</li>
@@ -66,8 +67,8 @@
 		</div>
 	</nav>
 
+	@@include('footer.htm')
 
-	<button class="btn btn-primary bg-danger">so</button>
 	@@include('script.htm')
 
 </body>

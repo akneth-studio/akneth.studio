@@ -1,5 +1,1 @@
-function main() {
-  console.log("Hello, World!");
-}
-
-main();
+document.getElementById('year').textContent = new Date().getFullYear();
