@@ -1,0 +1,19 @@
+@import '/node_modules/bootstrap/scss/bootstrap';
+
+$primary:   #1877f2;
+$success:   #22c55e;
+$danger:    #e63946;
+$body-bg:   #fff;
+$body-color: #181818;
+$navbar-dark-bg: #181818;
+$navbar-dark-color: #fff;
+
+.autour-one-regular {
+	font-family: "Autour One", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.brand-sub {
+	font-size: 75%;
+}

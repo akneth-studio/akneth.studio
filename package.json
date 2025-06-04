@@ -29,6 +29,7 @@
     "base64-js": "^1.5.1",
     "binary-extensions": "^2.3.0",
     "bl": "^5.1.0",
+    "bootstrap": "^5.3.6",
     "braces": "^3.0.3",
     "buffer": "^6.0.3",
     "chalk": "^4.1.2",
