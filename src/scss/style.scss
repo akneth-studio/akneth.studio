@@ -1,18 +1,18 @@
-$primary:   #607d8b;
+$primary:   #82b0d1;
 $secondary: #818181;
 $success:   #22c55e;
 $danger:    #e63946;
-$body-bg:   #fff;
+$body-bg:   #000;
 $font-family-base: "Poppins", sans-serif;
 $body-color: #181818;
 $navbar-dark-bg: #181818;
 $navbar-dark-color: #fff;
-$component-active-bg: #607d8b;
+$component-active-bg: #82b0d1;
 $nav-pills-border-radius: 1rem;
 $nav-pills-link-active-bg: $component-active-bg;
 $nav-link-padding-x: 1rem;
-$offcanvas-padding-x: 1rem;
-$offcanvas-padding-y: 1rem;
+$offcanvas-padding-y: 1rem; /* Define the variable with a default value */
+$offcanvas-padding-x: 1rem; /* Define the variable with a suitable value */
 
 @import '/node_modules/bootstrap/scss/bootstrap';
 
