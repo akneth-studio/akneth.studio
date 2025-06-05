@@ -13,3 +13,5 @@ jobs:
       with:
         repository: "akneth-studio/akneth.studio"
     - uses: actions/labeler@v5
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
