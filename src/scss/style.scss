@@ -1,0 +1,78 @@
+$primary:   #607d8b;
+$secondary: #818181;
+$success:   #22c55e;
+$danger:    #e63946;
+$body-bg:   #fff;
+$font-family-base: "Poppins", sans-serif;
+$body-color: #181818;
+$navbar-dark-bg: #181818;
+$navbar-dark-color: #fff;
+$component-active-bg: #607d8b;
+$nav-pills-border-radius: 1rem;
+$nav-pills-link-active-bg: $component-active-bg;
+$nav-link-padding-x: 1rem;
+$offcanvas-padding-x: 1rem;
+$offcanvas-padding-y: 1rem;
+
+@import '/node_modules/bootstrap/scss/bootstrap';
+
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"success": $success,
+	"danger": $danger,
+	"body-bg": $body-bg,
+	"font-family-base": $font-family-base,
+	"body-color": $body-color,
+	"navbar-dark-bg": $navbar-dark-bg,
+	"navbar-dark-color": $navbar-dark-color,
+	"component-active-bg": $component-active-bg,
+	"nav-pills-border-radius": $nav-pills-border-radius,
+	"nav-pills-link-active-bg": $nav-pills-link-active-bg,
+	"nav-link-padding-x": $nav-link-padding-x,
+	"offcanvas-padding-x": $offcanvas-padding-x,
+	"offcanvas-padding-y": $offcanvas-padding-y,
+);
+
+.autour-one-regular {
+	font-family: "Autour One", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.brand-sub {
+	font-size: 75%;
+}
+.form-control {
+	border-radius: 1rem !important; /* lub inna wartość – np. 1.5rem */
+}
+
+.btn-outline-success {
+	border-color: #738a96 !important;
+	color: #738a96 !important;
+	background-color: transparent !important;
+	border-radius: 1rem !important;
+	&:hover, &:focus {
+		border-color: rgba(115, 138, 150, 0.5);
+  		background-color: #738a96 !important; /* ciemniejszy na hover */
+		color: #181818 !important;
+	}
+}
+@media (max-width: 576px) {
+	.offcanvas .nav-link {
+    	padding-left: 1rem !important; /* dopasuj wartość */
+	}
+}
+
+.footer-link {
+	opacity: 0.75;
+	transition: all 0.2s;
+
+	&:hover, &:focus {
+		color: #82b0d1 !important; /* Twój pastelowy niebieski */
+		opacity: 1;
+		text-decoration: underline #82b0d1 solid 1px !important;
+		text-underline-offset: 3px;
+		transition: color 0.2s;
+	}
+}
