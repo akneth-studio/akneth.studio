@@ -11,6 +11,8 @@ $component-active-bg: #82b0d1;
 $nav-pills-border-radius: 1rem;
 $nav-pills-link-active-bg: $component-active-bg;
 $nav-link-padding-x: 1rem;
+$offcanvas-padding-y: 1rem; /* Define the variable with a default value */
+$offcanvas-padding-x: 1rem; /* Define the variable with a suitable value */
 
 @import '/node_modules/bootstrap/scss/bootstrap';
 
