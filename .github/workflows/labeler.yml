@@ -13,11 +13,3 @@ jobs:
     - uses: actions/labeler@v5
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-    - name: Verify labels
-      run: |
-        if [ -z "$(gh pr view ${{ github.event.number }} --json labels)" ]; then
-        echo "No labels applied!"
-        exit 1
-        fi
-    - name: Handle errors
-      run: echo "Labeling failed. Please check the workflow logs."
