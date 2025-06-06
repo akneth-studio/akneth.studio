@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "fs": "^0.0.1-security",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.1.0",
     "gulp-file-include": "^2.3.0",
