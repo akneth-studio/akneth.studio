@@ -12,4 +12,12 @@ describe('footer year', function () {
     const yearText = dom.window.document.getElementById('year').textContent;
     assert.strictEqual(yearText, String(new Date().getFullYear()));
   });
+
+  it('should not throw if #year element is missing', function () {
+    const dom = new JSDOM('', { runScripts: 'dangerously' });
+    const script = fs.readFileSync(path.join(__dirname, '../public/js/main.js'), 'utf8');
+    assert.doesNotThrow(() => {
+      dom.window.eval(script);
+    });
+  });
 });
