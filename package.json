@@ -6,7 +6,9 @@
     "gulp-file-include": "^2.3.0",
     "gulp-ignore": "^3.0.0",
     "gulp-replace": "^1.1.4",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "mocha": "^10.2.0",
+    "jsdom": "^24.0.0"
   },
   "name": "aknethstudio",
   "description": "Strona firmowa Akneth Studio",
@@ -157,7 +159,7 @@
   "scripts": {
     "gulp": "gulp",
     "watch": "gulp watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "AKNETH Studio",
   "license": "ISC"
