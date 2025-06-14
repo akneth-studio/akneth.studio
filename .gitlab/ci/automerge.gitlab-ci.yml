@@ -6,7 +6,7 @@ automerge:
     - |
       if [[ "$CI_MERGE_REQUEST_LABELS" == *"automerge"* ]]; then
         echo "Automerge label found, merging MR..."
-        glab mr merge "$CI_MERGE_REQUEST_IID" --merge-when-pipeline-succeeds --yes
+        glab mr merge "$CI_MERGE_REQUEST_IID" --yes
       else
         echo "No automerge label, skipping."
       fi
