@@ -10,8 +10,6 @@ automerge:
       else
         echo "No automerge label, skipping."
       fi
-  only:
-    - merge_requests
   rules:
     - if: '$CI_MERGE_REQUEST_LABELS =~ /automerge/'
       when: always
