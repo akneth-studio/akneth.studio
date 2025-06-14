@@ -3,7 +3,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "repository": "gitlab:akneth.studio-group/akneth-studio-website",
+  "repository": "gitlab:akneth.studio-group/akneth-website",
   "homepage": "https://aknethstudio.com",
   "version": "0.5.0",
   "description": "Strona firmowa Akneth Studio.",
