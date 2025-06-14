@@ -1,0 +1,32 @@
+@use "variables" as *;
+
+.form {
+  background: $light;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba($dark, 0.08);
+
+  label {
+    font-weight: 600;
+    color: $dark;
+  }
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid $secondary;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    &:focus {
+      border-color: $primary;
+      outline: none;
+    }
+  }
+  .error {
+    color: #c92a2a;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+}

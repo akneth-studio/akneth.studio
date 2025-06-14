@@ -1,0 +1,27 @@
+//BRAND
+$primary: #82b0d1 !default;
+$secondary: #738a96 !default;
+$dark: #343a40 !default;
+$light: #f1f3f5 !default;
+// BACKGROUNDS
+$body-bg: #efefef !default;
+// LINKS
+$link-color: #0b7285 !default;
+$link-hover-color: #14395A !default;
+// NAVBAR
+$navbar-dark-bg: $dark;
+$navbar-dark-color: $light;
+// PILLS; NAV
+$component-active-bg: #8eaac6 !default;
+$nav-pills-link-active-bg: $component-active-bg !default;
+$nav-pills-active-color: $light !default;
+$nav-pills-border-radius: 2em !default;
+// COLORS
+$body-color: #181818 !default;
+// BORDER RADIUS; OTHERS
+$border-radius: 1rem !default;
+$border-primary: $primary !default;
+// FOOTER
+$footer-bg: $dark !default;
+$footer-color: $light !default;
+$footer-link-hover: $primary !default;

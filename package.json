@@ -1,0 +1,64 @@
+{
+  "name": "akneth-studio-website",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": "gitlab:akneth.studio-group/akneth-studio-website",
+  "homepage": "https://aknethstudio.com",
+  "version": "0.5.0",
+  "description": "Strona firmowa Akneth Studio.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aknethstudio",
+    "nextjs",
+    "react",
+    "website",
+    "portfolio",
+    "web-development",
+    "templates"
+  ],
+  "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@next/third-parties": "^15.3.3",
+    "@sentry/nextjs": "^9.29.0",
+    "@supabase/supabase-js": "^2.49.10",
+    "bootstrap": "^5.3.6",
+    "next": "^15.3.3",
+    "next-seo": "^6.8.0",
+    "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.1.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-google-recaptcha-v3": "^1.11.0",
+    "react-icons": "^5.5.0",
+    "sass": "^1.89.1",
+    "zod": "^3.25.63"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "@types/next-seo": "^1.10.0",
+    "@types/node": "^22.15.30",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.5.3",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3"
+  }
+}

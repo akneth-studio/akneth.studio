@@ -1,0 +1,175 @@
+@import "./variables";
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --font-base: var(--font-poppins);
+}
+
+body {
+  font-family: var(--font-base), sans-serif;
+}
+
+.brand-sub {
+  font-size: 80%;
+  margin-bottom: 0;
+}
+
+.nav-link {
+  padding-inline: 1rem;
+  width: fit-content;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: $navbar-dark-bg !important; // czyli $dark
+  background-color: $nav-pills-link-active-bg !important; // już masz ustawione
+  border: none;
+  font-weight: 500;
+  // Opcjonalnie, by był "wydrążony":
+  box-shadow:
+    0 2px 8px rgba(255, 255, 255, 0.15),
+    0 1px 2px rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+.nav-pills .nav-link:not(.active):hover,
+.nav-pills .nav-link:not(.active):focus {
+  color: $primary !important;
+  background-color: transparent !important; // bez tła
+}
+
+.hr-footer {
+  color: $primary;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+section {
+  border-radius: 1rem;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 1.5px 4px rgba(0, 0, 0, 0.06);
+  margin: 1rem 0;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+  justify-content: center;
+  text-align: justify;
+  &:hover,
+  &:focus {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px) scale(1.01);
+  }
+  &.hero,
+  &.about-hero,
+  &.about-contact,
+  &.contact-info,
+  &.schedule {
+    box-shadow: none !important;
+    background: transparent;
+    &:hover,
+    &:focus {
+      transform: none;
+    }
+  }
+  &.about-contact {
+    border-top: $link-color solid;
+    border-bottom: $link-color solid;
+  }
+}
+
+button {
+  text-decoration: none;
+  border-radius: 2rem !important;
+  &:hover,
+  &:focus {
+    text-decoration: underline 1px solid;
+    text-underline-offset: 2px;
+  }
+  &.btn {
+    &-primary {
+      background-color: $link-color !important;
+      border-color: $link-color !important;
+      color: $light !important;
+      &:hover,
+      &:focus {
+        background-color: darken($link-color, 6%) !important;
+        border-color: darken($link-color, 6%) !important;
+        color: #fff !important;
+      }
+    }
+    &-outline-primary {
+      color: $link-color !important;
+      border-color: $link-color !important;
+      background-color: transparent !important;
+      &:hover,
+      &:focus {
+        background-color: $link-color !important;
+        color: $light !important;
+        border-color: $link-color !important;
+      }
+    }
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.hr-about {
+  width: 100%;
+  @include media-breakpoint-up(md) {
+  }
+}
+
+footer {
+  a {
+    &.icon8 {
+      text-decoration: none;
+    }
+    &.nav-link,
+    &.icon8 {
+      transition: all 0.3;
+      opacity: 0.75;
+      color: white;
+
+      &:hover,
+      &:focus {
+        color: #82b0d1;
+        opacity: 1;
+        text-decoration: underline 1px solid;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+}
+.popup{
+  &-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba($dark, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  &-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 32px rgba($dark, 0.12);
+    text-align: center;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .pricing-table td:first-child {
+    max-width: 280px;
+    word-break: normal;
+    hyphens: auto;
+  }
+}
