@@ -5,7 +5,7 @@
   },
   "repository": "gitlab:akneth.studio-group/akneth-website",
   "homepage": "https://aknethstudio.com",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "Strona firmowa Akneth Studio.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "keywords": [
     "aknethstudio",
@@ -58,6 +59,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.5.3",
+    "standard-version": "^9.5.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   }
