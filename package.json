@@ -25,7 +25,7 @@
     "templates"
   ],
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
-  "license": "UNLICENSED",
+  "license": "CC BY 4.0",
   "dependencies": {
     "@next/third-parties": "^15.3.3",
     "@sentry/nextjs": "^9.29.0",
