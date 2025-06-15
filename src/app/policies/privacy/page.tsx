@@ -1,3 +1,18 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Polityka prywatności',
+    description: 'Polityka prywatności AKNETH Studio Katarzyna Pawłowska-Malesa',
+    keywords: [
+        'Polityka prywatności',
+        'Prywatność',
+        'Przetwarzanie danych',
+        'Cookies',
+        'Ciasteczka',
+        'Bezpieczeństwo danych'
+    ]
+};
+
 export default function PrivacyPage() {
     return (
         <>
@@ -269,50 +284,50 @@ export default function PrivacyPage() {
                 <ul>
                     <li>
                         <p><strong>Prawo dostępu do danych osobowych</strong><br />
-                        Użytkownikom przysługuje prawo uzyskania dostępu do swoich danych osobowych, realizowane na żądanie złożone do Administratora</p></li>
+                            Użytkownikom przysługuje prawo uzyskania dostępu do swoich danych osobowych, realizowane na żądanie złożone do Administratora</p></li>
                     <li>
                         <p><strong>Prawo do sprostowania danych osobowych</strong><br />
-                        Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego sprostowania danych osobowych, które są nieprawidłowe lub / oraz uzupełnienia niekompletnych danych osobowych, realizowane na żądanie złożone do Administratora</p>
+                            Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego sprostowania danych osobowych, które są nieprawidłowe lub / oraz uzupełnienia niekompletnych danych osobowych, realizowane na żądanie złożone do Administratora</p>
                     </li>
                     <li>
                         <p><strong>Prawo do usunięcia danych osobowych</strong><br />
-                        Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego usunięcia danych osobowych, realizowane na żądanie złożone do AdministratoraW przypadku kont użytkowników, usunięcie danych polega na anonimizacji danych umożliwiających identyfikację Użytkownika. Administrator zastrzega sobie prawo wstrzymania realizacji żądania usunięcia danych w celu ochrony prawnie uzasadnionego interesu Administratora (np. w gdy Użytkownik dopuścił się naruszenia Regulaminu czy dane zostały pozyskane wskutek prowadzonej korespondencji).<br />
-                        W przypadku usługi Newsletter, Użytkownik ma możliwość samodzielnego usunięcia swoich danych osobowych korzystając z odnośnika umieszczonego w każdej przesyłanej wiadomości e-mail.</p>
+                            Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego usunięcia danych osobowych, realizowane na żądanie złożone do AdministratoraW przypadku kont użytkowników, usunięcie danych polega na anonimizacji danych umożliwiających identyfikację Użytkownika. Administrator zastrzega sobie prawo wstrzymania realizacji żądania usunięcia danych w celu ochrony prawnie uzasadnionego interesu Administratora (np. w gdy Użytkownik dopuścił się naruszenia Regulaminu czy dane zostały pozyskane wskutek prowadzonej korespondencji).<br />
+                            W przypadku usługi Newsletter, Użytkownik ma możliwość samodzielnego usunięcia swoich danych osobowych korzystając z odnośnika umieszczonego w każdej przesyłanej wiadomości e-mail.</p>
                     </li>
                     <li>
                         <p><strong>Prawo do ograniczenia przetwarzania danych osobowych</strong><br />
-                        Użytkownikom przysługuje prawo ograniczenia przetwarzania danych osobowych w przypadkach wskazanych w art. 18 RODO, m.in. kwestionowania prawidłowość danych osobowych, realizowane na żądanie złożone do Administratora</p>
+                            Użytkownikom przysługuje prawo ograniczenia przetwarzania danych osobowych w przypadkach wskazanych w art. 18 RODO, m.in. kwestionowania prawidłowość danych osobowych, realizowane na żądanie złożone do Administratora</p>
                     </li>
                     <li><p><strong>Prawo do przenoszenia danych osobowych</strong><br />
                         Użytkownikom przysługuje prawo uzyskania od Administratora, danych osobowych dotyczących Użytkownika w ustrukturyzowanym, powszechnie używanym formacie nadającym się do odczytu maszynowego, realizowane na żądanie złożone do Administratora</p>
                     </li>
                     <li>
                         <p><strong>Prawo wniesienia sprzeciwu wobec przetwarzania danych osobowych</strong><br />
-                        Użytkownikom przysługuje prawo wniesienia sprzeciwu wobec przetwarzania jego danych osobowych w przypadkach określonych w art. 21 RODO, realizowane na żądanie złożone do Administratora</p>
+                            Użytkownikom przysługuje prawo wniesienia sprzeciwu wobec przetwarzania jego danych osobowych w przypadkach określonych w art. 21 RODO, realizowane na żądanie złożone do Administratora</p>
                     </li>
                     <li>
                         <p><strong>Prawo wniesienia skargi</strong><br />
-                        Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną danych osobowych.</p>
+                            Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną danych osobowych.</p>
                     </li>
                 </ul>
                 <h2 style="text-align:center">§14 Kontakt do Administratora</h2>
                 <p>Z Administratorem można skontaktować się w jeden z poniższych sposobów</p>
                 <ul>
                     <li>
-                        <p><strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, ul. Wincentego Pola 20/1, 40-596 Katowice</p></li> 
+                        <p><strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, ul. Wincentego Pola 20/1, 40-596 Katowice</p></li>
                     <li>
                         <p><strong>Adres poczty elektronicznej</strong> - akneth.studio@gmail.com</p>
-                    </li> 
+                    </li>
                     <li>
                         <p><strong>Połączenie telefoniczne</strong> - +48 690 973 352</p>
-                    </li> 
+                    </li>
                     <li>
                         <p><strong>Formularz kontaktowy</strong> - dostępny pod adresem: /contact</p>
                     </li>
                 </ul>
                 <h2 style="text-align:center">§15 Wymagania Serwisu</h2>
                 <ul>
-                    <li><p>Ograniczenie zapisu i dostępu do plików Cookie na Urządzeniu Użytkownika może spowodować nieprawidłowe działanie niektórych funkcji Serwisu.</p></li> 
+                    <li><p>Ograniczenie zapisu i dostępu do plików Cookie na Urządzeniu Użytkownika może spowodować nieprawidłowe działanie niektórych funkcji Serwisu.</p></li>
                     <li><p>Administrator nie ponosi żadnej odpowiedzialności za nieprawidłowo działające funkcje Serwisu w przypadku gdy Użytkownik ograniczy w jakikolwiek sposób możliwość zapisywania i odczytu plików Cookie.</p></li>
                 </ul>
                 <h2 style="text-align:center">§16 Linki zewnętrzne</h2>
@@ -322,8 +337,8 @@ export default function PrivacyPage() {
                 <h2 style="text-align:center">§17 Zmiany w Polityce Prywatności</h2>
                 <ul>
                     <li><p>Administrator zastrzega sobie prawo do dowolnej zmiany niniejszej Polityki Prywatności bez konieczności informowania o tym Użytkowników w zakresie stosowania i wykorzystywania danych anonimowych lub stosowania plików Cookie.</p></li>
-                    <li><p>Administrator zastrzega sobie prawo do dowolnej zmiany niniejszej Polityki Prywatności w zakresie przetwarzania Danych Osobowych, o czym poinformuje Użytkowników posiadających konta użytkownika lub zapisanych do usługi newsletter, za pośrednictwem poczty elektronicznej w terminie do 7 dni od zmiany zapisów. Dalsze korzystanie z usług oznacza zapoznanie się i akceptację wprowadzonych zmian Polityki Prywatności. W przypadku w którym Użytkownik nie będzie się zgadzał z wprowadzonymi zmianami, ma obowiązek usunąć swoje konto z Serwisu lub wypisać się z usługi Newsletter.</p></li> 
-                    <li><p>Wprowadzone zmiany w Polityce Prywatności będą publikowane na tej podstronie Serwisu.</p></li> 
+                    <li><p>Administrator zastrzega sobie prawo do dowolnej zmiany niniejszej Polityki Prywatności w zakresie przetwarzania Danych Osobowych, o czym poinformuje Użytkowników posiadających konta użytkownika lub zapisanych do usługi newsletter, za pośrednictwem poczty elektronicznej w terminie do 7 dni od zmiany zapisów. Dalsze korzystanie z usług oznacza zapoznanie się i akceptację wprowadzonych zmian Polityki Prywatności. W przypadku w którym Użytkownik nie będzie się zgadzał z wprowadzonymi zmianami, ma obowiązek usunąć swoje konto z Serwisu lub wypisać się z usługi Newsletter.</p></li>
+                    <li><p>Wprowadzone zmiany w Polityce Prywatności będą publikowane na tej podstronie Serwisu.</p></li>
                     <li><p>Wprowadzone zmiany wchodzą w życie z chwilą ich publikacji.</p></li>
                 </ul>
             </article>
