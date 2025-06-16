@@ -1,32 +1,5 @@
 {
-  "name": "akneth-studio-website",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "repository": "gitlab:akneth.studio-group/akneth-website",
-  "homepage": "https://aknethstudio.com",
-  "version": "0.5.6",
-  "description": "Strona firmowa Akneth Studio.",
-  "main": "index.js",
-  "scripts": {
-    "format": "prettier --write .",
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "standard-version"
-  },
-  "keywords": [
-    "aknethstudio",
-    "nextjs",
-    "react",
-    "website",
-    "portfolio",
-    "web-development",
-    "templates"
-  ],
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
-  "license": "CC BY 4.0",
   "dependencies": {
     "@next/third-parties": "^15.3.3",
     "@sentry/nextjs": "^9.29.0",
@@ -43,6 +16,7 @@
     "sass": "^1.89.1",
     "zod": "^3.25.63"
   },
+  "description": "Strona firmowa Akneth Studio.",
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "@types/next-seo": "^1.10.0",
@@ -62,5 +36,31 @@
     "standard-version": "^9.5.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "homepage": "https://aknethstudio.com",
+  "keywords": [
+    "aknethstudio",
+    "nextjs",
+    "react",
+    "website",
+    "portfolio",
+    "web-development",
+    "templates"
+  ],
+  "license": "CCBY4.0",
+  "main": "index.js",
+  "name": "akneth-studio-website",
+  "repository": "gitlab:akneth.studio-group/akneth-website",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "test": "mocha",
+    "release": "standard-version"
+  },
+  "version": "0.5.7"
 }

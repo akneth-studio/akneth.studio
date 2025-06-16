@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+.dccache
 
 # debug
 logs
@@ -54,5 +55,6 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+
 # Sentry Config File
 .env.sentry-build-plugin
