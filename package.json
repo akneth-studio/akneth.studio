@@ -5,7 +5,7 @@
   },
   "repository": "gitlab:akneth.studio-group/akneth-website",
   "homepage": "https://aknethstudio.com",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Strona firmowa Akneth Studio.",
   "main": "index.js",
   "scripts": {
