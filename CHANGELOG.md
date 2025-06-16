@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.5.6](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.5...v0.5.6) (2025-06-16)
+### [0.5.4](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.6...v0.5.4) (2025-06-16)
 
 ### [0.5.3](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.2...v0.5.3) (2025-06-16)
 
