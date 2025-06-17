@@ -1,4 +1,30 @@
 {
+  "name": "akneth-studio-website",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": "gitlab:akneth.studio-group/akneth-website",
+  "homepage": "https://aknethstudio.com",
+  "version": "0.5.6",
+  "description": "Strona firmowa Akneth Studio.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
+  },
+  "keywords": [
+    "aknethstudio",
+    "nextjs",
+    "react",
+    "website",
+    "portfolio",
+    "web-development",
+    "templates"
+  ],
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
   "dependencies": {
     "@next/third-parties": "^15.3.3",
