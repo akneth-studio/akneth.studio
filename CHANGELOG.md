@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.7...v0.6.0) (2025-06-17)
+
+
+### Features
+
+* eslint-config-next ([47012ac](https://gitlab.com/akneth.studio-group/akneth-website/commit/47012acd22da488718135893744b14f5b5083881))
+
+
+### Bug Fixes
+
+* after ([6b708ae](https://gitlab.com/akneth.studio-group/akneth-website/commit/6b708aead0b0bc4f5ef73e824116c540b68f9a57))
+* build ([c7e78cf](https://gitlab.com/akneth.studio-group/akneth-website/commit/c7e78cf2d5fe207fe94d3195f279ab467ada98c9))
+* build ([bfc8170](https://gitlab.com/akneth.studio-group/akneth-website/commit/bfc8170d25ee62c80d5e9971fc19ddfff12e6987))
+* buildx2 ([b136f81](https://gitlab.com/akneth.studio-group/akneth-website/commit/b136f81eacf5acfd34b8698749e10d47844b5baa))
+* eslint & package config ([2e173a6](https://gitlab.com/akneth.studio-group/akneth-website/commit/2e173a65fc6ff8337867419fea2ac4328af5c8e3))
+* form ([3f9518d](https://gitlab.com/akneth.studio-group/akneth-website/commit/3f9518d5dde4f5a078c9cde01b960fc3ec643087))
+* layout refractor ([19bb1b1](https://gitlab.com/akneth.studio-group/akneth-website/commit/19bb1b14ee44b5f55e5482efefd8372d046492a0))
+* module ([241882c](https://gitlab.com/akneth.studio-group/akneth-website/commit/241882cef2aca21a8af0b2b5903ce29ed751ce6d))
+* next config ([6e5b8c4](https://gitlab.com/akneth.studio-group/akneth-website/commit/6e5b8c4634ac8e4b45dd56d721abeca81cdd3919))
+* package.json ([21d55f7](https://gitlab.com/akneth.studio-group/akneth-website/commit/21d55f744b762f5619d6f78439e3bc7a83ab5ca6))
+* refractor code ([a5ade77](https://gitlab.com/akneth.studio-group/akneth-website/commit/a5ade77bc1b5c73c4e5a1b6f36731520a622275b))
+* refractor for build ([de0f9af](https://gitlab.com/akneth.studio-group/akneth-website/commit/de0f9af5d1fb6524735d2dc2bc58dc8f121a459f))
+* sentry ([8c1bf84](https://gitlab.com/akneth.studio-group/akneth-website/commit/8c1bf8478a71551c52b53edb912bdbd69e0178d9))
+* sentry/next ([fa0a5d8](https://gitlab.com/akneth.studio-group/akneth-website/commit/fa0a5d8e22f335c4bad440c893baf896b4aa468c))
+* sourceMap ([11a897e](https://gitlab.com/akneth.studio-group/akneth-website/commit/11a897eea1261afecf2e3b6ed50aff59eb901dd8))
+* validate ([a7b6f81](https://gitlab.com/akneth.studio-group/akneth-website/commit/a7b6f81dedb7591e38f0e72f8f7597ebc7c36054))
+
 ### [0.5.7](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.6...v0.5.7) (2025-06-16)
 
 ### [0.5.5](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.6...v0.5.5) (2025-06-16)
