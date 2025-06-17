@@ -1,10 +1,9 @@
 import '@/styles/main.scss';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Poppins } from 'next/font/google';
-import type { Viewport } from 'next';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'; // FIXME Zmien na realny URL: .env.local, .env.development, .env.production
