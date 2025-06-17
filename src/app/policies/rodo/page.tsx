@@ -36,7 +36,7 @@ export default function RodoPage() {
                 <p>Poniższa informacja stanowi zwięzły, zrozumiały i przejrzysty skrót informacji zamieszczonych w <Link href="/policies/privacy" aria-label='Polityka prywatności' title='Polityka prywatności'>Polityce Prywatności</Link> odnośnie Administratora danych, celu i sposobu przetwarzania danych osobowych oraz Twoich praw w związku z tym przetwarzaniem, w formie wymaganej do spełnienia obowiązku informacyjnego RODO. Szczegóły dotyczące sposobu przetwarzania i podmiotów uczestniczących w tym procesie dostępne są we wskazanej polityce.</p>
                 <hr />
                 <h2>Kto jest administratorem danych?</h2>
-                <p>Administratorem Danych Osobowych (dalej Administrator) jest firma "AKNETH Studio Katarzyna Pawłowska-Malesa", prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu</p>
+                <p>Administratorem Danych Osobowych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu</p>
                 <h2>Jak można skontaktować się z administratorem danych?</h2>
                 <p>Z Administratorem można skontaktować się w jeden z poniższych sposobów</p>
                 <ul>

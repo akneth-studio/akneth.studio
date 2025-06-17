@@ -37,19 +37,19 @@ export default function PrivacyPage() {
                 </div>
                 <hr/>
                 <p>Poniższa Polityka Prywatności określa <strong>zasady zapisywania i uzyskiwania dostępu do danych na Urządzeniach Użytkowników</strong> korzystających z Serwisu do celów świadczenia usług drogą elektroniczną przez Administratora oraz <strong>zasady gromadzenia i przetwarzania danych osobowych Użytkowników</strong>, które zostały podane przez nich osobiście i dobrowolnie za pośrednictwem narzędzi dostępnych w Serwisie.</p>
-                <p>Poniższa Polityka Prywatności jest integralną częścią <Link href="/policies/terms" aria-label='Regulamin Serwisu' title='Regulamin Serwisu'>Regulaminu Serwisu</Link>, który określa zasady, prawa i obowiązki Użytkowników korzystających z Serwisu.</p>
+                <p>Poniższa Polityka Prywatności jest integralną częścią <Link href='/policies/terms' aria-label='Regulamin Serwisu' title='Regulamin Serwisu'>Regulaminu Serwisu</Link>, który określa zasady, prawa i obowiązki Użytkowników korzystających z Serwisu.</p>
                 <hr/>
                 <h2>§1 Definicje</h2>
                 <ul>
                     <li>
-                        <strong>Serwis</strong> - serwis internetowy "AKNETH Studio" działający pod adresem https://akneth-studio.onrender.com
+                        <strong>Serwis</strong> - serwis internetowy &quot;AKNETH Studio&quot; działający pod adresem https://akneth-studio.onrender.com
                         {/*TODO Change url for actual page */}
                     </li>
                     <li>
                         <strong>Serwis zewnętrzny</strong> - serwisy internetowe partnerów, usługodawców lub usługobiorców współpracujących z Administratorem
                     </li>
                     <li>
-                        <strong>Administrator Serwisu / Danych</strong> - Administratorem Serwisu oraz Administratorem Danych (dalej Administrator) jest firma "AKNETH Studio Katarzyna Pawłowska-Malesa", prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu
+                        <strong>Administrator Serwisu / Danych</strong> - Administratorem Serwisu oraz Administratorem Danych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu
                     </li>
                     <li>
                         <strong>Użytkownik</strong> - osoba fizyczna, dla której Administrator świadczy usługi drogą elektroniczną za pośrednictwem Serwisu.
@@ -85,7 +85,7 @@ export default function PrivacyPage() {
                         <strong>Pseudonimizacja</strong> - oznacza przetworzenie danych osobowych w taki sposób, by nie można ich było już przypisać konkretnej osobie, której dane dotyczą, bez użycia dodatkowych informacji, pod warunkiem że takie dodatkowe informacje są przechowywane osobno i są objęte środkami technicznymi i organizacyjnymi uniemożliwiającymi ich przypisanie zidentyfikowanej lub możliwej do zidentyfikowania osobie fizycznej
                     </li>
                     <li>
-                        <strong>Anonimizacja</strong> - Anonimizacja danych to nieodwracalny proces operacji na danych, który niszczy / nadpisuje "dane osobowe" uniemożliwiając identyfikację, lub powiązanie danego rekordu z konkretnym użytkownikiem lub osobą fizyczną.
+                        <strong>Anonimizacja</strong> - Anonimizacja danych to nieodwracalny proces operacji na danych, który niszczy / nadpisuje &quot;dane osobowe&quot; uniemożliwiając identyfikację, lub powiązanie danego rekordu z konkretnym użytkownikiem lub osobą fizyczną.
                     </li>
                 </ul>
                 <h2>§2 Inspektor Ochrony Danych</h2>
@@ -100,10 +100,10 @@ export default function PrivacyPage() {
                         <strong>Cookies zewnętrzne</strong> - pliki zamieszczane i odczytywane z Urządzenia Użytkownika przez systemy teleinformatyczne Serwisów zewnętrznych. Skrypty Serwisów zewnętrznych, które mogą umieszczać pliki Cookies na Urządzeniach Użytkownika zostały świadomie umieszczone w Serwisie poprzez skrypty i usługi udostępnione i zainstalowane w Serwisie
                     </li>
                     <li>
-                        <strong>Cookies sesyjne</strong> - pliki zamieszczane i odczytywane z Urządzenia Użytkownika przez Serwis <span id="sz1" style={{ display: 'none', }}>lub Serwisy zewnętrzne</span> podczas jednej sesji danego Urządzenia. Po zakończeniu sesji pliki są usuwane z Urządzenia Użytkownika.
+                        <strong>Cookies sesyjne</strong> - pliki zamieszczane i odczytywane z Urządzenia Użytkownika przez Serwis <span id='sz1' style={{ display: 'none', }}>lub Serwisy zewnętrzne</span> podczas jednej sesji danego Urządzenia. Po zakończeniu sesji pliki są usuwane z Urządzenia Użytkownika.
                     </li>
                     <li>
-                        <strong>Cookies trwałe</strong> - pliki zamieszczane i odczytywane z Urządzenia Użytkownika przez Serwis <span id="sz2" style={{ display: 'none', }}>lub Serwisy zewnętrzne</span> do momentu ich ręcznego usunięcia. Pliki nie są usuwane automatycznie po zakończeniu sesji Urządzenia chyba że konfiguracja Urządzenia Użytkownika jest ustawiona na tryb usuwanie plików Cookie po zakończeniu sesji Urządzenia.
+                        <strong>Cookies trwałe</strong> - pliki zamieszczane i odczytywane z Urządzenia Użytkownika przez Serwis <span id='sz2' style={{ display: 'none', }}>lub Serwisy zewnętrzne</span> do momentu ich ręcznego usunięcia. Pliki nie są usuwane automatycznie po zakończeniu sesji Urządzenia chyba że konfiguracja Urządzenia Użytkownika jest ustawiona na tryb usuwanie plików Cookie po zakończeniu sesji Urządzenia.
                     </li>
                 </ul>
                 <h2>§4 Bezpieczeństwo składowania danych</h2>
@@ -124,25 +124,25 @@ export default function PrivacyPage() {
                                 Użytkownik może w dowolnym momencie, samodzielnie zmienić ustawienia dotyczące zapisywania, usuwania oraz dostępu do danych zapisanych plików Cookies przez każdą witrynę internetową
                             </li>
                             <li>
-                                Informacje o sposobie wyłączenia plików Cookie w najpopularniejszych przeglądarkach komputerowych dostępne są na stronie: <Link rel="external" href="https://nety.pl/jak-wylaczyc-pliki-cookie/">jak wyłączyć cookie</Link> lub u jednego ze wskazanych dostawców:
+                                Informacje o sposobie wyłączenia plików Cookie w najpopularniejszych przeglądarkach komputerowych dostępne są na stronie: <Link href='https://nety.pl/jak-wylaczyc-pliki-cookie/'>jak wyłączyć cookie</Link> lub u jednego ze wskazanych dostawców:
                                 <ul>
                                     <li>
-                                        <Link rel="nofollow external" href="https://support.google.com/accounts/answer/61416?co=GENIE.Platform%3DDesktop&#038;hl=pl">Zarządzanie plikami cookies w przeglądarce <strong>Chrome</strong></Link>
+                                        <Link rel='nofollow external' href='https://support.google.com/accounts/answer/61416?co=GENIE.Platform%3DDesktop&#038;hl=pl'>Zarządzanie plikami cookies w przeglądarce <strong>Chrome</strong></Link>
                                     </li>
                                     <li>
-                                        <Link rel="nofollow external" href="https://help.opera.com/pl/latest/web-preferences/">Zarządzanie plikami cookies w przeglądarce <strong>Opera</strong></Link>
+                                        <Link rel='nofollow external' href='https://help.opera.com/pl/latest/web-preferences/'>Zarządzanie plikami cookies w przeglądarce <strong>Opera</strong></Link>
                                     </li>
                                     <li>
-                                        <Link rel="nofollow external" href="https://support.mozilla.org/pl/kb/blokowanie-ciasteczek">Zarządzanie plikami cookies w przeglądarce <strong>FireFox</strong></Link>
+                                        <Link rel='nofollow external' href='https://support.mozilla.org/pl/kb/blokowanie-ciasteczek'>Zarządzanie plikami cookies w przeglądarce <strong>FireFox</strong></Link>
                                     </li>
                                     <li>
-                                        <Link rel="nofollow external" href="https://support.microsoft.com/pl-pl/help/4027947/microsoft-edge-delete-cookies">Zarządzanie plikami cookies w przeglądarce <strong>Edge</strong></Link>
+                                        <Link rel='nofollow external' href='https://support.microsoft.com/pl-pl/help/4027947/microsoft-edge-delete-cookies'>Zarządzanie plikami cookies w przeglądarce <strong>Edge</strong></Link>
                                     </li>
                                     <li>
-                                        <Link rel="nofollow external" href="https://support.apple.com/pl-pl/guide/safari/sfri11471/mac">Zarządzanie plikami cookies w przeglądarce <strong>Safari</strong></Link>
+                                        <Link rel='nofollow external' href='https://support.apple.com/pl-pl/guide/safari/sfri11471/mac'>Zarządzanie plikami cookies w przeglądarce <strong>Safari</strong></Link>
                                     </li>
                                     <li>
-                                        <Link rel="nofollow external" href="https://windows.microsoft.com/pl-pl/internet-explorer/delete-manage-cookies#ie=ie-11">Zarządzanie plikami cookies w przeglądarce <strong>Internet Explorer 11</strong></Link>
+                                        <Link rel='nofollow external' href='https://windows.microsoft.com/pl-pl/internet-explorer/delete-manage-cookies#ie=ie-11'>Zarządzanie plikami cookies w przeglądarce <strong>Internet Explorer 11</strong></Link>
                                     </li>
                                 </ul>
                             </li>
@@ -152,14 +152,14 @@ export default function PrivacyPage() {
                         </ul>
                     </li>
                     <li>
-                        <strong>Zagrożenia po stronie Użytkownika </strong> - Administrator stosuje wszelkie możliwe środki techniczne w celu zapewnienia bezpieczeństwa danych umieszczanych w plikach Cookie. Należy jednak zwrócić uwagę, że zapewnienie bezpieczeństwa tych danych zależy od obu stron w tym działalności Użytkownika. Administrator nie bierze odpowiedzialności za przechwycenie tych danych, podszycie się pod sesję Użytkownika lub ich usunięcie, na skutek świadomej lub nieświadomej działalność Użytkownika, wirusów, koni trojańskich i innego oprogramowania szpiegującego, którymi może jest lub było zainfekowane Urządzenie Użytkownika. Użytkownicy w celu zabezpieczenia się przed tymi zagrożeniami powinni dbać o swoje <Link rel="external" href="https://nety.pl/cyberbezpieczenstwo/">Cyberbezpieczeństwo</Link> podczas korzystania z sieci internet..
+                        <strong>Zagrożenia po stronie Użytkownika </strong> - Administrator stosuje wszelkie możliwe środki techniczne w celu zapewnienia bezpieczeństwa danych umieszczanych w plikach Cookie. Należy jednak zwrócić uwagę, że zapewnienie bezpieczeństwa tych danych zależy od obu stron w tym działalności Użytkownika. Administrator nie bierze odpowiedzialności za przechwycenie tych danych, podszycie się pod sesję Użytkownika lub ich usunięcie, na skutek świadomej lub nieświadomej działalność Użytkownika, wirusów, koni trojańskich i innego oprogramowania szpiegującego, którymi może jest lub było zainfekowane Urządzenie Użytkownika. Użytkownicy w celu zabezpieczenia się przed tymi zagrożeniami powinni dbać o swoje <Link rel='external' href='https://nety.pl/cyberbezpieczenstwo/'>Cyberbezpieczeństwo</Link> podczas korzystania z sieci internet..
                     </li>
                     <li>
                         <strong>Przechowywanie danych osobowych</strong> - Administrator zapewnia, że dokonuje wszelkich starań, by przetwarzane dane osobowe wprowadzone dobrowolnie przez Użytkowników były bezpieczne, dostęp do nich był ograniczony i realizowany zgodnie z ich przeznaczeniem i celami przetwarzania. Administrator zapewnia także, że dokonuje wszelkich starań w celu zabezpieczenia posiadanych danych przed ich utratą, poprzez stosowanie odpowiednich zabezpieczeń fizycznych jak i organizacyjnych.
                     </li>
                 </ul>
                 <h2>§5 Cele do których wykorzystywane są pliki Cookie</h2>
-                <ul id="cele">
+                <ul id='cele'>
                     <li>Usprawnienie i ułatwienie dostępu do Serwisu</li>
                     <li>Personalizacja Serwisu dla Użytkowników</li>
                     <li>Marketing, Remarketing w serwisach zewnętrznych</li>
@@ -184,21 +184,21 @@ export default function PrivacyPage() {
                     <li>Zapewnienia prawnie uzasadnionego interesu Administratora</li>
                 </ul>
                 <h2>§7 Pliki Cookies Serwisów zewnętrznych</h2>
-                <p id="zewinfo">Administrator w Serwisie wykorzystuje skrypty javascript i komponenty webowe partnerów, którzy mogą umieszczać własne pliki cookies na Urządzeniu Użytkownika. Pamiętaj, że w ustawieniach swojej przeglądarki możesz sam decydować o dozwolonych plikach cookies jakie mogą być używane przez poszczególne witryny internetowe. Poniżej znajduje się lista partnerów lub ich usług zaimplementowanych w Serwisie, mogących umieszczać pliki cookies: </p>
-                <ul id="zewnetrzne">
+                <p id='zewinfo'>Administrator w Serwisie wykorzystuje skrypty javascript i komponenty webowe partnerów, którzy mogą umieszczać własne pliki cookies na Urządzeniu Użytkownika. Pamiętaj, że w ustawieniach swojej przeglądarki możesz sam decydować o dozwolonych plikach cookies jakie mogą być używane przez poszczególne witryny internetowe. Poniżej znajduje się lista partnerów lub ich usług zaimplementowanych w Serwisie, mogących umieszczać pliki cookies: </p>
+                <ul id='zewnetrzne'>
                     <li>
                         <strong>Usługi społecznościowe / łączone:</strong><br />(Rejestracja, Logowanie, udostępnianie treści, komunikacja, itp.)<br />
                         <ul>
-                            <li><Link rel="nofollow external" href="https://twitter.com/en/tos?wcmmode=disabled#intlTerms">Twitter</Link></li>
-                            <li><Link rel="nofollow external" href="https://www.facebook.com/legal/terms">Facebook</Link></li>
-                            <li><Link rel="nofollow external" href="https://policies.google.com/privacy?hl=pl">Google+</Link></li>
+                            <li><Link rel='nofollow external' href='https://twitter.com/en/tos?wcmmode=disabled#intlTerms'>Twitter</Link></li>
+                            <li><Link rel='nofollow external' href='https://www.facebook.com/legal/terms'>Facebook</Link></li>
+                            <li><Link rel='nofollow external' href='https://policies.google.com/privacy?hl=pl'>Google+</Link></li>
                         </ul>
                     </li>
                     <li>
                         <strong>Prowadzenie statystyk:</strong>
                         <ul>
                             <li>
-                                <Link rel="nofollow external" href="https://policies.google.com/privacy?hl=pl">Google Analytics</Link>
+                                <Link rel='nofollow external' href='https://policies.google.com/privacy?hl=pl'>Google Analytics</Link>
                             </li>
                         </ul>
                     </li>
@@ -246,9 +246,9 @@ export default function PrivacyPage() {
                     <li>Firmy odpowiedzialne za prowadzenie księgowości Administratora (w przypadku dokonywania transakcji zakupu w Serwisie)</li>
                 </ul>
                 <p><strong>Powierzenie przetwarzania danych osobowych - Usługi Hostingu, VPS lub Serwerów Dedykowanych</strong></p>
-                <p>Administrator w celu prowadzenia serwisu korzysta z usług zewnętrznego dostawcy hostingu, VPS lub Serwerów Dedykowanych - <strong><Link rel="nofollow external" href="https://render.com/privacy">Render, Inc.</Link></strong>. Wszelkie dane gromadzone i przetwarzane w serwisie są przechowywane i przetwarzane w infrastrukturze usługodawcy zlokalizowanej poza obrębem granic Unii Europejskiej. Istnieje możliwość dostępu do danych wskutek prac serwisowych realizowanych przez personel usługodawcy. Dostęp do tych danych reguluje umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
+                <p>Administrator w celu prowadzenia serwisu korzysta z usług zewnętrznego dostawcy hostingu, VPS lub Serwerów Dedykowanych - <strong><Link rel='nofollow external' href='https://render.com/privacy'>Render, Inc.</Link></strong>. Wszelkie dane gromadzone i przetwarzane w serwisie są przechowywane i przetwarzane w infrastrukturze usługodawcy zlokalizowanej poza obrębem granic Unii Europejskiej. Istnieje możliwość dostępu do danych wskutek prac serwisowych realizowanych przez personel usługodawcy. Dostęp do tych danych reguluje umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
                 <p><strong>Przekazanie danych osobowych - Usługi Księgowe</strong></p>
-                <p>W przypadku zawarcia transakcji, część danych osobowych osób fizycznych lub dane osób fizycznych prowadzących działalność gospodarczą, jest przekazywana podmiotowi świadczącemu na rzecz Administratora usługi księgowe <Link rel="nofollow external" href="https://fakturownia.pl/polityka-prywatnosci">Fakturownia sp. z o.o.</Link>. Przekazanie tych danych reguluje Ustawa .... oraz umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
+                <p>W przypadku zawarcia transakcji, część danych osobowych osób fizycznych lub dane osób fizycznych prowadzących działalność gospodarczą, jest przekazywana podmiotowi świadczącemu na rzecz Administratora usługi księgowe <Link rel='nofollow external' href='https://fakturownia.pl/polityka-prywatnosci'>Fakturownia sp. z o.o.</Link>. Przekazanie tych danych reguluje Ustawa .... oraz umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
                 <h2>§10 Sposób przetwarzania danych osobowych</h2>
                 <p><strong>Dane osobowe podane dobrowolnie przez Użytkowników:</strong></p>
                 <ul>
