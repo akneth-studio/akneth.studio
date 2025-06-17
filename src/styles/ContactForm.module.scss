@@ -6,11 +6,11 @@
   border-radius: 1rem;
   box-shadow: 0 2px 16px rgba($dark, 0.08);
 
-  label {
+  label:not([for='consent']) {
     font-weight: 600;
     color: $dark;
   }
-  input,
+  input:not([type="checkbox"]),
   textarea {
     width: 100%;
     border: 1px solid $secondary;
@@ -24,9 +24,19 @@
       outline: none;
     }
   }
+  input[type='checkbox'] {
+    border: 1px solid $secondary;
+  }
   .error {
     color: #c92a2a;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
+  }
+  a {
+    text-decoration: none;
+    &:hover{
+      text-decoration: solid 1px underline;
+      text-underline-offset: 2px;
+    }
   }
 }

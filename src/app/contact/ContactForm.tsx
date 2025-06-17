@@ -5,6 +5,7 @@ import styles from '@/styles/ContactForm.module.scss';
 import Popup from '@/components/Popup';
 import CTAButton from '@/components/CTAButton';
 import { Form, Row, Col } from 'react-bootstrap';
+import Link from 'next/link';
 // Import reCAPTCHA jeśli używasz np. react-google-recaptcha
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
@@ -31,6 +32,7 @@ export function ContactForm() {
         message: '',
     });
     const [errors, setErrors] = useState<ContactFormErrors>({});
+    const [consent, setConsent] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupType, setPopupType] = useState<'success' | 'error'>('success');
@@ -40,7 +42,21 @@ export function ContactForm() {
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
+
+        if (type === 'checkbox') {
+            setConsent(checked);
+
+            setErrors(prevErrors => {
+                const newErrors = { ...prevErrors };
+                // Usuwaj błąd, jeśli checkbox został zaznaczony
+                if (checked) {
+                    delete newErrors.consent;
+                }
+                return newErrors;
+            });
+            return;
+        }
 
         setForm(prev => ({ ...prev, [name]: value }));
 
@@ -81,6 +97,7 @@ export function ContactForm() {
         if (!form.email.match(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
         if (!form.subject.trim()) newErrors.subject = 'Temat jest wymagany';
         if (!form.message.trim() || form.message.length < 10) newErrors.message = 'Wiadomość musi mieć min. 10 znaków';
+        if (!consent) newErrors.consent = 'Musisz wyrazić zgodę na przetwarzanie danych';
         return newErrors;
     };
 
@@ -114,6 +131,7 @@ export function ContactForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 ...form,
+                consent,
                 recaptchaToken,
             }),
         });
@@ -217,6 +235,22 @@ export function ContactForm() {
                     <label htmlFor="message">Treść wiadomości*</label>
                     <Form.Control.Feedback type="invalid">{errors.message}</Form.Control.Feedback>
                 </Form.Floating>
+                <Form.Group className='my-3'>
+                    <Form.Check
+                        required
+                        type='checkbox'
+                        id='consent'
+                        label={
+                            <>
+                                Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z <Link href="/policies/privacy" target="_blank" rel="noopener noreferrer">Polityką prywatności</Link>.
+                            </>
+                        }
+                        checked={consent}
+                        onChange={handleChange}
+                        isInvalid={!!errors.consent}
+                        feedback={errors.consent}
+                    />
+                </Form.Group>
                 <div className="d-flex justify-content-end">
                     <CTAButton
                         type="submit"

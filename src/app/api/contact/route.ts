@@ -17,6 +17,9 @@ export async function POST(req: NextRequest) {
       );
     }
     const { recaptchaToken, name, company, email, subject, message } = parsed.data;
+    if (!body.consent) {
+      return NextResponse.json({ error: 'Brak zgody na przetwarzanie danych.' }, { status: 400 });
+    }
 
     // Weryfikacja reCAPTCHA
     const secret = process.env.RECAPTCHA_SECRET_KEY;
