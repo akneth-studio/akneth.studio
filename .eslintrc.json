@@ -12,6 +12,7 @@
         "jsx-a11y"
     ],
     "extends": [
+        "next",
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
