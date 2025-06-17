@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import CTAButton from '../../components/CTAButton';
+import CTAButton from '@/components/CTAButton';
 import styles from '@/styles/AboutServicesMarquee.module.scss';
 
 const iconsRow1 = [
