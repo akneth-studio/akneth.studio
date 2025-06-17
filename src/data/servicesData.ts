@@ -11,7 +11,7 @@ export const servicesData = [
       {
         id: 'template-office',
         title: 'Szablony MS Office',
-        description: 'Personalizowane szablony Word, Excel, PowerPoint – profesjonalny wygląd, automatyzacje, zgodność z brandingiem.'
+        description: 'Personalizowane szablony Word, Excel, PowerPoint - profesjonalny wygląd, automatyzacje, zgodność z brandingiem.'
       }
     ]
   },
@@ -38,11 +38,6 @@ export const servicesData = [
         id: 'contact-form',
         title: 'Formularz kontaktowy z walidacją i zabezpieczeniami',
         description: 'Bezpieczny formularz kontaktowy z walidacją, reCAPTCHA, integracją z e-mail i bazą danych.'
-      },
-      {
-        id: 'consent-manager',
-        title: 'Consent Manager (CMP)',
-        description: 'Autorski system zarządzania zgodami na cookies i integracjami, zgodny z RODO i UODO.'
       },
       {
         id: 'content-management',
@@ -104,17 +99,17 @@ export const servicesData = [
     services: [
       {
         id: 'online-training-cms',
-        title: 'Szkolenie online – obsługa CMS/strony',
+        title: 'Szkolenie online - obsługa CMS/strony',
         description: 'Indywidualne szkolenie z obsługi strony, panelu CMS, edycji treści i zarządzania stroną.'
       },
       {
         id: 'online-training-seo',
-        title: 'Szkolenie online – podstawy SEO',
+        title: 'Szkolenie online - podstawy SEO',
         description: 'Szkolenie z podstaw optymalizacji SEO, pozycjonowania i analizy widoczności strony.'
       },
       {
         id: 'online-training-automation',
-        title: 'Szkolenie online – automatyzacje i integracje',
+        title: 'Szkolenie online - automatyzacje i integracje',
         description: 'Pokaz praktyczny automatyzacji w Google Sheets, integracji z narzędziami online.'
       }
     ]

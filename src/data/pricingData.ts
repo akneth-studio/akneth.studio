@@ -48,11 +48,6 @@ export const pricingData = [
         priceRange: '150-400'
       },
       {
-        id: 'consent-manager',
-        service: 'Consent Manager (CMP, zgodność z RODO, integracje cookies)',
-        priceRange: '500-1200'
-      },
-      {
         id: 'content-management',
         service: 'Panel do zarządzania treściami i grafikami',
         priceRange: '500-1000'
