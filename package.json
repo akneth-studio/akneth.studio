@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "repository": "gitlab:akneth.studio-group/akneth-website",
+  "repository": "gitlab:akneth.studio/akneth-website",
   "homepage": "https://akneth-studio.onrender.com",
   "main": "index.js",
   "scripts": {
