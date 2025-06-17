@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import CTAButton from '../../components/CTAButton';
+import styles from './AboutServicesMarquee.module.scss';
 
 const iconsRow1 = [
     { src: '/icons/icons8-nextjs.svg', alt: 'Next.js' },
@@ -57,14 +58,7 @@ export default function AboutServicesMarquee() {
                         }}
                     >
                         {/* Rząd 1 */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: 'max-content',
-                                animation: 'scroll 30s linear infinite'
-                            }}
-                        >
+                        <div className={styles.scroll}>
                             {[...iconsRow1, ...iconsRow1].map((icon, idx) => (
                                 <div key={idx} style={{ margin: '0 1.5rem', flex: '0 0 auto' }}>
                                     <Image
@@ -79,14 +73,7 @@ export default function AboutServicesMarquee() {
                             ))}
                         </div>
                         {/* Rząd 2 */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: 'max-content',
-                                animation: 'scroll 36s linear infinite reverse'
-                            }}
-                        >
+                        <div className={styles.scrollReverse}>
                             {[...iconsRow2, ...iconsRow2].map((icon, idx) => (
                                 <div key={idx} style={{ margin: '0 1.5rem', flex: '0 0 auto' }}>
                                     <Image
@@ -103,13 +90,6 @@ export default function AboutServicesMarquee() {
                     </div>
                 </div>
             </div>
-            {/* Animacja do globalnego CSS */}
-            <style jsx global>{`
-                @keyframes scroll {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-            `}</style>
         </section>
     );
 }

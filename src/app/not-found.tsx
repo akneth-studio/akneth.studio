@@ -1,6 +1,7 @@
 import CTAButton from "@/components/CTAButton";
 import Image from "next/image";
 import { Autour_One } from "next/font/google";
+import Link from 'next/link';
 
 import { Metadata } from "next";
 
@@ -26,7 +27,7 @@ export default function NotFound() {
                 />
                 <div className="my-4">
                     <p>Przepraszamy, ale strona, której szukasz, nie została znaleziona.</p>
-                    <p>Możesz wrócić do <a href="/">strony głównej</a> lub skorzystać z menu nawigacyjnego.</p>
+                    <p>Możesz wrócić do <Link href="/" aria-label='Strona główna'>strony głównej</Link> lub skorzystać z menu nawigacyjnego.</p>
                 </div>
                 <div className="mt-4">
                     <CTAButton

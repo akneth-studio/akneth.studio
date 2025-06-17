@@ -1,0 +1,23 @@
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.scroll {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+.scrollReverse {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scroll 36s linear infinite reverse;
+}

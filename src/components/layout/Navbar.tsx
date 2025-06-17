@@ -16,7 +16,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    typeof document !== "undefined" && import("bootstrap/dist/js/bootstrap.bundle.min.js");
+    typeof document !== "undefined" && import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
   return (
