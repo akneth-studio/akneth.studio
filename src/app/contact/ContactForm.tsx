@@ -98,7 +98,7 @@ export function ContactForm() {
         if (!form.email.match(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
         if (!form.subject.trim()) newErrors.subject = 'Temat jest wymagany';
         if (!form.message.trim() || form.message.length < 10) newErrors.message = 'Wiadomość musi mieć min. 10 znaków';
-        if (!consent) newErrors.consent = 'Musisz wyrazić zgodę na przetwarzanie danych';
+        if (!consent) newErrors.consent = 'Musisz wyrazić zgodę na przetwarzanie danych.';
         return newErrors;
     };
 
