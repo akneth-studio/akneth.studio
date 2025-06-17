@@ -18,7 +18,7 @@ type ContactFormFields = {
     message: string;
 };
 
-type ContactFormErrorKeys = keyof ContactFormFields | 'submit';
+type ContactFormErrorKeys = keyof ContactFormFields | 'submit' | 'consent';
 type ContactFormErrors = Partial<Record<ContactFormErrorKeys, string>>;
 
 export function ContactForm() {
@@ -42,7 +42,8 @@ export function ContactForm() {
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        const { name, value, type, checked } = e.target;
+        const target = e.target as HTMLInputElement;
+        const { name, value, type, checked } = target;
 
         if (type === 'checkbox') {
             setConsent(checked);
