@@ -39,9 +39,9 @@ export default function Page() {
           sentry-example-page
         </h1>
 
-        <p className="description">
-          Click the button below, and view the sample error on the Sentry <a target="_blank" href="https://kprinnygmailcom.sentry.io/issues/?project=4509491254919248">Issues Page</a>.
-          For more details about setting up Sentry, <a target="_blank" href="https://docs.sentry.io/platforms/javascript/guides/nextjs/">read our docs</a>.
+              <p className="description">
+                  Click the button below, and view the sample error on the Sentry <a target="_blank" rel='noreferrer' href="https://kprinnygmailcom.sentry.io/issues/?project=4509491254919248">Issues Page</a>.
+                  For more details about setting up Sentry, <a target="_blank" rel='noreferrer' href="https://docs.sentry.io/platforms/javascript/guides/nextjs/">read our docs</a>.
         </p>
 
         <button
@@ -70,7 +70,7 @@ export default function Page() {
           </p>
         ) : !isConnected ? (
           <div className="connectivity-error">
-            <p>The Sentry SDK is not able to reach Sentry right now - this may be due to an adblocker. For more information, see <a target="_blank" href="https://docs.sentry.io/platforms/javascript/guides/nextjs/troubleshooting/#the-sdk-is-not-sending-any-data">the troubleshooting guide</a>.</p>
+                          <p>The Sentry SDK is not able to reach Sentry right now - this may be due to an adblocker. For more information, see <a target="_blank" rel='noreferrer' href="https://docs.sentry.io/platforms/javascript/guides/nextjs/troubleshooting/#the-sdk-is-not-sending-any-data">the troubleshooting guide</a>.</p>
           </div>
         ) : (
           <div className="success_placeholder" />
