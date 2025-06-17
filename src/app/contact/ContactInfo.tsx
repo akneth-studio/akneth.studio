@@ -10,13 +10,6 @@ const city = process.env.NEXT_PUBLIC_ADDRESS_CITY || 'Warszawa';
 const phone = process.env.NEXT_PUBLIC_PHONE || '123-456-789';
 const email = process.env.NEXT_PUBLIC_EMAIL || 'kontakt@przyklad.pl';
 
-import { Autour_One } from 'next/font/google';
-const autourOne = Autour_One({
-    weight: '400',
-    subsets: ['latin-ext'],
-    display: 'swap',
-});
-
 const ContactInfo = () => {
     return (
         <>
