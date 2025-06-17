@@ -75,6 +75,8 @@ export default withSentryConfig(
     org: "kprinnygmailcom",
     project: "javascript-nextjs",
 
+    productionBrowserSourceMaps: true,  // W³¹cza source mapy dla frontendowej czêœci produkcji
+
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
 
