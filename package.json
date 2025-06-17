@@ -27,7 +27,7 @@
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
   "dependencies": {
     "@next/third-parties": "^15.3.3",
-    "@sentry/nextjs": "^9.29.0",
+    "@sentry/nextjs": "^9.30.0",
     "@supabase/supabase-js": "^2.49.10",
     "bootstrap": "^5.3.6",
     "next": "^15.3.3",
