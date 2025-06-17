@@ -47,7 +47,8 @@ const ContentSecurityPolicy = `
   .trim();
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    /* config options here */
+    productionBrowserSourceMaps: true,  // W³¹cza source mapy dla frontendowej czêœci produkcji
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
@@ -74,8 +75,6 @@ export default withSentryConfig(
 
     org: "kprinnygmailcom",
     project: "javascript-nextjs",
-
-    productionBrowserSourceMaps: true,  // W³¹cza source mapy dla frontendowej czêœci produkcji
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
