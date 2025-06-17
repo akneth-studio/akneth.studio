@@ -93,7 +93,7 @@ export function ContactForm() {
 
     // Walidacja po stronie klienta
     const validate = () => {
-        const newErrors: any = {};
+        const newErrors: ContactFormErrors = {};
         if (!form.name.trim()) newErrors.name = 'Imię i nazwisko są wymagane';
         if (!form.email.match(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
         if (!form.subject.trim()) newErrors.subject = 'Temat jest wymagany';
