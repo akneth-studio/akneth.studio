@@ -3,8 +3,7 @@ import CTAButton from "../CTAButton";
 export default function HeroSection() {
   return (
     <section className="hero text-center py-5 px-4">
-      <h1 className="display-4">AKNETH Studio Katarzyna Pawłowska-Malesa</h1>
-      <p className="lead">
+      <p className="lead fs-1">
         Szablony, automatyzacje i indywidualne rozwiązania dla firm i klientów indywidualnych.<br />
         Elastyczność, uczciwość i szybka realizacja - Twoje potrzeby, mój priorytet.
       </p>
