@@ -4,7 +4,8 @@ export default function HeroSection() {
   return (
     <section className="hero text-center py-5 px-4">
       <div id='lead-gradient'>
-        <h1>Szablony, automatyzacje i indywidualne rozwiązania dla firm i klientów indywidualnych.</h1><br />
+        <h1>Szablony, automatyzacje i indywidualne rozwiązania<br/>
+        dla firm i klientów indywidualnych.</h1><br />
         <p className='lead fs-1'>Elastyczność, uczciwość i szybka realizacja - Twoje potrzeby, mój priorytet.</p>
       </div>
       <CTAButton
@@ -12,6 +13,7 @@ export default function HeroSection() {
         text="Skontaktuj się"
         variant="primary"
         to="/contact"
+        size='lg'
       />
     </section>
   );
