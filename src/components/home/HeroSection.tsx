@@ -3,10 +3,10 @@ import CTAButton from "../CTAButton";
 export default function HeroSection() {
   return (
     <section className="hero text-center py-5 px-4">
-      <p className="lead fs-1" id='lead-gradient'>
-        <b>Szablony, automatyzacje i indywidualne rozwiązania dla firm i klientów indywidualnych.</b><br />
-        Elastyczność, uczciwość i szybka realizacja - Twoje potrzeby, mój priorytet.
-      </p>
+      <div id='lead-gradient'>
+        <h1>Szablony, automatyzacje i indywidualne rozwiązania dla firm i klientów indywidualnych.</span><br />
+        <p className='lead fs-1'>Elastyczność, uczciwość i szybka realizacja - Twoje potrzeby, mój priorytet.</p>
+      </div>
       <CTAButton
         type='button'
         text="Skontaktuj się"
