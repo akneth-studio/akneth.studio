@@ -84,9 +84,12 @@ section {
 }
 
 #lead-gradient {
-  background-color: #ff7000 !important;
+  background-color: rgba(255, 112, 0, 0.9) !important;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 1.5px 4px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
-  
+  text-shadow: rgba($light, 0.4);
 }
 
 
