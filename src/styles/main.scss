@@ -84,32 +84,11 @@ section {
 }
 
 #lead-gradient {
-  position: 'relative';
-  z-index:1;
-  overflow: hidden;
+  background-color: #ffd700 !important;
   border-radius: 8px;
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(150deg, #ffd700 0%, #ff8c00 45%, ffd700 65%) !important;
-    z-index: -1;
-    animation: gradient-move 5s linear infinite;
-    border-radius: 8px;
-  }
+  
 }
 
-@keyframes gradient-move {
-  0%{
-    transform: translate (0,0);
-  }
-  100%{
-    transform: translate(50%, 50%);
-  }
-}
 
 button {
   text-decoration: none;
