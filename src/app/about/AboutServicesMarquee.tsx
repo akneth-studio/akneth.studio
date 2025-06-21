@@ -30,7 +30,7 @@ export default function AboutServicesMarquee() {
                         <li>Copywriting – teksty na strony, materiały informacyjne, treści SEO</li>
                         <li>Automatyzacje i integracje w Google Sheets</li>
                         <li>Szkolenia online z narzędzi biurowych i pracy zdalnej</li>
-                        <li>Audyty dostępności (WCAG), wdrożenia RODO, własny Consent Manager</li>
+                        <li>Audyty dostępności (WCAG), wdrożenia RODO</li>
                     </ul>
                     <CTAButton
                         type='button'

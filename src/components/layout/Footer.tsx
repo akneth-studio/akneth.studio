@@ -20,15 +20,24 @@ const Footer = () => {
   return (
     <footer className="bg-dark py-4 mt-auto shadow-sm">
       <div className="container-xxl d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <div className="align-items-center d-flex">
-          <Image
-            src="/img/logo_revert.svg"
-            alt="AKNETH Studio Katarzyna Pawłowska-Malesa logo"
-            height={25}
-            width={25}
-            className="me-2"
-          />
-          <p className="mb-0 text-white">&copy; {year ?? ""} AKNETH Studio. Icons by <Link href="https://icons8.com/" className="icon8" target="_blank" rel="noopener noreferrer">Icons8</Link>.</p>
+        <div className="d-flex flex-column rightside">
+          <div className="align-items-center d-flex mb-1">
+            <Image
+              src="/img/logo_revert.svg"
+              alt="AKNETH Studio Katarzyna Pawłowska-Malesa logo"
+              height={25}
+              width={25}
+              className="me-2"
+            />
+            <p className="mb-0 text-white">&copy; {year ?? ""} AKNETH Studio.</p>
+          </div>
+          <div className="hr-footer mx-5 px-5">
+            <hr />
+          </div>
+          <div className="align-items-center d-flex adnotations">
+            <p className="mb-0 text-white">Icons by <Link href="https://icons8.com/" className="icon8" target="_blank" rel="noopener noreferrer">Icons8</Link>.<br />
+              Free SVG Backgrounds and Patterns by <Link href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/" className="icon8"> SVGBackgrounds.com</Link>.</p>
+          </div>
         </div>
         <div className="hr-footer mx-5 px-5">
           <hr />

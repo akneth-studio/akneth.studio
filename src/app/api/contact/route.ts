@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Błąd zapisu do bazy.' }, { status: 500 });
     }
 
-    // TODO: Wysyłka e-maila potwierdzającego dla klienta
+    // FIXIT: Wysyłka e-maila potwierdzającego dla klienta
 
     return NextResponse.json({ success: true });
   } catch (e) {

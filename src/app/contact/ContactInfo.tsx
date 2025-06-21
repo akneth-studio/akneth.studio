@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { LiaMapMarkedSolid, LiaPhoneSolid, LiaAtSolid } from 'react-icons/lia';
+import { LiaMapMarkedSolid, LiaPhoneSolid, LiaAtSolid, LiaClockSolid } from 'react-icons/lia';
 
 // Import environment variables for contact information
 const street = process.env.NEXT_PUBLIC_ADDRESS_STREET || 'ul. Przykładowa 1';
@@ -27,6 +27,18 @@ const ContactInfo = () => {
                         {city}
                     </p>
                 </div>
+                <h4><LiaClockSolid /> Godziny pracy</h4>
+                <p>
+                    <b>Poniedziałek - Piątek</b><br/>
+                    9:00 - 17:00
+                </p>
+                <p>
+                    <b>Sobota</b><br/>
+                    10:00 - 14:00<br/>
+                    <span className='fst-italic text-body-secondary' style={{fontSize: '0.85rem'}}>
+                        (tylko umówione spotkania)
+                    </span>
+                </p>
                 <h4><LiaPhoneSolid /> Telefon</h4>
                 <p>{phone}</p>
                 <h4><LiaAtSolid /> Email</h4>

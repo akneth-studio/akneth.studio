@@ -13,7 +13,14 @@ export const metadata: Metadata = {
         'Obowiązek informacyjny',
         'Obowiązek informacyjny RODO'
     ]
-}
+};
+
+const content = {
+    street: process.env.NEXT_PUBLIC_ADDRESS_STREET,
+    city: process.env.NEXT_PUBLIC_ADDRESS_CITY,
+    phone: process.env.NEXT_PUBLIC_PHONE,
+    mail: process.env.NEXT_PUBLIC_EMAIL
+};
 
 export default function RodoPage() {
     return (
@@ -29,21 +36,21 @@ export default function RodoPage() {
                         className='mx-auto px-3 py-2 fw-normal lh-base shadow-sm'
                     >
                         Data ostatniej aktualizacji: <br className='d-block d-md-none py-1' />
-                        <span className='fw-bold'>16 czerwca 2025 r.</span>
+                        <span className='fw-bold'>21 czerwca 2025 r.</span>
                     </Badge>
                 </div>
                 <hr />
                 <p>Poniższa informacja stanowi zwięzły, zrozumiały i przejrzysty skrót informacji zamieszczonych w <Link href="/policies/privacy" aria-label='Polityka prywatności' title='Polityka prywatności'>Polityce Prywatności</Link> odnośnie Administratora danych, celu i sposobu przetwarzania danych osobowych oraz Twoich praw w związku z tym przetwarzaniem, w formie wymaganej do spełnienia obowiązku informacyjnego RODO. Szczegóły dotyczące sposobu przetwarzania i podmiotów uczestniczących w tym procesie dostępne są we wskazanej polityce.</p>
                 <hr />
                 <h2>Kto jest administratorem danych?</h2>
-                <p>Administratorem Danych Osobowych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu</p>
+                <p>Administratorem Danych Osobowych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: {content.street}, {content.city}, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu</p>
                 <h2>Jak można skontaktować się z administratorem danych?</h2>
                 <p>Z Administratorem można skontaktować się w jeden z poniższych sposobów</p>
                 <ul>
-                    <li><strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, ul. Wincentego Pola 20/1, 40-596 Katowice</li>
-                    <li><strong>Adres poczty elektronicznej</strong> - akneth.studio@gmail.com</li>
-                    <li><strong>Połączenie telefoniczne</strong> - +48 690 973 352</li>
-                    <li><strong>Formularz kontaktowy</strong> - dostępny pod adresem: /contact</li>
+                    <li><strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, {content.street}, {content.city}</li>
+                    <li><strong>Adres poczty elektronicznej</strong> - {content.mail}</li>
+                    <li><strong>Połączenie telefoniczne</strong> - {content.phone}</li>
+                    <li><strong>Formularz kontaktowy</strong> - dostępny pod adresem: <Link href='/contact' aria-label='Kontakt' title='Kontakt'>Kontakt</Link></li>
                 </ul>
                 <h2>Czy Administrator powołał Inspektora Danych Osobowych?</h2><p>Na podstawie Art. 37 RODO, Administrator nie powołał Inspektora Ochrony Danych.</p>
                 <p>W sprawach dotyczących przetwarzania danych, w tym danych osobowych, należy kontaktować się bezpośrednio z Administratorem.</p>
@@ -100,7 +107,7 @@ export default function RodoPage() {
                 </ul>
                 <h2>Jaki jest prawnie uzasadniony interes realizowany przez Administratora?</h2>
                 <ul>
-                    <li>W celu ewentualnego ustalenia, dochodzenia lub obrony przed roszczeniami – podstawą prawną przetwarzania jest nasz uzasadniony interes (art. 6 ust. 1 lit. f) RODO) polegający na ochronie naszych praw, w tym między innymi;</li>
+                    <li>W celu ewentualnego ustalenia, dochodzenia lub obrony przed roszczeniami - podstawą prawną przetwarzania jest nasz uzasadniony interes (art. 6 ust. 1 lit. f) RODO) polegający na ochronie naszych praw, w tym między innymi;</li>
                     <li>W celu oceny ryzyka potencjalnych klientów</li><li>W celu oceny planowanych kampanii marketingowych</li>
                     <li>W celu realizacji marketingu bezpośredniego</li>
                 </ul>
@@ -113,13 +120,12 @@ export default function RodoPage() {
                 Do podmiotów takich można zaliczyć między innymi:
                 <ul>
                     <li>Firmy hostingowe, świadczące usługi hostingu lub usług pokrewnych dla Administratora</li>
-                    <li>Firmy odpowiedzialne za prowadzenie księgowości Administratora (w przypadku dokonywania transakcji zakupu w Serwisie)</li>
+                    <li>Podmioty realizujące obsługę księgową oraz rozliczenia działalności Administratora</li>
                 </ul>
                 <h2>Czy Państwa dane osobowe będą przekazywane poza Unię Europejską?</h2>
                 <p>
-                    <strong>Dane osobowe są przekazywane poza Unię Europejską.</strong><br />
-                    Przekazanie danych pozo UE jest spowodowane korzystaniem z usług podmiotów zlokalizowanych poza granicami UE, lub w wyniku opublikowania na skutek indywidualnego działania Użytkownika (np. wprowadzenie komentarza lub wpisu), co sprawi, że dane będą dostępne dla każdej osoby odwiedzającej serwis.<br />
-                    W przypadku przekazania lub powierzenia przetwarzania danych osobowych poza granicami UE, dane te są przetwarzana na podstawie umowy zawartej pomiędzy Administratorem a Usługodawcą.</p>
+                    Dane osobowe <strong>nie będą przekazywane poza Unię Europejską</strong>, chyba że zostały opublikowane na skutek indywidualnego działania Użytkownika (np. wprowadzenie komentarza lub wpisu), co sprawi, że dane będą dostępne dla każdej osoby odwiedzającej serwis.
+                </p>
                 <h2>Czy dane osobowe będą podstawą zautomatyzowanego podejmowania decyzji?</h2>
                 <p>Dane osobowe <strong>nie będą wykorzystywane</strong> do zautomatyzowanego podejmowania decyzji (profilowania).</p>
                 <h2>Jakie mają Państwo prawa związane z przetwarzaniem danych osobowych?</h2>
@@ -135,12 +141,12 @@ export default function RodoPage() {
                     <li>
                         <p><strong>Prawo do usunięcia danych osobowych</strong><br />
                             Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego usunięcia danych osobowych, realizowane na żądanie złożone do Administratora.
-                            <br /><br />
-                            <em style={{ color: '#ff0000' }}>
+                            <span style={{ color: '#ff0000', fontStyle: 'italic', display: 'none' }}>
+                                <br /><br />
                                 W przypadku kont użytkowników, usunięcie danych polega na anonimizacji danych umożliwiających identyfikację Użytkownika.
                                 <br /><br />
                                 W przypadku usługi Newsletter, Użytkownik ma możliwość samodzielnego usunięcia swoich danych osobowych korzystając z odnośnika umieszczonego w każdej przesyłanej wiadomości e-mail.
-                            </em>
+                            </span>
                         </p>
                     </li>
                     <li>

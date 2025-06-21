@@ -12,7 +12,15 @@ export const metadata: Metadata = {
         'Regulamin świadczenia usług',
         'Regulamin serwisu'
     ]
-}
+};
+
+const content = {
+    siteURL: process.env.NEXT_PUBLIC_SITE_URL,
+    street: process.env.NEXT_PUBLIC_ADDRESS_STREET,
+    city: process.env.NEXT_PUBLIC_ADDRESS_CITY,
+    phone: process.env.NEXT_PUBLIC_PHONE,
+    mail: process.env.NEXT_PUBLIC_EMAIL
+};
 
 export default function TermsPage() {
     return (
@@ -28,15 +36,15 @@ export default function TermsPage() {
                         className='mx-auto px-3 py-2 fw-normal lh-base shadow-sm'
                     >
                         Data ostatniej aktualizacji: <br className='d-block d-md-none py-1' />
-                        <span className='fw-bold'>16 czerwca 2025 r.</span>
+                        <span className='fw-bold'>21 czerwca 2025 r.</span>
                     </Badge>
                 </div>
                 <hr/>
                 <h2>I. Pojęcia ogólne</h2>
                 <ul>
                     <li><strong>Regulamin</strong> – niniejszy regulamin</li>
-                    <li><strong>Serwis</strong> – serwis internetowych &quot;AKNETH Studio&quot;, działających pod adresem akneth-studio.onrender.com</li> {/*TODO Change url for actual page */}
-                    <li><strong>Usługodawca</strong> – firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot; z adresem siedziby: ul. Wincentego Pola 20/1, 40-596 Katowice, </li>
+                    <li><strong>Serwis</strong> – serwis internetowych &quot;AKNETH Studio&quot;, działających pod adresem {content.siteURL}</li>
+                    <li><strong>Usługodawca</strong> – firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot; z adresem siedziby: {content.street}, {content.city}, </li>
                     <li><strong>Usługobiorca</strong> – każda osoba fizyczna, uzyskująca dostęp do Serwisu i korzystająca z usług świadczonych za pośrednictwem Serwisu przez Usługodawcę.</li>
                     <li><strong>Komunikacja Drogą Elektroniczną</strong> – Komunikacja pomiędzy stronami za pośrednictwem poczty elektronicznej (e-mail) oraz formularzy kontaktowych dostępnych na stronie www.</li>
                 </ul>
@@ -149,10 +157,10 @@ export default function TermsPage() {
                         We wszelkich sprawach związanych z działalnością Serwisu należy kontaktować się z Usługodawcę korzystając z jednej z poniższych form kontaktu:
                         <ul>
                             <li>Używając formularza kontaktowego dostępnego w Serwisie</li>
-                            <li>Wysyłając wiadomość na adres e-mail: akneth.studio@gmail.com</li>
-                            <li>Poprzez połączenie telefoniczne z numerem: +48 690 973 352</li>
+                            <li>Wysyłając wiadomość na adres e-mail: {content.mail}</li>
+                            <li>Poprzez połączenie telefoniczne z numerem: {content.phone}</li>
                         </ul>
-                        Kontakt przy użyciu wskazanych środków komunikacji wyłącznie w sprawach związanych z prowadzonym Serwisem.
+                        Kontakt przy użyciu wskazanych środków komunikacji odbywa się wyłącznie w sprawach związanych z prowadzonym Serwisem, w tym w celu obsługi klientów, realizacji zamówień oraz bieżącej komunikacji biznesowej.
                     </li>
                 </ul>
             </article>

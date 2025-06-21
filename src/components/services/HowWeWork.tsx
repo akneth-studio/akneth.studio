@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap';
  */
 export default function HowWeWork() {
   return (
-    <Card className="mb-5 border-primary" data-testid="how-we-work">
+    <Card className="mb-5 border-accent" data-testid="how-we-work">
       <Card.Body>
         <Card.Title as="h2" className="h4 mb-4">Jak pracujemy?</Card.Title>
         <ul className="list-unstyled row">
@@ -19,7 +19,7 @@ export default function HowWeWork() {
             'Wsparcie techniczne 3 miesiące'
           ].map((item, index) => (
             <li key={index} className="col-md-6 mb-3 d-flex">
-              <span className="badge bg-primary me-2">{index + 1}</span>
+              <span className="badge badge-custom me-2">{index + 1}</span>
               {item}
             </li>
           ))}

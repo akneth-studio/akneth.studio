@@ -18,6 +18,7 @@ $nav-pills-active-color: $light !default;
 $nav-pills-border-radius: 2em !default;
 // COLORS
 $body-color: #181818 !default;
+$accent: #ff7000;
 // BORDER RADIUS; OTHERS
 $border-radius: 1rem !default;
 $border-primary: $primary !default;
@@ -25,3 +26,6 @@ $border-primary: $primary !default;
 $footer-bg: $dark !default;
 $footer-color: $light !default;
 $footer-link-hover: $primary !default;
+// ACCORDION
+$accordion-icon-color: $body-color !default;
+$accordion-icon-active-color: $body-bg !default;

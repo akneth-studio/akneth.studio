@@ -83,6 +83,17 @@ section {
   }
 }
 
+.hero {
+  #lead-gradient {
+    background: #ff7000 url(/img/abstract-envelope.svg) no-repeat center/cover !important;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 1.5px 4px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}
+
 button {
   text-decoration: none;
   border-radius: 2rem !important;
@@ -128,6 +139,17 @@ button {
 }
 
 footer {
+  .rightside {
+    .adnotations {
+      font-size: smaller;
+      @include media-breakpoint-down(md) {
+        text-align: center;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      align-items: center;
+    }
+  }
   a {
     &.icon8 {
       text-decoration: none;
@@ -148,7 +170,7 @@ footer {
     }
   }
 }
-.popup{
+.popup {
   &-overlay {
     position: fixed;
     inset: 0;
@@ -172,4 +194,29 @@ footer {
     word-break: normal;
     hyphens: auto;
   }
+}
+
+.border-accent {
+  border-color: $accent;
+  .badge-custom {
+    background-color: $link-color;
+    font-size: medium;
+  }
+}
+.accordion-button:not(.collapsed) {
+  background-color: $link-color !important;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: large;
+  letter-spacing: 1.5px;
+}
+.accordion-button {
+  background-color: lighten($link-color, 5%) !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  &::after {
+    transition: all 0.5s ease;
+  }
+  transition: all 0.5s ease;
 }
