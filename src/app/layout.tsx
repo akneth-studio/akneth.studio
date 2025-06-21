@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   },
   description: 'Portfolio i strona wizytówkowa AKNETH Studio - zarządzanie treściami, formularz kontaktowy, Consent Manager, polityki prywatności.',
   alternates: {
-    canonical: siteUrl,
     languages: {
       'pl': siteUrl,
       /* TODO Uncomment if you want to support multiple languages
@@ -188,10 +187,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <head>
-        <meta name="google-adsense-client" content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT || "ca-pub-1234567890123456"} />
-        <link rel="canonical" href={siteUrl} />
-      </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body className={poppins.className}>
         <Analytics/>

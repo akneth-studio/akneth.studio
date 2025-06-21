@@ -5,6 +5,8 @@ import CTAButton from '@/components/CTAButton';
 import AboutServicesMarquee from '@/app/about/AboutServicesMarquee';
 import { Metadata } from 'next';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
     title: 'O mnie',
     description: 'Dowiedz się więcej o AKNETH Studio i Katarzynie Pawłowskiej-Malesa. Oferujemy nowoczesne rozwiązania cyfrowe, które pomogą Ci w budowaniu profesjonalnego wizerunku online.',
@@ -18,6 +20,9 @@ export const metadata: Metadata = {
         'React',
         'Next.js'
     ],
+    alternates: {
+        canonical: `${siteUrl}/about`,
+    }
 };
 
 export default function AboutPage() {

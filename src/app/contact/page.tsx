@@ -4,6 +4,8 @@ import ContactInfo from './ContactInfo';
 
 import { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
   title: "Kontakt",
   description: "Skontaktuj się z AKNETH Studio",
@@ -12,7 +14,10 @@ export const metadata: Metadata = {
     'Kontakt',
     'Harmonogram',
     'Formularz Kontaktowy'
-  ]
+  ],
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  }
 };
 
 export default function ContactPage() {

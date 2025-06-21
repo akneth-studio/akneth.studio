@@ -3,6 +3,8 @@ import styles from "@/styles/policies.module.scss";
 import { LiaAngleDoubleRightSolid } from "react-icons/lia";
 import { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
     title: 'Polityki i regulaminy',
     description: 'Zbiór Polityk i regulaminów AKNETH Studio',
@@ -11,7 +13,10 @@ export const metadata: Metadata = {
         'Regulamin',
         'RODO',
         'AKNETH Studio'
-    ]
+    ],
+    alternates: {
+        canonical: `${siteUrl}/policies`,
+    }
 };
 
 export default function PoliciesPage() {

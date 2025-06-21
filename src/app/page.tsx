@@ -7,6 +7,8 @@ import PortfolioPreviewSection from '@/components/home/PortfolioPreviewSection';
 import ContactCtaSection from '@/components/home/ContactCtaSection';
 import { Metadata } from 'next';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
     title: 'Strona główna',
     description: 'Witamy na stronie głównej naszej witryny.',
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
             url: process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl',
         },
     ],
+    alternates: {
+        canonical: siteUrl,
+    },
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'),
 };
 

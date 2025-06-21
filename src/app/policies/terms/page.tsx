@@ -3,6 +3,14 @@ import Link from 'next/link';
 import { Badge } from 'react-bootstrap';
 import { Metadata } from 'next';
 
+const content = {
+    siteURL: process.env.NEXT_PUBLIC_SITE_URL,
+    street: process.env.NEXT_PUBLIC_ADDRESS_STREET,
+    city: process.env.NEXT_PUBLIC_ADDRESS_CITY,
+    phone: process.env.NEXT_PUBLIC_PHONE,
+    mail: process.env.NEXT_PUBLIC_EMAIL
+};
+
 export const metadata: Metadata = {
     title: 'Regulamin',
     description: 'Regulamin świadczenia usług za pomocą serwisu',
@@ -11,15 +19,10 @@ export const metadata: Metadata = {
         'AKNETH Studio',
         'Regulamin świadczenia usług',
         'Regulamin serwisu'
-    ]
-};
-
-const content = {
-    siteURL: process.env.NEXT_PUBLIC_SITE_URL,
-    street: process.env.NEXT_PUBLIC_ADDRESS_STREET,
-    city: process.env.NEXT_PUBLIC_ADDRESS_CITY,
-    phone: process.env.NEXT_PUBLIC_PHONE,
-    mail: process.env.NEXT_PUBLIC_EMAIL
+    ],
+    alternates: {
+        canonical: `${content.siteURL}/policies/terms`,
+    }
 };
 
 export default function TermsPage() {

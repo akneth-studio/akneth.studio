@@ -5,7 +5,7 @@ import CTAButton from '@/components/CTAButton';
 import ServicesAccordion from '@/components/services/ServicesAccordion';
 import PricingTable from '@/components/services/PricingTable';
 
-
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   title: "Usługi",
@@ -16,7 +16,10 @@ export const metadata: Metadata = {
     "automatyzacje",
     "szkolenia",
     "proces współpracy"
-  ]
+  ],
+  alternates: {
+    canonical: `${siteUrl}/services`,
+  },
 };
 
 export default function ServicesPage() {
