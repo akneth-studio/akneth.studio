@@ -195,3 +195,33 @@ footer {
     hyphens: auto;
   }
 }
+
+.border-accent {
+  border-color: $accent;
+  .badge-custom {
+    background-color: $link-color;
+    font-size: medium;
+  }
+}
+.accordion-button:not(.collapsed) {
+  background-color: $link-color !important;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: large;
+  letter-spacing: 1.5px;
+  &::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 6l6 6 6-6'/%3E%3C/svg%3E");
+  }
+}
+.accordion-button {
+  background-color: lighten($link-color, 5%) !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  &::after {
+    filter: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23212529' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 6l6 6 6-6'/%3E%3C/svg%3E");
+    transition: all 0.5s ease;
+  }
+  transition: all 0.5s ease;
+}
