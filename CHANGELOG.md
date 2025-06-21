@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://gitlab.com/akneth.studio/akneth-website/compare/v0.6.0...v1.0.0) (2025-06-21)
+
+
+### Features
+
+* add example .env file and update site URL comments ([5cc4ec5](https://gitlab.com/akneth.studio/akneth-website/commit/5cc4ec503af2d368d6f1fbdcf13345a00f806b2e))
+* add policies page with privacy policy, RODO, and terms of service links ([1c96859](https://gitlab.com/akneth.studio/akneth-website/commit/1c96859249cc53d8a4966d4989bd33292cd4b043))
+* add working hours section to ContactInfo component ([07af80d](https://gitlab.com/akneth.studio/akneth-website/commit/07af80d1e9fbc677cddf91bd92a79f4b281ec0ab))
+* enhance HowWeWork component styling and add accent border, introduce custom badge styles ([0d01895](https://gitlab.com/akneth.studio/akneth-website/commit/0d01895b822fa9d3d4b085a341ddce6cf90fdb16))
+* update content and structure in various pages, improve footer layout, and add SVG asset ([af8ba5f](https://gitlab.com/akneth.studio/akneth-website/commit/af8ba5feb8477a1f8252b95637255d73da55dfed))
+* update footer styles and remove unnecessary SVG background images, add accordion color variables ([589a9ee](https://gitlab.com/akneth.studio/akneth-website/commit/589a9ee19422f20523a03bb2b091db2117684dd4))
+
+
+### Bug Fixes
+
+* syntax ([b283a8a](https://gitlab.com/akneth.studio/akneth-website/commit/b283a8a4aceae6296ed320df98c7607014080a1e))
+
 ## [0.6.0](https://gitlab.com/akneth.studio-group/akneth-website/compare/v0.5.7...v0.6.0) (2025-06-17)
 
 
