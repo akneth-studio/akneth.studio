@@ -83,15 +83,16 @@ section {
   }
 }
 
-#lead-gradient {
-  background-color: rgba(255, 112, 0, 0.9) !important;
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.08),
-    0 1.5px 4px rgba(0, 0, 0, 0.06);
-  padding: 1rem;
-  border-radius: 8px;
+.hero {
+  #lead-gradient {
+    background: #ff7000 url(/img/abstract-envelope.svg) no-repeat center/cover !important;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 1.5px 4px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    border-radius: 8px;
+  }
 }
-
 
 button {
   text-decoration: none;
@@ -138,6 +139,17 @@ button {
 }
 
 footer {
+  .rightside {
+    .adnotations {
+      font-size: smaller;
+      @include media-breakpoint-down(md) {
+        text-align: center;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      align-items: center;
+    }
+  }
   a {
     &.icon8 {
       text-decoration: none;
@@ -158,7 +170,7 @@ footer {
     }
   }
 }
-.popup{
+.popup {
   &-overlay {
     position: fixed;
     inset: 0;

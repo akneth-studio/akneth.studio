@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     ]
 };
 
+const content = {
+    siteURL: process.env.NEXT_PUBLIC_SITE_URL,
+    street: process.env.NEXT_PUBLIC_ADDRESS_STREET,
+    city: process.env.NEXT_PUBLIC_ADDRESS_CITY,
+    phone: process.env.NEXT_PUBLIC_PHONE,
+    mail: process.env.NEXT_PUBLIC_EMAIL
+};
+
 export default function PrivacyPage() {
     return (
         <>
@@ -32,7 +40,7 @@ export default function PrivacyPage() {
                         className='mx-auto px-3 py-2 fw-normal lh-base shadow-sm'
                     >
                         Data ostatniej aktualizacji: <br className='d-block d-md-none py-1' />
-                        <span className='fw-bold'>16 czerwca 2025 r.</span>
+                        <span className='fw-bold'>21 czerwca 2025 r.</span>
                     </Badge>
                 </div>
                 <hr/>
@@ -42,14 +50,14 @@ export default function PrivacyPage() {
                 <h2>§1 Definicje</h2>
                 <ul>
                     <li>
-                        <strong>Serwis</strong> - serwis internetowy &quot;AKNETH Studio&quot; działający pod adresem https://akneth-studio.onrender.com
+                        <strong>Serwis</strong> - serwis internetowy &quot;AKNETH Studio&quot; działający pod adresem {content.siteURL}
                         {/*TODO Change url for actual page */}
                     </li>
                     <li>
                         <strong>Serwis zewnętrzny</strong> - serwisy internetowe partnerów, usługodawców lub usługobiorców współpracujących z Administratorem
                     </li>
                     <li>
-                        <strong>Administrator Serwisu / Danych</strong> - Administratorem Serwisu oraz Administratorem Danych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: ul. Wincentego Pola 20/1, 40-596 Katowice, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu
+                        <strong>Administrator Serwisu / Danych</strong> - Administratorem Serwisu oraz Administratorem Danych (dalej Administrator) jest firma &quot;AKNETH Studio Katarzyna Pawłowska-Malesa&quot;, prowadząca działalność pod adresem: {content.street}, {content.city}, świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu
                     </li>
                     <li>
                         <strong>Użytkownik</strong> - osoba fizyczna, dla której Administrator świadczy usługi drogą elektroniczną za pośrednictwem Serwisu.
@@ -187,7 +195,7 @@ export default function PrivacyPage() {
                 <p id='zewinfo'>Administrator w Serwisie wykorzystuje skrypty javascript i komponenty webowe partnerów, którzy mogą umieszczać własne pliki cookies na Urządzeniu Użytkownika. Pamiętaj, że w ustawieniach swojej przeglądarki możesz sam decydować o dozwolonych plikach cookies jakie mogą być używane przez poszczególne witryny internetowe. Poniżej znajduje się lista partnerów lub ich usług zaimplementowanych w Serwisie, mogących umieszczać pliki cookies: </p>
                 <ul id='zewnetrzne'>
                     <li>
-                        <strong>Usługi społecznościowe / łączone:</strong><br />(Rejestracja, Logowanie, udostępnianie treści, komunikacja, itp.)<br />
+                        <strong>Usługi społecznościowe / łączone:</strong><br />(Udostępnianie treści, komunikacja, itp.)<br />
                         <ul>
                             <li><Link rel='nofollow external' href='https://twitter.com/en/tos?wcmmode=disabled#intlTerms'>Twitter</Link></li>
                             <li><Link rel='nofollow external' href='https://www.facebook.com/legal/terms'>Facebook</Link></li>
@@ -221,7 +229,7 @@ export default function PrivacyPage() {
                     <li>Prędkość łącza internetowego</li>
                     <li>Dostawca usług internetowych</li>
                 </ul>
-                <p><strong>Dane gromadzone podczas rejestracji:</strong></p>
+                <p><strong>Dane gromadzone w celu realizacji umów, obsługi zapytań i kontaktu (np. przez formularz kontaktowy):</strong></p>
                 <ul>
                     <li>Imię / nazwisko / pseudonim</li>
                     <li>Login</li>
@@ -240,25 +248,27 @@ export default function PrivacyPage() {
                 <p>Część danych (bez danych identyfikujących) może być przechowywana w plikach cookies. Cześć danych (bez danych identyfikujących) może być przekazywana do dostawcy usług statystycznych.</p>
                 <h2>§9 Dostęp do danych osobowych przez podmioty trzecie</h2>
                 <p>Co do zasady jedynym odbiorcą danych osobowych podawanych przez Użytkowników jest Administrator. Dane gromadzone w ramach świadczonych usług nie są przekazywane ani odsprzedawane podmiotom trzecim.</p>
-                <p>Dostęp do danych (najczęściej na podstawie Umowy powierzenia przetwarzania danych) mogą posiadać podmioty, odpowiedzialne za utrzymania infrastruktury i usług niezbędnych do prowadzenia serwisu tj.:</p>
+                <p>Dostęp do danych (najczęściej na podstawie Umowy powierzenia przetwarzania danych) mogą posiadać podmioty, odpowiedzialne za utrzymania infrastruktury i usług niezbędnych do prowadzenia serwisu oraz działalności Administratora, tj.:</p>
                 <ul>
                     <li>Firmy hostingowe, świadczące usługi hostingu lub usług pokrewnych dla Administratora</li>
-                    <li>Firmy odpowiedzialne za prowadzenie księgowości Administratora (w przypadku dokonywania transakcji zakupu w Serwisie)</li>
+                    <li>Podmioty realizujące obsługę księgową oraz rozliczenia działalności Administratora</li>
                 </ul>
                 <p><strong>Powierzenie przetwarzania danych osobowych - Usługi Hostingu, VPS lub Serwerów Dedykowanych</strong></p>
-                <p>Administrator w celu prowadzenia serwisu korzysta z usług zewnętrznego dostawcy hostingu, VPS lub Serwerów Dedykowanych - <strong><Link rel='nofollow external' href='https://render.com/privacy'>Render, Inc.</Link></strong>. Wszelkie dane gromadzone i przetwarzane w serwisie są przechowywane i przetwarzane w infrastrukturze usługodawcy zlokalizowanej poza obrębem granic Unii Europejskiej. Istnieje możliwość dostępu do danych wskutek prac serwisowych realizowanych przez personel usługodawcy. Dostęp do tych danych reguluje umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
+                <p>Administrator w celu prowadzenia serwisu korzysta z usług zewnętrznego dostawcy hostingu, VPS lub Serwerów Dedykowanych - <strong><Link rel='nofollow external' href='https://vercel.com/legal/privacy-policy'>Vercel Inc.</Link></strong>. Wszelkie dane gromadzone i przetwarzane w serwisie są przechowywane i przetwarzane w infrastrukturze usługodawcy zlokalizowanej w obrębie granic Unii Europejskiej. Istnieje możliwość dostępu do danych wskutek prac serwisowych realizowanych przez personel usługodawcy. Dostęp do tych danych reguluje umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
                 <p><strong>Przekazanie danych osobowych - Usługi Księgowe</strong></p>
-                <p>W przypadku zawarcia transakcji, część danych osobowych osób fizycznych lub dane osób fizycznych prowadzących działalność gospodarczą, jest przekazywana podmiotowi świadczącemu na rzecz Administratora usługi księgowe <Link rel='nofollow external' href='https://fakturownia.pl/polityka-prywatnosci'>Fakturownia sp. z o.o.</Link>. Przekazanie tych danych reguluje Ustawa .... oraz umowa zawarta pomiędzy Administratorem a Usługodawcą.</p><br />
+                <p>W przypadku zawarcia transakcji, część danych osobowych osób fizycznych lub dane osób fizycznych prowadzących działalność gospodarczą, jest przetwarzana w celu realizacji obowiązków księgowych, w tym wystawiania faktur i prowadzenia ewidencji, za pośrednictwem serwisu <strong><Link rel='nofollow external' href='https://fakturownia.pl/polityka-prywatnosci'>Fakturownia sp. z o.o.</Link></strong>. Przetwarzanie tych danych odbywa się za podstawie RODO, Ustawy o rachunkowości, Ustawy o podatku od towarów i usług oraz zgodnie z regulaminem serwisu Fakturownia.pl.</p><br />
                 <h2>§10 Sposób przetwarzania danych osobowych</h2>
                 <p><strong>Dane osobowe podane dobrowolnie przez Użytkowników:</strong></p>
                 <ul>
                     <li>
-                        Dane osobowe są przekazywane poza Unię Europejską.<br />
-                        Przekazanie danych pozo UE jest spowodowane korzystaniem z usług podmiotów zlokalizowanych poza granicami UE, lub w wyniku opublikowania na skutek indywidualnego działania Użytkownika (np. wprowadzenie komentarza lub wpisu), co sprawi, że dane będą dostępne dla każdej osoby odwiedzającej serwis.<br />
-                        W przypadku przekazania lub powierzenia przetwarzania danych osobowych poza granicami UE, dane te są przetwarzana na podstawie umowy zawartej pomiędzy Administratorem a Usługodawcą.
+                        Dane osobowe nie będą przekazywane poza Unię Europejską, chyba że zostały opublikowane na skutek indywidualnego działania Użytkownika (np. wprowadzenie komentarza lub wpisu), co sprawi, że dane będą dostępne dla każdej osoby odwiedzającej serwis.
                     </li>
-                    <li>Dane osobowe nie będą wykorzystywane do zautomatyzowanego podejmowania decyzji (profilowania).</li>
-                    <li>Dane osobowe nie będą odsprzedawane podmiotom trzecim.</li>
+                    <li>
+                        Dane osobowe nie będą wykorzystywane do zautomatyzowanego podejmowania decyzji (profilowania).
+                    </li>
+                    <li>
+                        Dane osobowe nie będą odsprzedawane podmiotom trzecim.
+                    </li>
                 </ul>
                 <p><strong>Dane anonimowe (bez danych osobowych) gromadzone automatycznie:</strong></p>
                 <ul>
@@ -335,13 +345,13 @@ export default function PrivacyPage() {
                 <p>Z Administratorem można skontaktować się w jeden z poniższych sposobów</p>
                 <ul>
                     <li>
-                        <strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, ul. Wincentego Pola 20/1, 40-596 Katowice
+                        <strong>Adres pocztowy</strong> - AKNETH Studio Katarzyna Pawłowska-Malesa, {content.street}, {content.city}
                     </li>
                     <li>
-                        <strong>Adres poczty elektronicznej</strong> - akneth.studio@gmail.com
+                        <strong>Adres poczty elektronicznej</strong> - {content.mail}
                     </li>
                     <li>
-                        <strong>Połączenie telefoniczne</strong> - +48 690 973 352
+                        <strong>Połączenie telefoniczne</strong> - {content.phone}
                     </li>
                     <li>
                         <strong>Formularz kontaktowy</strong> - dostępny pod adresem: <Link href='/contact' aria-label='Kontakt' title='Kontakt'>Kontakt</Link>
