@@ -75,37 +75,31 @@ Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowsk
 
 6. **Wysyłaj zmiany przez pull/merge requesty do gałęzi `main`.**
 
-7. **Po zaakceptowaniu zmian i zmergowaniu do `main`, projekt zostanie automatycznie wdrożony na Render.**
+7. **Po zaakceptowaniu zmian i zmergowaniu do `main`, projekt zostanie automatycznie wdrożony na Vercel.**
 
 ---
 
-## 🚀 Instrukcja wdrożenia na Render
+## 🚀 Instrukcja wdrożenia na Vercel
 
-1. Zaloguj się lub załóż konto na [Render](https://render.com/).
-2. Kliknij **New Web Service**.
-3. Połącz swoje konto GitLab z Render i wybierz repozytorium `akneth-website`.
+1. Zaloguj się lub załóż konto na [Vercel](https://vercel.com/).
+2. Kliknij **New Project**.
+3. Połącz swoje konto GitHub/GitLab/Bitbucket z Vercel i wybierz repozytorium `akneth-website`.
 4. Ustaw:
    - **Branch:** `main`
+   - **Framework Preset:** Next.js
    - **Build Command:**  
      ```
-     pnpm install && pnpm build
+     pnpm build
      ```
      lub  
      ```
-     npm install && npm run build
+     npm run build
      ```
-   - **Start Command:**  
-     ```
-     pnpm start
-     ```
-     lub  
-     ```
-     npm start
-     ```
+   - **Output Directory:** `.next`
    - **Environment:** Node 18+ (lub zgodnie z wymaganiami projektu)
-5. Dodaj zmienne środowiskowe z pliku `.env.local` (przepisz je do zakładki Environment w Render).
-6. Kliknij **Create Web Service**.
-7. Render automatycznie zbuduje i wdroży projekt. Każdy push do `main` uruchomi nowe wdrożenie.
+5. Dodaj zmienne środowiskowe z pliku `.env.local` (przepisz je do zakładki Environment Variables w Vercel).
+6. Kliknij **Deploy**.
+7. Vercel automatycznie zbuduje i wdroży projekt. Każdy push do `main` uruchomi nowe wdrożenie.
 
 ---
 
@@ -139,8 +133,8 @@ Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowsk
 
 ## 🌐 Wdrożenie
 
-Projekt jest automatycznie wdrażany na platformie [Render](https://render.com/).
-Każdy push lub merge do gałęzi `main` uruchamia automatyczne wdrożenie – najnowsza wersja strony jest zawsze dostępna pod adresem: [akneth-studio.onrender.com](https://akneth-studio.onrender.com)
+Projekt jest automatycznie wdrażany na platformie [Vercel](https://vercel.com/).
+Każdy push lub merge do gałęzi `main` uruchamia automatyczne wdrożenie – najnowsza wersja strony jest zawsze dostępna pod adresem: [akneth-studio.vercel.app](https://akneth-studio.vercel.app)
 
 ---
 
