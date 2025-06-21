@@ -75,13 +75,6 @@ export const metadata: Metadata = {
       rel: 'icon',
       sizes: '32x32',
     },
-    /* TODO Uncomment if you want to use more favicon sizes
-    {
-      url: '/favicon-48x48.png',
-      type: 'image/png',
-      rel: 'icon',
-      sizes: '48x48',
-    },*/
     {
       url: '/favicon-96x96.png',
       type: 'image/png',
@@ -112,7 +105,7 @@ export const metadata: Metadata = {
     title: 'AKNETH Studio Katarzyna Pawłowska-Malesa',
     statusBarStyle: 'black-translucent',
   },
-  manifest: '/manifest.json', // ERR Add manifest file for PWA support
+  manifest: '/manifest.webmanifest',
   appLinks: {
     web: {
       url: siteUrl,
@@ -163,9 +156,9 @@ export const metadata: Metadata = {
     siteName: 'AKNETH Studio',
     images: [
       {
-        url: '/img/og-image.png', // FIXIT Replace with actual image path
+        url: '/img/og-image.png',
         width: 1200,
-        height: 630,
+        height: 628,
         alt: 'AKNETH Studio Katarzyna Pawłowska-Malesa logo',
       },
     ],
@@ -178,9 +171,9 @@ export const metadata: Metadata = {
     description: 'Portfolio i strona wizytówkowa AKNETH Studio - zarządzanie treściami, formularz kontaktowy, Consent Manager, polityki prywatności.',
     images: [
       {
-        url: '/img/og-image.png', // FIXIT Replace with actual image path
+        url: '/img/og-image.png',
         width: 1200,
-        height: 630,
+        height: 628,
         alt: 'AKNETH Studio Katarzyna Pawłowska-Malesa logo',
       },
     ],

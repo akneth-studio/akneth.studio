@@ -51,7 +51,6 @@ export default function PrivacyPage() {
                 <ul>
                     <li>
                         <strong>Serwis</strong> - serwis internetowy &quot;AKNETH Studio&quot; działający pod adresem {content.siteURL}
-                        {/*TODO Change url for actual page */}
                     </li>
                     <li>
                         <strong>Serwis zewnętrzny</strong> - serwisy internetowe partnerów, usługodawców lub usługobiorców współpracujących z Administratorem

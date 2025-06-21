@@ -1,0 +1,65 @@
+@use './variables' as *;
+
+.policiesSection {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: $link-color;
+}
+
+.policiesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.policyCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(11, 114, 133, 0.08);
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    color: #212529;
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s;
+
+    h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+        color: $link-color; // $link-color
+    }
+
+    p {
+        font-size: 1rem;
+        color: $secondary; // $secondary
+        margin: 0;
+    }
+
+    .arrow {
+        color: $accent; // akcent
+        margin-left: 1.5rem;
+        transition: transform 0.2s;
+    }
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 4px 18px rgba(11, 114, 133, 0.16);
+        transform: translateY(-2px) scale(1.01);
+
+        .arrow {
+            transform: translateX(6px);
+            color: $link-color;
+        }
+    }
+}
