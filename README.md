@@ -156,7 +156,7 @@ Projekt objęty licencją [Creative Commons Attribution 4.0 International (CC BY
 ---
 
 ## 📬 Kontakt
-- Strona: [akneth-studio.onrender.com](https://akneth-studio.onrender.com)
+- Strona: [akneth-studio.vercel.app](https://akneth-studio.vercel.app)
 - E-mail: akneth.studio@gmail.com
 
 ---
