@@ -81,10 +81,10 @@ Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowsk
 
 ## 🚀 Instrukcja wdrożenia na Vercel
 
-1. Zaloguj się lub załóż konto na [Vercel](https://vercel.com/).
-2. Kliknij **New Project**.
-3. Połącz swoje konto GitHub/GitLab/Bitbucket z Vercel i wybierz repozytorium `akneth-website`.
-4. Ustaw:
+1. Zaloguj się lub załóż konto na [Vercel](https://vercel.com/).
+2. Kliknij **New Project**.
+3. Połącz swoje konto GitHub/GitLab/Bitbucket z Vercel i wybierz repozytorium `akneth-website`.
+4.  Ustaw:
    - **Branch:** `main`
    - **Framework Preset:** Next.js
    - **Build Command:**  
@@ -97,9 +97,9 @@ Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowsk
      ```
    - **Output Directory:** `.next`
    - **Environment:** Node 18+ (lub zgodnie z wymaganiami projektu)
-5. Dodaj zmienne środowiskowe z pliku `.env.local` (przepisz je do zakładki Environment Variables w Vercel).
-6. Kliknij **Deploy**.
-7. Vercel automatycznie zbuduje i wdroży projekt. Każdy push do `main` uruchomi nowe wdrożenie.
+5. Dodaj zmienne środowiskowe z pliku `.env.local` (przepisz je do zakładki Environment Variables w Vercel).
+6. Kliknij **Deploy**.
+7. Vercel automatycznie zbuduje i wdroży projekt. Każdy push do `main` uruchomi nowe wdrożenie.
 
 ---
 
