@@ -1,3 +1,8 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/akneth-studio/akneth.studio/badge.svg)](https://snyk.io/test/github/akneth-studio/akneth.studio) 
+[![CodeFactor](https://www.codefactor.io/repository/github/akneth-studio/akneth.studio/badge)](https://www.codefactor.io/repository/github/akneth-studio/akneth.studio) 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) 
+[![Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel&link=https%3A%2F%2Fakneth-studio.vercel.app)](https://akneth-studio.vercel.app)
+
 # AKNETH Studio – Strona firmowa
 
 Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowska-Malesa, zbudowana w oparciu o Next.js, React, TypeScript i Supabase.
