@@ -1,0 +1,27 @@
+.shinydark {
+    background: linear-gradient(
+        127deg, 
+        #343a40 42%, 
+        #ffe066 48%, 
+        #fff 50%, 
+        #ffe066 52%, 
+        #343a40 56%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: #343a40;
+    font-weight: 700;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: shine-move 4s linear infinite;
+}
+
+@keyframes shine-move {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}

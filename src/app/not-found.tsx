@@ -2,6 +2,7 @@ import CTAButton from "@/components/CTAButton";
 import Image from "next/image";
 import { Autour_One } from "next/font/google";
 import Link from 'next/link';
+import FuzzyText from "@/components/FuzzyText";
 
 import { Metadata } from "next";
 
@@ -15,7 +16,15 @@ export default function NotFound() {
         <>
             <div className="container text-center my-5">
                 <div className={`${autourOne.className} error-page `}>
-                    <h1><strong>404</strong></h1>
+                    <h1>
+                        <FuzzyText
+                            color="inherit"
+                            fontFamily="inherit"
+                            hoverIntensity={0.3}
+                        >
+                            404
+                        </FuzzyText>
+                    </h1>
                     <h5>Taka strona nie istnieje.</h5>
                 </div>
                 <Image
