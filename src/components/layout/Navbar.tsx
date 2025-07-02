@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 import { Autour_One } from "next/font/google";
 
 const autourone = Autour_One({
@@ -11,18 +10,6 @@ const autourone = Autour_One({
   subsets: ['latin-ext'],
   weight: '400',
 });
-
-const closeOffcanvas = () => {
-  if (typeof window !== "undefined") {
-    const offcanvas = document.getElementById("offcanvasNavbar");
-    if (offcanvas) {
-      // Bootstrap 5
-      // @ts-ignore
-      const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvas);
-      bsOffcanvas.hide();
-    }
-  }
-};
 
 const menuItems = [
   { href: "/", label: "Strona główna" },
@@ -33,12 +20,6 @@ const menuItems = [
 
 const Navbar = () => {
   const pathname = usePathname();
-
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      import('bootstrap/dist/js/bootstrap.bundle.min.js');
-    };
-  }, []);
 
   return (
     <nav
@@ -108,7 +89,7 @@ const Navbar = () => {
                   <Link
                     className={`nav-link${pathname === item.href ? " active" : ""}`}
                     href={item.href}
-                    onClick={closeOffcanvas}
+                    data-bs-dismiss="offcanvas"
                     aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.label}
