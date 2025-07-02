@@ -10,15 +10,12 @@ import { Metadata } from 'next';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
-    title: 'Strona główna',
+    title: {
+        default: 'Strona główna',
+        template: '% | AKNETH Studio',
+    },
     description: 'Witamy na stronie głównej naszej witryny.',
     keywords: ['strona główna', 'AKNETH Studio', 'portfolio'],
-    authors: [
-        {
-            name: 'Katarzyna Pawłowska-Malesa',
-            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl',
-        },
-    ],
     alternates: {
         canonical: siteUrl,
     },

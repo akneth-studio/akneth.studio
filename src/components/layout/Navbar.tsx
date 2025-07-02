@@ -12,13 +12,32 @@ const autourone = Autour_One({
   weight: '400',
 });
 
+const closeOffcanvas = () => {
+  if (typeof window !== "undefined") {
+    const offcanvas = document.getElementById("offcanvasNavbar");
+    if (offcanvas) {
+      // Bootstrap 5
+      // @ts-ignore
+      const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvas);
+      bsOffcanvas.hide();
+    }
+  }
+};
+
+const menuItems = [
+  { href: "/", label: "Strona główna" },
+  { href: "/about", label: "O mnie" },
+  { href: "/services", label: "Usługi" },
+  { href: "/contact", label: "Kontakt" },
+]
+
 const Navbar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-      if (typeof document !== "undefined") {
-          import('bootstrap/dist/js/bootstrap.bundle.min.js');
-      };
+    if (typeof document !== "undefined") {
+      import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    };
   }, []);
 
   return (
@@ -35,7 +54,7 @@ const Navbar = () => {
             width={55}
             className="me-2"
           />
-          <span className={ `${autourone.className} d-none d-md-flex justify-content-center align-items-center flex-column my-auto` } >
+          <span className={`${autourone.className} d-none d-md-flex justify-content-center align-items-center flex-column my-auto`} >
             <span className="fw-bold fs-3 lh-1">AKNETH ~Studio~</span>
             <span className="fw-normal brand-sub">Katarzyna Pawłowska-Malesa</span>
           </span>
@@ -84,38 +103,18 @@ const Navbar = () => {
               className="navbar-nav nav-pills justify-content-end flex-grow-1 pe-3"
               role="tablist"
             >
-              <li className="nav-item mx-1">
-                <Link
-                  className={`nav-link${pathname === "/" ? " active" : ""}`}
-                  href="/"
-                >
-                  Strona główna
-                </Link>
-              </li>
-              <li className="nav-item mx-1">
-                <Link
-                  className={`nav-link${pathname === "/about" ? " active" : ""}`}
-                  href="/about"
-                >
-                  O mnie
-                </Link>
-              </li>
-              <li className="nav-item mx-1">
-                <Link
-                  className={`nav-link${pathname === "/services" ? " active" : ""}`}
-                  href="/services"
-                >
-                  Usługi
-                </Link>
-              </li>
-              <li className="nav-item mx-1">
-                <Link
-                  className={`nav-link${pathname === "/contact" ? " active" : ""}`}
-                  href="/contact"
-                >
-                  Kontakt
-                </Link>
-              </li>
+              {menuItems.map(item => (
+                <li className="nav-item mx-1" key={item.href}>
+                  <Link
+                    className={`nav-link${pathname === item.href ? " active" : ""}`}
+                    href={item.href}
+                    onClick={closeOffcanvas}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
             <hr className="my-3 opacity-20" />
