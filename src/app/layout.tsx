@@ -128,7 +128,6 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'Katarzyna Pawłowska-Malesa',
-      // url: 'https://katarzynapawlowska.pl', //TODO: Replace with actual author URL
     },
     {
       name: 'AKNETH Studio',
