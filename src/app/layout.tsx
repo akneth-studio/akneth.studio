@@ -1,5 +1,4 @@
 import '@/styles/main.scss';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import Navbar from '@/components/layout/Navbar';
