@@ -96,7 +96,6 @@ const Navbar = () => {
                   <Link
                     className={`nav-link${pathname === item.href ? " active" : ""}`}
                     href={item.href}
-                    data-bs-dismiss="offcanvas"
                     aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.label}
