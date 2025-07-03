@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/utils/supabase/client'
 import { BsPerson } from 'react-icons/bs'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AdminSidebar() {
     const router = useRouter()
@@ -27,7 +28,7 @@ export default function AdminSidebar() {
             <div>
                 <div className="logo mb-4">
                     {/* Możesz wstawić tu logo z /public lub SVG */}
-                    <img src="/img/logo_akneth_w.svg" alt="AKNETH Studio" width={175} />
+                    <Image src="/img/logo_akneth_w.svg" alt="AKNETH Studio" width={175} />
                 </div>
                 <nav>
                     <ul className="nav flex-column">

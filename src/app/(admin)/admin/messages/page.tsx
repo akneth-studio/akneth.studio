@@ -8,7 +8,7 @@ const supabase = createClient(
 )
 
 export default async function MessagesList() {
-    const { data: messages, error } = await supabase
+    const { data: messages } = await supabase
         .from('messages')
         .select('id, name, company, email, subject, created_at, replied')
         .order('created_at', { ascending: false })
