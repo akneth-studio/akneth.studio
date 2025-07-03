@@ -4,9 +4,10 @@ import { supabase } from '@/utils/supabase/client'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import { User } from '@supabase/supabase-js'
 
 export default function Account() {
-    const [setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const [displayName, setDisplayName] = useState('')
     const [newDisplayName, setNewDisplayName] = useState('')
     const [email, setEmail] = useState('')
@@ -22,7 +23,7 @@ export default function Account() {
             setEmail(data.user?.email || '')
             setDisplayName(data.user?.user_metadata?.display_name || '')
         })
-    }, [])
+    }, [user, setUser])
 
     // Zmiana e-maila
     const handleChangeEmail = async (e: React.FormEvent) => {

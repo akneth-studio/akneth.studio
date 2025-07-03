@@ -6,10 +6,11 @@ import { supabase } from '@/utils/supabase/client'
 import { BsPerson } from 'react-icons/bs'
 import Link from 'next/link'
 import Image from 'next/image'
+import { User } from '@supabase/supabase-js'
 
 export default function AdminSidebar() {
     const router = useRouter()
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const [displayName, setDisplayName] = useState<string>('')
 
     useEffect(() => {
@@ -17,7 +18,7 @@ export default function AdminSidebar() {
             setUser(data.user)
             setDisplayName(data.user?.user_metadata?.display_name || '')
         })
-    }, [])
+    }, [setUser, setDisplayName])
 
     const handleLogout = async () => {
         await supabase.auth.signOut()
