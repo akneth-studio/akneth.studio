@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { supabase } from '@/utils/supabase/client'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'

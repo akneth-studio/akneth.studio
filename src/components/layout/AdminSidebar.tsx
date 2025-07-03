@@ -28,7 +28,7 @@ export default function AdminSidebar() {
             <div>
                 <div className="logo mb-4">
                     {/* Możesz wstawić tu logo z /public lub SVG */}
-                    <Image src="/img/logo_akneth_w.svg" alt="AKNETH Studio" width={175} />
+                    <Image src="/img/logo_revert.svg" alt="AKNETH Studio" width={125} height={100}/>
                 </div>
                 <nav>
                     <ul className="nav flex-column">

@@ -41,7 +41,6 @@ export default function AdminLogin() {
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 required
-                                autoFocus
                                 placeholder="Wpisz e-mail"
                             />
                         </Col>
