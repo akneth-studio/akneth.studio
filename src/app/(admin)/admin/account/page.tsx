@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
 export default function Account() {
-    const [user, setUser] = useState<any>(null)
+    const [setUser] = useState<any>(null)
     const [displayName, setDisplayName] = useState('')
     const [newDisplayName, setNewDisplayName] = useState('')
     const [email, setEmail] = useState('')
@@ -16,7 +16,6 @@ export default function Account() {
     const [confirm, setConfirm] = useState('')
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
-    const router = useRouter()
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data }) => {

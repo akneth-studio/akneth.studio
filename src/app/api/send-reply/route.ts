@@ -7,6 +7,7 @@ export async function POST(req: NextRequest) {
     const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
+        secure: false,
         auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
@@ -31,7 +32,7 @@ https://akneth-studio.vercel.app
         to,
         subject: `Odpowiedź: ${subject}`,
         text: textBody,
-        replyTo: process.env.NEXT_PUBLIC_EMAIL,
+        replyTo: process.env.SMTP_USER,
     });
 
     return NextResponse.json({ success: true })
