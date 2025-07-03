@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write .",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +27,7 @@
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
   "dependencies": {
     "@next/third-parties": "^15.3.3",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.10",
     "@vercel/analytics": "^1.5.0",
     "bootstrap": "^5.3.6",
@@ -46,6 +47,7 @@
     "@types/bootstrap": "^5.2.10",
     "@types/next-seo": "^1.10.0",
     "@types/node": "^22.15.30",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "@types/react-google-recaptcha": "^2.1.9",
@@ -58,6 +60,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "nodemailer": "^7.0.4",
     "prettier": "^3.5.3",
     "standard-version": "^9.5.0",
     "tsconfig-paths": "^4.2.0",
