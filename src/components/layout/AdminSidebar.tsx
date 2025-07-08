@@ -35,6 +35,7 @@ const adminNav = [
 
 const sideImage = [
     {
+        id: 'desktoplogo',
         src: '/img/logo_akneth_w.svg',
         alt: undefined,
         width: 200,
@@ -42,6 +43,7 @@ const sideImage = [
         class: 'd-none d-md-block'
     },
     {
+        id: 'mobilelogo',
         src: '/img/logo_revert.svg',
         alt: undefined,
         width: 50,
@@ -74,6 +76,7 @@ export default function AdminSidebar() {
                         {/* Możesz wstawić tu logo z /public lub SVG */}
                         {sideImage.map(item => (
                             <Image
+                                key={item.id}
                                 src={item.src}
                                 alt={typeof item.alt === 'string' ? item.alt : 'AKNETH Studio'}
                                 width={item.width}

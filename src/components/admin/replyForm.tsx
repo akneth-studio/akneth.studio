@@ -82,11 +82,15 @@ export default function ReplyForm({ msg }: { msg: Message }) {
                 type: 'success',
                 message: 'Odpowiedź została wysłana i zapisana.'
             });
-        } catch (error) {
+        } catch (err) {
+            let errorMsg = 'Błąd wysyłki lub zapisu.'
+            if (err instanceof Error) {
+                errorMsg += `<br/>(${err.message})`
+            }
             setPopup({
                 show: true,
                 type: 'error',
-                message: 'Błąd wysyłki lub zapisu.'
+                message: errorMsg
             });
         } finally {
             setLoading(false);
