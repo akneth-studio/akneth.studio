@@ -82,7 +82,7 @@ export default function ReplyForm({ msg }: { msg: Message }) {
                 type: 'success',
                 message: 'Odpowiedź została wysłana i zapisana.'
             });
-        } catch (err) {
+        } catch (error) {
             setPopup({
                 show: true,
                 type: 'error',
