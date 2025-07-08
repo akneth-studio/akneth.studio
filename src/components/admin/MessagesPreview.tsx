@@ -1,12 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 import Link from 'next/link';
+import { Table } from 'react-bootstrap';
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-export default async function Dashboard() {
+export default async function MessagesPreview() {
     const { data: messages, error } = await supabase
         .from('messages')
         .select('id, name, company, email, subject, message, created_at, replied, reply_text')
@@ -18,13 +19,13 @@ export default async function Dashboard() {
     }
 
     return (
-        <section className='messg'>
-            <h2 className="mb-4">Wiadomości z formularza kontaktowego</h2>
-            {(!messages || messages.length === 0) ? (
-                <div className="alert alert-info">Brak wiadomości.</div>
-            ) : (
-                <div className="table-responsive">
-                    <table className="table table-striped align-middle">
+        <>
+            <section className='messg'>
+                <h2 className="mb-4">Wiadomości z formularza kontaktowego</h2>
+                {(!messages || messages.length === 0) ? (
+                    <div className="alert alert-info">Brak wiadomości.</div>
+                ) : (
+                    <Table striped responsive className='align-middle'>
                         <thead>
                             <tr>
                                 <th>Data</th>
@@ -32,9 +33,7 @@ export default async function Dashboard() {
                                 <th>Firma</th>
                                 <th>E-mail</th>
                                 <th>Temat</th>
-                                <th>Treść</th>
                                 <th>Odpowiedziano?</th>
-                                <th>Treść odpowiedzi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,29 +60,23 @@ export default async function Dashboard() {
                                         )}
                                     </td>
                                     <td>{msg.subject || <span className="text-muted">—</span>}</td>
-                                    <td style={{ maxWidth: 320, whiteSpace: 'pre-line', wordBreak: 'break-word' }}>
-                                        {msg.message || <span className="text-muted">—</span>}
-                                    </td>
-                                    <td>
+                                    <td className='text-center'>
                                         {msg.replied
                                             ? <span className="badge bg-success">Tak</span>
-                                            : <span className="badge bg-secondary">Nie</span>
+                                            : <span className="badge bg-danger">Nie</span>
                                         }
-                                    </td>
-                                    <td style={{ maxWidth: 320, whiteSpace: 'pre-line', wordBreak: 'break-word' }}>
-                                        {msg.reply_text || <span className="text-muted">—</span>}
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </Table>
+                )}
+                <div className="text-end mt-3">
+                    <Link href="/admin/messages" className="btn btn-outline-primary">
+                        Więcej &rarr;
+                    </Link>
                 </div>
-            )}
-            <div className="text-end mt-3">
-                <Link href="/admin/messages" className="btn btn-outline-primary">
-                    Więcej &rarr;
-                </Link>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }

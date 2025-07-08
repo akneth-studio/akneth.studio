@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
-import ReplyForm from './replyForm'
+import ReplyForm from '../../../../../components/admin/replyForm'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,

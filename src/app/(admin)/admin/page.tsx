@@ -1,16 +1,62 @@
-import Auth from '@/components/auth'
-import AdminDashboard from '@/components/Dashboard'
+'use client'
 
-export default async function Dashboard() {
+import CTAButton from '@/components/CTAButton'
+import { User } from '@supabase/supabase-js'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/utils/supabase/client'
+
+export default function Dashboard() {
+    const [user, setUser] = useState<User | null>(null);
+    const [displayName, setDisplayName] = useState<string>('');
+
+    useEffect(() => {
+        supabase.auth.getUser().then(({ data }) => {
+            setUser(data.user)
+            setDisplayName(data.user?.user_metadata?.display_name || '')
+        })
+    }, [])
+
+    const username = () => {
+        if (user) return displayName;
+        return 'Użytkowniku';
+    };
+
     return (
         <>
-            <Auth/>
-            <h1 className='text-center'>DASHBOARD</h1>
+            <h1 className='text-center'>PANEL ADMINA</h1>
             <div>
-                {/* Tutaj Twój panel admina */}
-                Panel admina – dostęp tylko po zalogowaniu.
+                Witaj, {username()}!
             </div>
-            <AdminDashboard/>
+            {/* Tutaj Twój panel admina */}
+            {!user ? (
+                <div className='align-items-center'>
+                    <h2 className='text-center'>Panel admina – dostęp tylko po zalogowaniu.</h2>
+                    <div className='text-center'>
+                        <CTAButton
+                            type='button'
+                            text='Zaloguj się'
+                            variant='outline-primary'
+                            to='/admin/login'
+                            size='lg'
+                            className='m-2'
+                        />
+                        <CTAButton
+                            type='button'
+                            text='Strona główna'
+                            variant='primary'
+                            to='/'
+                            size='lg'
+                            className='m-2'
+                        />
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <h2 className='text-center'>Jesteś zalogowany jako admin.</h2>
+                    {/* Tu możesz dodać inne elementy widoczne tylko dla zalogowanych */}
+                </div>
+            )}
         </>
+
     )
 }

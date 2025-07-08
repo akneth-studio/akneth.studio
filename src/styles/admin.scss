@@ -1,6 +1,12 @@
 @use "./variables" as *;
 @use "./main.scss" as main;
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
 
+:root {
+    --admin-sidebar-width: 240px;
+}
 .admin-bg {
     background: $body-bg;
     min-height: 100vh;
@@ -12,14 +18,18 @@
 }
 
 .admin-sidebar {
-    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: var(--admin-sidebar-width);
+    min-width: fit-content;
     background: #343a40;
     color: #fff;
     border-right: 1px solid #dee2e6;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
+    height: 100vh;
 
     .logo {
         margin-bottom: 2rem;
@@ -40,8 +50,10 @@
         &.active,
         &:hover,
         &:focus {
-            color: #fff;
-            background: $link-color;
+            font-weight: 600;
+            color: #343a40 !important;
+            letter-spacing: 2px;
+            background: $primary;
             text-decoration: none;
         }
     }
@@ -62,12 +74,19 @@
             margin-top: 0.5rem;
         }
     }
-}
 
+    @include media-breakpoint-down(md) {
+        span.sidelabel {
+            display: none;
+        }
+    }
+}
 .admin-main {
     background: #fff;
     border-radius: 8px;
-    min-height: 100vh;
+    min-height: 100dvh;
+    margin-left: var(--admin-sidebar-width);
+    min-width: calc(100vw - var(--admin-sidebar-width));
     box-shadow: 0 0 8px rgba(52, 58, 64, 0.03);
     section {
         &.messg {
@@ -79,4 +98,13 @@
             }
         }
     }
+    @include media-breakpoint-down(md) {
+        margin-left: 100px;
+        min-width: calc(100vw - 100px);
+    }
+}
+
+button:hover,
+button:focus {
+    text-decoration: none !important;
 }

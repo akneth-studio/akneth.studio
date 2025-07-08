@@ -1,9 +1,25 @@
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from '@upstash/redis';
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/suprabaseClient';
 import { contactSchema } from '@/schemas/contactSchema';
 
+const redis = Redis.fromEnv();
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(3, "1 m"), // max 3 requesty na minutę
+});
+
 export async function POST(req: NextRequest) {
   try {
+    const forwarded = req.headers.get("x-forwarded-for");
+    const ip = forwarded ? forwarded.split(",")[0].trim() : "unknown";
+
+    const { success } = await ratelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json({ error: "Zbyt wiele prób. Spróbuj później." }, { status: 429 });
+    }
+
     // Pobierz body tylko raz!
     const body = await req.json();
 
@@ -28,9 +44,10 @@ export async function POST(req: NextRequest) {
     const captchaRes = await fetch(verifyUrl, { method: 'POST' });
     const captchaData = await captchaRes.json();
 
-    if (!captchaData.success || captchaData.score < 0.5) {
-      return NextResponse.json({ error: 'reCAPTCHA failed' }, { status: 400 });
+    if (!captchaData.success || captchaData.score < 0.5 || captchaData.action !== 'contact_form_submit') {
+      return NextResponse.json({ error: 'reCAPTCHA failed or action mismatch' }, { status: 400 });
     }
+
 
     // Zapis do Supabase
     const { error } = await supabase.from('messages').insert([
@@ -40,7 +57,8 @@ export async function POST(req: NextRequest) {
         email,
         subject,
         message,
-        created_at: new Date().toISOString()
+        created_at: new Date().toISOString(),
+        captcha_score: captchaData.score
       }
     ]);
 

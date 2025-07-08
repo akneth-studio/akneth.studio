@@ -7,7 +7,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <body className='admin-bg'>
                 <div className="admin-container d-flex">
                     <AdminSidebar />
-                    <main className='admin-main flex-grow-1 p-4' tabIndex={-1}>
+                    <main className='admin-main flex-grow-1 px-4 py-3' tabIndex={-1}>
                         {children}
                     </main>
                 </div>
