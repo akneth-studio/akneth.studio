@@ -6,7 +6,7 @@ import { supabase } from '@/utils/supabase/client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { User } from '@supabase/supabase-js'
-import { BsPerson, BsColumnsGap, BsEnvelopeAt, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight } from 'react-icons/bs'
+import { BsPerson, BsColumnsGap, BsEnvelopeAt, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight, BsChatRightText, BsCalendar } from 'react-icons/bs'
 import { Nav, Dropdown, ButtonGroup, Button } from 'react-bootstrap'
 import { BiSolidUserAccount } from 'react-icons/bi'
 
@@ -22,9 +22,19 @@ const adminNav = [
         icon: BsColumnsGap,
     },
     {
-        href: '/admin/messages',
-        label: 'Wiadomości',
+        href: '/admin/mail',
+        label: 'Mail',
         icon: BsEnvelopeAt,
+    },
+    {
+        href: 'admin/calendar',
+        label: 'Calendar',
+        icon: BsCalendar,
+    },
+    {
+        href: '/admin/messages',
+        label: 'Contact Form',
+        icon: BsChatRightText,
     },
     {
         href: '/admin/content',
@@ -35,7 +45,7 @@ const adminNav = [
 
 const sideImage = [
     {
-        id: 'desktoplogo',
+        id: 'desktop-logo',
         src: '/img/logo_akneth_w.svg',
         alt: undefined,
         width: 200,
@@ -43,7 +53,7 @@ const sideImage = [
         class: 'd-none d-md-block'
     },
     {
-        id: 'mobilelogo',
+        id: 'mobile-logo',
         src: '/img/logo_revert.svg',
         alt: undefined,
         width: 50,

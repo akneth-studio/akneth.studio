@@ -24,8 +24,8 @@ export default function Dashboard() {
     return (
         <>
             <h1 className='text-center'>PANEL ADMINA</h1>
-            <div>
-                Witaj, {username()}!
+            <div className='text-center'>
+                Witaj, <span className='fw-bold'>{username()}</span>!
             </div>
             {/* Tutaj Twój panel admina */}
             {!user ? (

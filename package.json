@@ -16,7 +16,7 @@
     "release": "standard-version"
   },
   "keywords": [
-    "aknethstudio",
+    "akneth studio",
     "nextjs",
     "react",
     "website",
@@ -68,6 +68,6 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
-  "license": "CCBY4.0",
+  "license": "CC-BY4.0",
   "version": "1.0.0"
 }
