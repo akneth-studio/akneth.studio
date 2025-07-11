@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Poppins } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'; // XXX Zmien na realny URL: .env.local, .env.development, .env.production
 

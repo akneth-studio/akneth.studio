@@ -6,7 +6,7 @@ import { supabase } from '@/utils/supabase/client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { User } from '@supabase/supabase-js'
-import { BsPerson, BsColumnsGap, BsEnvelopeAt, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight, BsChatRightText, BsCalendar } from 'react-icons/bs'
+import { BsPerson, BsColumnsGap, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight, BsChatRightText } from 'react-icons/bs'
 import { Nav, Dropdown, ButtonGroup, Button } from 'react-bootstrap'
 import { BiSolidUserAccount } from 'react-icons/bi'
 
@@ -20,16 +20,6 @@ const adminNav = [
         href: '/admin/dashboard',
         label: 'Dashboard',
         icon: BsColumnsGap,
-    },
-    {
-        href: '/admin/mail',
-        label: 'Mail',
-        icon: BsEnvelopeAt,
-    },
-    {
-        href: 'admin/calendar',
-        label: 'Calendar',
-        icon: BsCalendar,
     },
     {
         href: '/admin/messages',

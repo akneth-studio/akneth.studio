@@ -26,6 +26,7 @@
   ],
   "author": "AKNETH Studio Katarzyna Pawłowska-Malesa",
   "dependencies": {
+    "@logtail/next": "^0.2.1",
     "@next/third-parties": "^15.3.3",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.10",

@@ -8,7 +8,7 @@ export default async function Dashboard() {
                 <h1 className='text-center'>DASHBOARD</h1>
                 <div>
                     {/* Tutaj Twój panel admina */}
-                    Panel admina – dostęp tylko po zalogowaniu.
+                    <iframe src="https://akneth-studio.betteruptime.com" width="1000" height="800"></iframe>
                 </div>
                 <MessagesPreview />
             </Auth>

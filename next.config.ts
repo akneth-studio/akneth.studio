@@ -1,5 +1,6 @@
 import path from "path";
 import type { NextConfig } from "next";
+import { withBetterStack } from "@logtail/next";
 
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -47,7 +48,7 @@ const ContentSecurityPolicy = `
 
 const nextConfig: NextConfig = {
   /* config options here */
-  productionBrowserSourceMaps: true, // W��cza source mapy dla frontendowej cz�ci produkcji
+  productionBrowserSourceMaps: true, // Włącza source mapy dla frontendowej części produkcji
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
@@ -67,4 +68,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBetterStack(nextConfig);
