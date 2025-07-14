@@ -36,6 +36,8 @@ Nowoczesna, responsywna strona internetowa dla AKNETH Studio Katarzyna Pawłowsk
    npm install
    ```
 3. Skonfiguruj plik `.env.local` (przykładowy plik w repozytorium - `.env.example`):
+   
+   [![fork with dotenv-vault](https://badge.dotenv.org/fork.svg?r=1)](https://vault.dotenv.org/project/vlt_ebf2b29cb1127330e42bcd9b01ccb16273a9445f66f75327153c998207347a31/example)
    - Klucze Supabase
    - Klucze Google reCAPTCHA
    - Dane kontaktowe (telefon, adres, mail)
