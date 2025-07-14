@@ -4,6 +4,7 @@ import CTAButton from '@/components/CTAButton'
 import { User } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
 import { supabase } from '@/utils/supabase/client'
+import Summary from '@/components/admin/Summary'
 
 export default function Dashboard() {
     const [user, setUser] = useState<User | null>(null);
@@ -54,6 +55,7 @@ export default function Dashboard() {
                 <div>
                     <h2 className='text-center'>Jesteś zalogowany jako admin.</h2>
                     {/* Tu możesz dodać inne elementy widoczne tylko dla zalogowanych */}
+                    <Summary />
                 </div>
             )}
         </>
