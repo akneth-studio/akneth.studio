@@ -27,11 +27,25 @@ https://akneth-studio.vercel.app
 
     const textBody = `${intro}\n\n${reply}\n\n${outro}\n${signature}`
 
+    const htmlBody = `
+  <div style="font-family:sans-serif; color:#222; font-size:1em;">
+    <p>${intro}</p>
+    <p>${reply.replace(/\n/g, '<br>')}</p>
+    <p>${outro}<br>
+    <b>AKNETH Studio</b><br>
+    Katarzyna Pawłowska-Malesa<br>
+    tel: +48 690 973 352<br>
+    <a href="https://akneth-studio.vercel.app">https://akneth-studio.vercel.app</a>
+    </p>
+  </div>
+`;
+
     await transporter.sendMail({
         from: `"AKNETH Studio" <${process.env.SMTP_USER}>`,
         to,
         subject: `Odpowiedź: ${subject}`,
         text: textBody,
+        html: htmlBody,
         replyTo: process.env.SMTP_USER,
     });
 
