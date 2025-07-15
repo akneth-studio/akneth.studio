@@ -126,22 +126,32 @@ export default function ReplyForm({ msg }: { msg: Message }) {
                 {/* PODGLĄD WIADOMOŚCI */}
                 <div
                     className="mt-3 p-3 border rounded bg-light"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-      <div style="color:#555;font-size:1em;">
-        <strong>Podgląd odpowiedzi:</strong><br>
-        <br>
-        Dzień dobry${msg.name ? `, ${msg.name}` : ''}!<br><br>
-        ${reply.replace(/\n/g, '<br>')}<br><br>
-        Pozdrawiam,<br>
-        <b>AKNETH Studio</b><br>
-        Katarzyna Pawłowska-Malesa<br>
-        tel: +48 690 973 352<br>
-        <a href="https://akneth-studio.vercel.app" target="_blank">https://akneth-studio.vercel.app</a>
-      </div>
-    `
-                    }}
-                />
+                    style={{ color: "#555", fontSize: "1em" }}
+                >
+                    <strong>Podgląd odpowiedzi:</strong>
+                    <br />
+                    <br />
+                    Dzień dobry{msg.name ? `, ${msg.name}` : ''}!
+                    <br /><br />
+                    {reply.split('\n').map((line, i) => (
+                        <React.Fragment key={i}>
+                            {line}
+                            <br />
+                        </React.Fragment>
+                    ))}
+                    <br />
+                    Pozdrawiam,
+                    <br />
+                    <b>AKNETH Studio</b>
+                    <br />
+                    Katarzyna Pawłowska-Malesa
+                    <br />
+                    tel: +48 690 973 352
+                    <br />
+                    <a href="https://akneth-studio.vercel.app" target="_blank" rel="noopener noreferrer">
+                        https://akneth-studio.vercel.app
+                    </a>
+                </div>
 
                 <Button type="submit" className="mt-2" variant="primary" disabled={loading}>
                     {loading ? 'Wysyłanie...' : 'Wyślij odpowiedź'}
