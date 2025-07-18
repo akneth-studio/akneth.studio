@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
 export async function GET() {
@@ -11,7 +11,10 @@ export async function GET() {
         .from('banners')
         .select('*')
         .order("date_start", { ascending: false });
-    if (error) return new Response(JSON.stringify({ error }), { status: 500 });
+    if (error) {
+        console.error('Database error:', error);
+        return new Response(JSON.stringify({ error: 'Failed to fetch banners' }), { status: 500 });
+    }
     return new Response(JSON.stringify(data), { status: 200 });
 }
 
