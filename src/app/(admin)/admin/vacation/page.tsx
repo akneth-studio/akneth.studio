@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Table, OverlayTrigger, Tooltip, Modal, Form } from "react-bootstrap";
 import CTAButton from "@/components/CTAButton";
 import Popup from "@/components/Popup";
@@ -132,10 +132,16 @@ export default function VacationAdminPage() {
             });
             closeModal();
             fetchData();
-        } catch (e: any) {
+        } catch (e: unknown) {
+            let errorMsg =
+                (typeof e === "object" && e !== null && "message" in e && typeof (e as { message?: unknown }).message === "string")
+                    ? (e as { message: string }).message
+                    : (modalType === "add"
+                        ? "Nie powiodło się dodanie komunikatu."
+                        : "Nie powiodła się edycja komunikatu.");
             setPopup({
                 show: true, type: "error",
-                message: e.message || (modalType === "add" ? "Nie powiodło się dodanie komunikatu." : "Nie powiodła się edycja komunikatu.")
+                message: errorMsg
             });
         } finally {
             setProcessing(false);
@@ -159,8 +165,12 @@ export default function VacationAdminPage() {
             }
             setPopup({ show: true, type: "success", message: "Usunięto komunikat." });
             fetchData();
-        } catch (e: any) {
-            setPopup({ show: true, type: "error", message: e.message || "Nie udało się usunąć komunikatu." });
+        } catch (e: unknown) {
+            let errorMsg = "Nie udało się usunąć komunikatu.";
+            if (typeof e === "object" && e !== null && "message" in e && typeof (e as { message?: unknown }).message === "string") {
+                errorMsg = (e as { message: string }).message;
+            }
+            setPopup({ show: true, type: "error", message: errorMsg });
         } finally {
             setProcessing(false);
         }
