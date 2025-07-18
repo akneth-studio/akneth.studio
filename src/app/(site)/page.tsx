@@ -28,7 +28,7 @@ export default function HomePage() {
             <HeroSection />
             <ShortAboutSection />
             <div className="gy-5">
-                <div className="row gymd-5 gy-0 gx-5 align-items-center">
+                <div className="row gy-md-5 gy-0 gx-5 align-items-center">
                     <div className="col-12 col-lg-6">
                         <ServicesPreviewSection />
                     </div>
