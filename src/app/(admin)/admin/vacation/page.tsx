@@ -44,7 +44,6 @@ export default function VacationAdminPage() {
         show: false, message: "", type: "success",
     });
     const [processing, setProcessing] = useState(false);
-    const firstInputRef = useRef<HTMLSelectElement | null>(null);
 
     // Pobierz dane
     useEffect(() => { fetchData(); }, []);
@@ -69,7 +68,6 @@ export default function VacationAdminPage() {
         setEditRecord(null);
         setModalType("add");
         setShowModal(true);
-        setTimeout(() => firstInputRef.current?.focus(), 50);
     }
     function openEditModal(record: BannerRow) {
         setForm({
@@ -83,7 +81,6 @@ export default function VacationAdminPage() {
         setEditRecord(record);
         setModalType("edit");
         setShowModal(true);
-        setTimeout(() => firstInputRef.current?.focus(), 50);
     }
     function closeModal() {
         setShowModal(false);
@@ -170,15 +167,21 @@ export default function VacationAdminPage() {
     }
 
     // Handler formularza: checkbox osobno obsługuje checked
-    function handleInput(e: React.ChangeEvent<any>) {
-        const { name, value, type } = e.target;
+    function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const { name, type, value, checked } = e.target;
         setForm((f) => ({
             ...f,
-            [name]: type === "checkbox"
-                ? (e.target as HTMLInputElement).checked
-                : value,
+            [name]: type === "checkbox" ? checked : value
         }));
     }
+    function handleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        const { name, value } = e.target;
+        setForm((f) => ({
+            ...f,
+            [name]: value
+        }));
+    }
+
 
     return (
         <div className="py-4">
@@ -258,7 +261,6 @@ export default function VacationAdminPage() {
                 centered
                 backdrop={true}
                 keyboard={true}
-                autoFocus={false}
             >
                 <Form onSubmit={handleFormSubmit}>
                     <Modal.Header closeButton>
@@ -283,12 +285,9 @@ export default function VacationAdminPage() {
                             <Form.Select
                                 name="mode"
                                 value={form.mode}
-                                ref={firstInputRef}
-                                onChange={handleInput}
+                                onChange={handleSelectChange}
                                 isInvalid={!!formError.mode}
                                 required
-                                autoFocus
-                                tabIndex={1}
                             >
                                 {MODES.map((m) => (
                                     <option key={m.value} value={m.value}>{m.label}</option>
@@ -302,10 +301,9 @@ export default function VacationAdminPage() {
                                 type="datetime-local"
                                 name="announce_from"
                                 value={form.announce_from}
-                                onChange={handleInput}
+                                onChange={handleInputChange}
                                 isInvalid={!!formError.announce_from}
                                 required
-                                tabIndex={2}
                             />
                             <Form.Control.Feedback type="invalid">{formError.announce_from}</Form.Control.Feedback>
                         </Form.Group>
@@ -315,10 +313,9 @@ export default function VacationAdminPage() {
                                 type="datetime-local"
                                 name="date_start"
                                 value={form.date_start}
-                                onChange={handleInput}
+                                onChange={handleInputChange}
                                 isInvalid={!!formError.date_start}
                                 required
-                                tabIndex={3}
                             />
                             <Form.Control.Feedback type="invalid">{formError.date_start}</Form.Control.Feedback>
                         </Form.Group>
@@ -328,10 +325,9 @@ export default function VacationAdminPage() {
                                 type="datetime-local"
                                 name="date_end"
                                 value={form.date_end}
-                                onChange={handleInput}
+                                onChange={handleInputChange}
                                 isInvalid={!!formError.date_end}
                                 required
-                                tabIndex={4}
                             />
                             <Form.Control.Feedback type="invalid">{formError.date_end}</Form.Control.Feedback>
                         </Form.Group>
@@ -342,8 +338,7 @@ export default function VacationAdminPage() {
                                 name="visible"
                                 label="Komunikat widoczny"
                                 checked={form.visible}
-                                onChange={handleInput}
-                                tabIndex={5}
+                                onChange={handleInputChange}
                             />
                         </Form.Group>
                     </Modal.Body>
