@@ -12,8 +12,19 @@ const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
+type Message = {
+    id: string;
+    name: string | null;
+    company: string | null;
+    email: string | null;
+    subject: string | null;
+    created_at: string;
+    replied: boolean;
+    is_read: boolean;
+};
+
 export default function MessagesList() {
-    const [messages, setMessages] = useState<any[]>([]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
     useEffect(() => {
@@ -21,7 +32,7 @@ export default function MessagesList() {
             .from('messages')
             .select('id, name, company, email, subject, created_at, replied, is_read')
             .order('created_at', { ascending: false })
-            .then(({ data }) => setMessages(data || []));
+            .then(({ data }) => setMessages(data as Message[] || []));
     }, []);
 
     const handleSelect = (id: string) => {

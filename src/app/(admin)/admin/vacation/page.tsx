@@ -133,7 +133,7 @@ export default function VacationAdminPage() {
             closeModal();
             fetchData();
         } catch (e: unknown) {
-            let errorMsg =
+            const errorMsg =
                 (typeof e === "object" && e !== null && "message" in e && typeof (e as { message?: unknown }).message === "string")
                     ? (e as { message: string }).message
                     : (modalType === "add"
@@ -176,7 +176,7 @@ export default function VacationAdminPage() {
         }
     }
 
-    // Handler formularza: checkbox osobno obsługuje checked
+    // Handler formularza: checkbox osobno obsługuje checked
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
         const { name, type, value, checked } = e.target;
         setForm((f) => ({
