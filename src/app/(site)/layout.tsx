@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { Poppins } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from "@vercel/analytics/next";
+import { Banner } from '@/components/layout/Banner';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'; // XXX Zmien na realny URL: .env.local, .env.development, .env.production
 
@@ -182,17 +183,20 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: ReactNode;
 }) {
+  const bannerRes = await fetch(`${siteUrl}/api/banners`, {cache: 'no-store'});
+  const banners = bannerRes.ok ? await bannerRes.json() : [];
   return (
     <html lang="pl">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body className={poppins.className}>
         <Analytics/>
         <Navbar />
+        <Banner banners={banners} />
         <main className="container-xxl">{children}</main>
         <Footer />
       </body>

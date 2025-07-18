@@ -1,6 +1,8 @@
+'use client'
+
 import { notFound } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
-import ReplyForm from '../../../../../components/admin/replyForm'
+import ReplyForm from '@/components/admin/replyForm'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -17,6 +19,14 @@ export default async function MessageDetail({ params }: { params: Promise<{ id: 
     .single()
 
   if (error || !msg) return notFound()
+    
+  if (msg && !msg.is_read) {
+    // Mark message as read
+    await supabase
+      .from('messages')
+      .update({ is_read: true })
+      .eq('id', id)
+  }
 
   return (
     <section className='messg'>

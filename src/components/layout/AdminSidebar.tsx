@@ -6,7 +6,7 @@ import { supabase } from '@/utils/supabase/client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { User } from '@supabase/supabase-js'
-import { BsPerson, BsColumnsGap, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight, BsChatRightText } from 'react-icons/bs'
+import { BsPerson, BsColumnsGap, BsBlockquoteLeft, BsBoxArrowLeft, BsHouse, BsBoxArrowInRight, BsChatRightText, BsAirplane } from 'react-icons/bs'
 import { Nav, Dropdown, ButtonGroup, Button } from 'react-bootstrap'
 import { BiSolidUserAccount } from 'react-icons/bi'
 
@@ -30,6 +30,16 @@ const adminNav = [
         href: '/admin/content',
         label: 'Treści',
         icon: BsBlockquoteLeft,
+    },
+    {
+        href: '/admin/vacation',
+        label: 'Bannery',
+        icon: BsAirplane,
+    },
+    {
+        href: '/admin/account',
+        label: 'Konto',
+        icon: BiSolidUserAccount,
     }
 ]
 
@@ -56,6 +66,7 @@ export default function AdminSidebar() {
     const router = useRouter()
     const [user, setUser] = useState<User | null>(null)
     const [displayName, setDisplayName] = useState<string>('')
+    const [unreadCount, setUnreadCount] = useState<number>(0)
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data }) => {
@@ -63,6 +74,14 @@ export default function AdminSidebar() {
             setDisplayName(data.user?.user_metadata?.display_name || '')
         })
     }, [setUser, setDisplayName])
+
+    useEffect(() => {
+        supabase
+            .from('messages')
+            .select('id', { count: 'exact', head: true })
+            .eq('is_read', false)
+            .then(({ count }) => setUnreadCount(count || 0))
+    }, [])
 
     const handleLogout = async () => {
         await supabase.auth.signOut()
@@ -94,6 +113,9 @@ export default function AdminSidebar() {
                                     <Nav.Link as={Link} href={item.href} className='d-flex align-items-center'>
                                         <Icon className='me-2' />
                                         <span className='sidelabel'>{item.label}</span>
+                                        {item.href === '/admin/messages' && unreadCount > 0 && (
+                                            <span className="badge bg-danger ms-2">{unreadCount}</span>
+                                        )}
                                     </Nav.Link>
                                 </Nav.Item>
                             )
