@@ -1,9 +1,11 @@
+'use client'
 import { FcEngineering, FcGlobe } from 'react-icons/fc';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-type BannerID = 'maintenance' | 'vacation';
+type Mode = 'maintenance' | 'vacation';
 interface BannerData {
-    id: BannerID;
+    id: string;
+    mode: Mode;
     visible: boolean;
     announce_from: string; // ISO date string
     date_start: string; // ISO date string
@@ -19,7 +21,7 @@ interface BannersProps {
     banners: BannerData[];
 }
 
-const bannerConfig: Record<BannerID, BannersConfigEntry> ={
+const bannerConfig: Record<Mode, BannersConfigEntry> = {
     maintenance: {
         className: "bg-yellow-100 text-yellow-900",
         icon: <FcEngineering size={28} />,
@@ -36,6 +38,24 @@ const bannerConfig: Record<BannerID, BannersConfigEntry> ={
 
 export function Banner({ banners }: BannersProps) {
     const now = new Date();
+    const [closedIds, setClosedIds] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const closed = sessionStorage.getItem('closedBanners');
+            if (closed) {
+                setClosedIds(JSON.parse(closed));
+            }
+        }
+    }, []);
+
+    const handleClose = (id: string) => {
+        const updated = [...closedIds, id];
+        setClosedIds(updated);
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('closedBanners', JSON.stringify(updated));
+        }
+    };
 
     return (
         <>
@@ -45,17 +65,25 @@ export function Banner({ banners }: BannersProps) {
                     now >= new Date(announce_from) &&
                     now <= new Date(date_end)
                 )
-                .map(({ id, date_start, date_end }) => {
-                    const cfg = bannerConfig[id];
+                .map(({ id, mode, date_start, date_end }) => {
+                    const cfg = bannerConfig[mode];
                     if (!cfg) return null;
                     const start = new Date(date_start);
                     const end = new Date(date_end);
                     const content = cfg.getText(start, end);
                     if (!content) return null;
                     return (
-                        <div key={id} className={`w-full py-3 px-4 flex items-center justify-center shadow ${cfg.className}`} role="status">
-                            <span className="mr-3">{cfg.icon}</span>
-                            <span>{content}</span>
+                        <div key={id} className={`w-full py-3 px-4 d-flex align-items-center justify-content-between shadow ${cfg.className}`} role="status">
+                            <div className="d-flex align-items-center">
+                                <span className="me-3">{cfg.icon}</span>
+                                <span>{content}</span>
+                            </div>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                aria-label="Zamknij baner"
+                                onClick={() => handleClose(id)}
+                            ></button>
                         </div>
                     );
                 })}
