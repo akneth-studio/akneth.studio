@@ -58,7 +58,7 @@ export default function VacationAdminPage() {
             setBanners(data.sort((a, b) => b.date_start.localeCompare(a.date_start)));
         } catch (e) {
             setBanners([]);
-            setPopup({ show: true, type: "error", message: "Błąd pobierania komunikatów." });
+            setPopup({ show: true, type: "error", message: `Błąd pobierania komunikatów: ${e}` });
         } finally {
             setLoading(false);
         }
