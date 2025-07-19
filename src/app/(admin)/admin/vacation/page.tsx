@@ -5,6 +5,7 @@ import { Table, OverlayTrigger, Tooltip, Modal, Form } from "react-bootstrap";
 import CTAButton from "@/components/CTAButton";
 import Popup from "@/components/Popup";
 import { BiPlus, BiTrash, BiPencil } from "react-icons/bi";
+import Auth from "@/components/admin/auth";
 
 type Mode = "vacation" | "maintenance";
 interface BannerRow {
@@ -112,6 +113,12 @@ export default function VacationAdminPage() {
         return Object.keys(err).length === 0;
     }
 
+    // Zamiana local datetime na ISO UTC
+    function toISOStringLocal(dt: string) {
+        const date = new Date(dt);
+        return date.toISOString();
+    }
+
     // Submit (Dodaj/Edytuj)
     async function handleFormSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -121,8 +128,19 @@ export default function VacationAdminPage() {
             const url = "/api/banners";
             const method = modalType === "edit" ? "PATCH" : "POST";
             const body = modalType === "edit" && editRecord
-                ? { id: editRecord.id, ...form }
-                : { ...form };
+                ? {
+                    id: editRecord.id,
+                    ...form,
+                    announce_from: toISOStringLocal(form.announce_from),
+                    date_start: toISOStringLocal(form.date_start),
+                    date_end: toISOStringLocal(form.date_end),
+                  }
+                : {
+                    ...form,
+                    announce_from: toISOStringLocal(form.announce_from),
+                    date_start: toISOStringLocal(form.date_start),
+                    date_end: toISOStringLocal(form.date_end),
+                  };
             const res = await fetch(url, {
                 method,
                 headers: { "Content-Type": "application/json" },
@@ -203,188 +221,192 @@ export default function VacationAdminPage() {
 
 
     return (
-        <div className="py-4">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="fw-bold mb-0">Zarządzanie komunikatami (urlop, serwis, historia)</h2>
-                <CTAButton
-                    text='Dodaj komunikat'
-                    icon={<BiPlus className="me-2" />}
-                    variant="primary"
-                    type="button"
-                    className="d-flex align-items-center"
-                    onClick={openAddModal}
-                />
-            </div>
-            <Table bordered hover responsive>
-                <thead className="table-light">
-                    <tr>
-                        <th>ID</th>
-                        <th>Typ</th>
-                        <th>Zakres</th>
-                        <th>Ogłoszenie</th>
-                        <th>Widoczny</th>
-                        <th>Akcje</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading ? (
-                        <tr><td colSpan={6} className="text-center">Wczytywanie…</td></tr>
-                    ) : banners.length === 0 ? (
-                        <tr><td colSpan={6} className="text-center text-muted">Brak komunikatów w bazie.</td></tr>
-                    ) : (
-                        banners.map((b) => (
-                            <tr key={b.id}>
-                                <td>
-                                    <OverlayTrigger
-                                        placement="top"
-                                        overlay={<Tooltip id={`tip-id-${b.id}`}>{b.id}</Tooltip>}
-                                    >
-                                        <span>{b.id.slice(0, 8)}…</span>
-                                    </OverlayTrigger>
-                                </td>
-                                <td>{MODES.find((m) => m.value === b.mode)?.label || b.mode}</td>
-                                <td>
-                                    {new Date(b.date_start).toLocaleString("pl-PL")} —<br />
-                                    {new Date(b.date_end).toLocaleString("pl-PL")}
-                                </td>
-                                <td>{new Date(b.announce_from).toLocaleString("pl-PL")}</td>
-                                <td>{b.visible ? "TAK" : "NIE"}</td>
-                                <td className="d-flex gap-2">
-                                    <CTAButton
-                                        icon={<BiPencil className="me-2" />}
-                                        text='Edytuj'
-                                        variant="outline-primary"
-                                        type="button"
-                                        className="d-flex align-items-center"
-                                        onClick={() => openEditModal(b)}
-                                    />
-                                    <CTAButton
-                                        icon={<BiTrash className="me-2" />}
-                                        text='Usuń'
-                                        variant="outline-danger"
-                                        type="button"
-                                        className="d-flex align-items-center"
-                                        onClick={() => handleDelete(b.id)}
-                                    />
-                                </td>
-                            </tr>
-                        ))
-                    )}
-                </tbody>
-            </Table>
-
-            {/* MODAL Form Bootstrap */}
-            <Modal
-                show={showModal}
-                onHide={closeModal}
-                centered
-                backdrop={true}
-                keyboard={true}
-            >
-                <Form onSubmit={handleFormSubmit}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>
-                            {modalType === "edit" ? "Edytuj komunikat" : "Dodaj komunikat"}
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {modalType === "edit" && editRecord && (
-                            <Form.Group className="mb-3">
-                                <Form.Label className="fw-bold">ID (readonly)</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={editRecord.id}
-                                    readOnly
-                                    style={{ background: "#f6f6f6" }}
-                                />
-                            </Form.Group>
-                        )}
-                        <Form.Group className="mb-3">
-                            <Form.Label className="fw-bold">Typ komunikatu</Form.Label>
-                            <Form.Select
-                                name="mode"
-                                value={form.mode}
-                                onChange={handleSelectChange}
-                                isInvalid={!!formError.mode}
-                                required
-                            >
-                                {MODES.map((m) => (
-                                    <option key={m.value} value={m.value}>{m.label}</option>
-                                ))}
-                            </Form.Select>
-                            <Form.Control.Feedback type="invalid">{formError.mode}</Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="fw-bold">Ogłoszenie od</Form.Label>
-                            <Form.Control
-                                type="datetime-local"
-                                name="announce_from"
-                                value={form.announce_from}
-                                onChange={handleInputChange}
-                                isInvalid={!!formError.announce_from}
-                                required
-                            />
-                            <Form.Control.Feedback type="invalid">{formError.announce_from}</Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="fw-bold">Początek</Form.Label>
-                            <Form.Control
-                                type="datetime-local"
-                                name="date_start"
-                                value={form.date_start}
-                                onChange={handleInputChange}
-                                isInvalid={!!formError.date_start}
-                                required
-                            />
-                            <Form.Control.Feedback type="invalid">{formError.date_start}</Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="fw-bold">Koniec</Form.Label>
-                            <Form.Control
-                                type="datetime-local"
-                                name="date_end"
-                                value={form.date_end}
-                                onChange={handleInputChange}
-                                isInvalid={!!formError.date_end}
-                                required
-                            />
-                            <Form.Control.Feedback type="invalid">{formError.date_end}</Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group className="mb-2">
-                            <Form.Label className="fw-bold">Widoczny</Form.Label>
-                            <Form.Check
-                                type="checkbox"
-                                name="visible"
-                                label="Komunikat widoczny"
-                                checked={form.visible}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
+        <>
+            <Auth>
+                <div className="py-4">
+                    <div className="d-flex justify-content-between align-items-center mb-4">
+                        <h2 className="fw-bold mb-0">Zarządzanie komunikatami (urlop, serwis, historia)</h2>
                         <CTAButton
-                            text="Anuluj"
-                            variant="outline-secondary"
-                            type="button"
-                            onClick={closeModal}
-                            disabled={processing}
-                        />
-                        <CTAButton
-                            text={modalType === "edit" ? "Zapisz" : "Dodaj"}
+                            text='Dodaj komunikat'
+                            icon={<BiPlus className="me-2" />}
                             variant="primary"
-                            type="submit"
-                            disabled={processing}
+                            type="button"
+                            className="d-flex align-items-center"
+                            onClick={openAddModal}
                         />
-                    </Modal.Footer>
-                </Form>
-            </Modal>
+                    </div>
+                    <Table bordered hover responsive>
+                        <thead className="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Typ</th>
+                                <th>Zakres</th>
+                                <th>Ogłoszenie</th>
+                                <th>Widoczny</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loading ? (
+                                <tr><td colSpan={6} className="text-center">Wczytywanie…</td></tr>
+                            ) : banners.length === 0 ? (
+                                <tr><td colSpan={6} className="text-center text-muted">Brak komunikatów w bazie.</td></tr>
+                            ) : (
+                                banners.map((b) => (
+                                    <tr key={b.id}>
+                                        <td>
+                                            <OverlayTrigger
+                                                placement="top"
+                                                overlay={<Tooltip id={`tip-id-${b.id}`}>{b.id}</Tooltip>}
+                                            >
+                                                <span>{b.id.slice(0, 8)}…</span>
+                                            </OverlayTrigger>
+                                        </td>
+                                        <td>{MODES.find((m) => m.value === b.mode)?.label || b.mode}</td>
+                                        <td>
+                                            {new Date(b.date_start).toLocaleString("pl-PL")} —<br />
+                                            {new Date(b.date_end).toLocaleString("pl-PL")}
+                                        </td>
+                                        <td>{new Date(b.announce_from).toLocaleString("pl-PL")}</td>
+                                        <td>{b.visible ? "TAK" : "NIE"}</td>
+                                        <td className="d-flex gap-2">
+                                            <CTAButton
+                                                icon={<BiPencil className="me-2" />}
+                                                text='Edytuj'
+                                                variant="outline-primary"
+                                                type="button"
+                                                className="d-flex align-items-center"
+                                                onClick={() => openEditModal(b)}
+                                            />
+                                            <CTAButton
+                                                icon={<BiTrash className="me-2" />}
+                                                text='Usuń'
+                                                variant="outline-danger"
+                                                type="button"
+                                                className="d-flex align-items-center"
+                                                onClick={() => handleDelete(b.id)}
+                                            />
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </Table>
 
-            <Popup
-                show={popup.show}
-                message={popup.message}
-                onClose={() => setPopup({ show: false, message: "" })}
-                type={popup.type}
-            />
-        </div>
+                    {/* MODAL Form Bootstrap */}
+                    <Modal
+                        show={showModal}
+                        onHide={closeModal}
+                        centered
+                        backdrop={true}
+                        keyboard={true}
+                    >
+                        <Form onSubmit={handleFormSubmit}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>
+                                    {modalType === "edit" ? "Edytuj komunikat" : "Dodaj komunikat"}
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                {modalType === "edit" && editRecord && (
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="fw-bold">ID (readonly)</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            value={editRecord.id}
+                                            readOnly
+                                            style={{ background: "#f6f6f6" }}
+                                        />
+                                    </Form.Group>
+                                )}
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-bold">Typ komunikatu</Form.Label>
+                                    <Form.Select
+                                        name="mode"
+                                        value={form.mode}
+                                        onChange={handleSelectChange}
+                                        isInvalid={!!formError.mode}
+                                        required
+                                    >
+                                        {MODES.map((m) => (
+                                            <option key={m.value} value={m.value}>{m.label}</option>
+                                        ))}
+                                    </Form.Select>
+                                    <Form.Control.Feedback type="invalid">{formError.mode}</Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-bold">Ogłoszenie od</Form.Label>
+                                    <Form.Control
+                                        type="datetime-local"
+                                        name="announce_from"
+                                        value={form.announce_from}
+                                        onChange={handleInputChange}
+                                        isInvalid={!!formError.announce_from}
+                                        required
+                                    />
+                                    <Form.Control.Feedback type="invalid">{formError.announce_from}</Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-bold">Początek</Form.Label>
+                                    <Form.Control
+                                        type="datetime-local"
+                                        name="date_start"
+                                        value={form.date_start}
+                                        onChange={handleInputChange}
+                                        isInvalid={!!formError.date_start}
+                                        required
+                                    />
+                                    <Form.Control.Feedback type="invalid">{formError.date_start}</Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-bold">Koniec</Form.Label>
+                                    <Form.Control
+                                        type="datetime-local"
+                                        name="date_end"
+                                        value={form.date_end}
+                                        onChange={handleInputChange}
+                                        isInvalid={!!formError.date_end}
+                                        required
+                                    />
+                                    <Form.Control.Feedback type="invalid">{formError.date_end}</Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group className="mb-2">
+                                    <Form.Label className="fw-bold">Widoczny</Form.Label>
+                                    <Form.Check
+                                        type="checkbox"
+                                        name="visible"
+                                        label="Komunikat widoczny"
+                                        checked={form.visible}
+                                        onChange={handleInputChange}
+                                    />
+                                </Form.Group>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <CTAButton
+                                    text="Anuluj"
+                                    variant="outline-secondary"
+                                    type="button"
+                                    onClick={closeModal}
+                                    disabled={processing}
+                                />
+                                <CTAButton
+                                    text={modalType === "edit" ? "Zapisz" : "Dodaj"}
+                                    variant="primary"
+                                    type="submit"
+                                    disabled={processing}
+                                />
+                            </Modal.Footer>
+                        </Form>
+                    </Modal>
+
+                    <Popup
+                        show={popup.show}
+                        message={popup.message}
+                        onClose={() => setPopup({ show: false, message: "" })}
+                        type={popup.type}
+                    />
+                </div>
+            </Auth>
+        </>
     );
 }

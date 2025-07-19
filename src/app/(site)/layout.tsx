@@ -188,7 +188,7 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const bannerRes = await fetch(`${siteUrl}/api/banners`, {cache: 'no-store'});
+  const bannerRes = await fetch(`${siteUrl}/api/banners/public`, {cache: 'no-store'});
   const banners = bannerRes.ok ? await bannerRes.json() : [];
   return (
     <html lang="pl">
