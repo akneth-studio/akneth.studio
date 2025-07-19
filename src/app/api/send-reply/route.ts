@@ -40,14 +40,18 @@ https://akneth-studio.vercel.app
   </div>
 `;
 
-    await transporter.sendMail({
-        from: `"AKNETH Studio" <${process.env.SMTP_USER}>`,
-        to,
-        subject: `Odpowiedź: ${subject}`,
-        text: textBody,
-        html: htmlBody,
-        replyTo: process.env.SMTP_USER,
-    });
-
-    return NextResponse.json({ success: true })
+    try {
+        await transporter.sendMail({
+            from: `"AKNETH Studio" <${process.env.SMTP_USER}>`,
+            to,
+            subject: `Odpowiedź: ${subject}`,
+            text: textBody,
+            html: htmlBody,
+            replyTo: process.env.SMTP_USER,
+        });
+        return NextResponse.json({ success: true });
+    } catch (error) {
+        console.error('Błąd wysyłki maila:', error);
+        return NextResponse.json({ success: false, error: 'Błąd wysyłki maila.' }, { status: 500 });
+    }
 }
