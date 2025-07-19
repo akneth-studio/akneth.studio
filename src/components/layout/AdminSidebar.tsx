@@ -35,11 +35,6 @@ const adminNav = [
         href: '/admin/vacation',
         label: 'Bannery',
         icon: BsAirplane,
-    },
-    {
-        href: '/admin/account',
-        label: 'Konto',
-        icon: BiSolidUserAccount,
     }
 ]
 
@@ -80,9 +75,14 @@ export default function AdminSidebar() {
             .from('messages')
             .select('id', { count: 'exact', head: true })
             .eq('is_read', false)
-            .then(({ count }) => setUnreadCount(count || 0))
+            .then(({ count, error }) => {
+                if (error) {
+                    console.error('Error fetching unread messages:', error)
+                    return
+                }
+                setUnreadCount(count || 0)
+            })
     }, [])
-
     const handleLogout = async () => {
         await supabase.auth.signOut()
         router.push('/admin/login')

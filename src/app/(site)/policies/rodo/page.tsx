@@ -1,3 +1,5 @@
+'use client'
+
 import styles from '@/styles/Privacy.module.scss';
 import Link from 'next/link';
 import { Badge } from 'react-bootstrap';

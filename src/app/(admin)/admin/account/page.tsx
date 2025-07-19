@@ -17,13 +17,16 @@ export default function Account() {
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
 
+    const fetchUser = async () => {
+        const { data } = await supabase.auth.getUser();
+        setUser(data.user);
+        setEmail(data.user?.email || '');
+        setDisplayName(data.user?.user_metadata?.display_name || '');
+    };
+
     useEffect(() => {
-        supabase.auth.getUser().then(({ data }) => {
-            setUser(data.user)
-            setEmail(data.user?.email || '')
-            setDisplayName(data.user?.user_metadata?.display_name || '')
-        })
-    }, [user, setUser])
+        fetchUser();
+    }, []);
 
     // Zmiana e-maila
     const handleChangeEmail = async (e: React.FormEvent) => {
@@ -36,7 +39,10 @@ export default function Account() {
         }
         const { error } = await supabase.auth.updateUser({ email: newEmail })
         if (error) setError(error.message)
-        else setMessage('E-mail został zmieniony. Sprawdź skrzynkę pocztową, by potwierdzić zmianę.')
+        else {
+            setMessage('E-mail został zmieniony. Sprawdź skrzynkę pocztową, by potwierdzić zmianę.')
+            fetchUser();
+        }
     }
 
     // Zmiana hasła
@@ -71,6 +77,7 @@ export default function Account() {
             setMessage('Nazwa konta została zaktualizowana.')
             setDisplayName(newDisplayName)
             setNewDisplayName('')
+            fetchUser();
         }
     }
 
@@ -79,6 +86,7 @@ export default function Account() {
             <Container className="py-5" style={{ maxWidth: 480 }}>
                 <h2 className="mb-4 text-center">Moje konto</h2>
                 <div className="mb-4">
+                    <p><strong>ID:</strong> {user?.id}</p>
                     <p><strong>E-mail:</strong> {email}</p>
                     <p><strong>Nazwa konta:</strong> {displayName}</p>
                 </div>

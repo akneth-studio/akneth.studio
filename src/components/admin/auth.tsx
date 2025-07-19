@@ -13,15 +13,26 @@ export default function Auth({ children }: AuthProps) {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        supabase.auth.getUser().then(({ data: { user } }) => {
-            if (!user) {
+        const checkAuth = async () => {
+            try {
+                const { data: { user }, error } = await supabase.auth.getUser()
+                if (error) {
+                    console.error('Auth check failed:', error)
+                    router.push('/admin/login')
+                    return
+                }
+                if (!user) {
+                    router.push('/admin/login')
+                } else {
+                    setLoading(false)
+                }
+            } catch (error) {
+                console.error('Auth check error:', error)
                 router.push('/admin/login')
-            } else {
-                setLoading(false)
             }
-        })
+        }
+        checkAuth()
     }, [router])
-
     if (loading) return <div className="text-center py-5"><Spinner as='span' variant='dark' aria-hidden="true" animation="border" size='sm' className='me-2'/>Ładowanie...</div>
     return <>{children}</>;
 }

@@ -49,10 +49,19 @@ export default function VacationAdminPage() {
     useEffect(() => { fetchData(); }, []);
     async function fetchData() {
         setLoading(true);
-        const res = await fetch("/api/banners");
-        const data: BannerRow[] = await res.json();
-        setBanners(data.sort((a, b) => b.date_start.localeCompare(a.date_start)));
-        setLoading(false);
+        try {
+            const res = await fetch("/api/banners");
+            if (!res.ok) {
+                throw new Error("Nie udało się pobrać komunikatów.");
+            }
+            const data: BannerRow[] = await res.json();
+            setBanners(data.sort((a, b) => b.date_start.localeCompare(a.date_start)));
+        } catch (e) {
+            setBanners([]);
+            setPopup({ show: true, type: "error", message: "Błąd pobierania komunikatów." });
+        } finally {
+            setLoading(false);
+        }
     }
 
     // Modal
