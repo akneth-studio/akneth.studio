@@ -23,18 +23,16 @@ const policiesConfig = {
   },
 };
 
-type Props = {
-  params: {
-    slug: keyof typeof policiesConfig;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: keyof typeof policiesConfig };
+}): Promise<Metadata> {
   const slug = params.slug;
   const policy = policiesConfig[slug];
 
   if (!policy) {
-    return notFound();
+    notFound();
   }
 
   return {
@@ -47,12 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PolicyPage({ params }: Props) {
+export default async function PolicyPage({ params }: { params: { slug: keyof typeof policiesConfig } }) {
   const slug = params.slug;
   const policy = policiesConfig[slug];
 
   if (!policy) {
-    return notFound();
+    notFound();
   }
 
   return <PolicyView filename={policy.filename} />;
