@@ -96,18 +96,18 @@ export default function ContentManagementPage() {
                                 ) : files.length === 0 ? (
                                     <div className="card-body"><p>Brak plików w buckecie.</p></div>
                                 ) : (
-                                    <ul className="list-group list-group-flush">
-                                        {files.map((file) => (
-                                            <li
-                                                key={file.path}
-                                                onClick={() => setSelectedFile(file)}
-                                                className={`list-group-item list-group-item-action ${selectedFile?.path === file.path ? 'active' : ''}`}
-                                                style={{ cursor: 'pointer' }}
-                                            >
-                                                {file.path}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div className="list-group list-group-flush">
+                                    {files.map((file) => (
+                                    <button
+                                    type="button"
+                                    key={file.path}
+                                    onClick={() => setSelectedFile(file)}
+                                    className={`list-group-item list-group-item-action text-start ${selectedFile?.path === file.path ? 'active' : ''}`}
+                                    >
+                                    {file.path}
+                                    </button>
+                                    ))}
+                                    </div>
                                 )}
                             </div>
                         </div>
