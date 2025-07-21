@@ -18,7 +18,7 @@ export async function fetchPolicyMarkDown(filename: string): Promise<string> {
         // If there's an error or no data, throw an error
         console.error('Error fetching policy markdown:', error);
         throw new Error(`Failed to fetch ${filename}: ${error?.message || 'Unknown error'}`);
-    } catch (supabaseError) {
+    } catch {
         // Fallback lokalny
         const localPath = path.join(process.cwd(), 'src/content/policies', filename)
         return await fs.readFile(localPath, 'utf-8')
