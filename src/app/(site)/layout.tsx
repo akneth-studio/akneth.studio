@@ -8,7 +8,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from "@vercel/analytics/next";
 import { Banner } from '@/components/layout/Banner';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'; // XXX Zmien na realny URL: .env.local, .env.development, .env.production
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://twojadomena.pl'; // XXX Zmien na realny URL: .env.local, .env.development, .env.production, .env.staging
 
 const poppins = Poppins({
   subsets: ['latin-ext'],

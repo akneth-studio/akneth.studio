@@ -24,14 +24,22 @@ export default function Dashboard() {
 
     return (
         <>
-            <h1 className='text-center'>PANEL ADMINA</h1>
-            <div className='text-center'>
-                Witaj, <span className='fw-bold'>{username()}</span>!
-            </div>
+            {!user ? (
+                <div className='text-center'>
+                    Witaj, <span className='fw-bold'>{username()}</span>!
+                </div>
+            ) : (
+                <>
+                    <h1 className='text-center'>PANEL ADMINA</h1>
+                    <div className='text-center'>
+                        Witaj, <span className='fw-bold'>{username()}</span>!
+                    </div>
+                </>
+            )}
             {/* Tutaj Twój panel admina */}
             {!user ? (
                 <div className='align-items-center'>
-                    <h2 className='text-center'>Panel admina – dostęp tylko po zalogowaniu.</h2>
+                    <h2 className='text-center'>Dostęp tylko po zalogowaniu.</h2>
                     <div className='text-center'>
                         <CTAButton
                             type='button'
