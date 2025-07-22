@@ -75,9 +75,14 @@ export default function ContentManagementPage() {
             alert('Plik zaktualizowany pomyślnie!');
             setFileToUpload(null);
             fetchFiles();
-        } catch (e: any) {
-            console.error('Błąd podczas aktualizacji pliku:', e);
-            alert(`Wystąpił błąd podczas aktualizacji pliku: ${e.message}`);
+        } catch (e) {
+        console.error('Błąd podczas aktualizacji pliku:', e);
+        let errorMessage = 'Wystąpił błąd podczas aktualizacji pliku.';
+        if (e instanceof Error) {
+        // Teraz bezpiecznie odwołujemy się do `e.message`
+        errorMessage = `Wystąpił błąd podczas aktualizacji pliku: ${e.message}`;
+        }
+        alert(errorMessage);
         }
     };
 
