@@ -68,13 +68,16 @@ export default function ContentManagementPage() {
                 method: 'POST',
                 body: formData,
             });
-            if (!response.ok) throw new Error('Błąd wysyłania pliku');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Błąd wysyłania pliku');
+            }
             alert('Plik zaktualizowany pomyślnie!');
             setFileToUpload(null);
             fetchFiles();
-        } catch (e) {
+        } catch (e: any) {
             console.error('Błąd podczas aktualizacji pliku:', e);
-            alert('Wystąpił błąd podczas aktualizacji pliku.');
+            alert(`Wystąpił błąd podczas aktualizacji pliku: ${e.message}`);
         }
     };
 
