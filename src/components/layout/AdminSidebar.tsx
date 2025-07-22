@@ -83,26 +83,43 @@ export default function AdminSidebar() {
                 setUnreadCount(count || 0)
             })
     }, [])
+
+    useEffect(() => {
+        const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (session?.user) {
+                setUser(session.user)
+                setDisplayName(session.user.user_metadata?.display_name || '')
+            } else {
+                setUser(null)
+                setDisplayName('')
+            }
+        })
+        return () => listener?.subscription.unsubscribe()
+    }, [])
+
     const handleLogout = async () => {
         await supabase.auth.signOut()
         router.push('/admin/login')
     }
+
     return (
         <>
             <aside className="admin-sidebar p-3 d-flex flex-column flex-shrink-0">
                 <div>
                     <div className="logo mb-2">
-                        {/* Możesz wstawić tu logo z /public lub SVG */}
-                        {sideImage.map(item => (
-                            <Image
-                                key={item.id}
-                                src={item.src}
-                                alt={typeof item.alt === 'string' ? item.alt : 'AKNETH Studio'}
-                                width={item.width}
-                                height={item.height}
-                                className={item.class}
-                            />
-                        ))}
+                        <Link href={'/'} title='Strona główna' aria-label='Strona główna' className='d-flex align-items-center'>
+                            {/* Możesz wstawić tu logo z /public lub SVG */}
+                            {sideImage.map(item => (
+                                <Image
+                                    key={item.id}
+                                    src={item.src}
+                                    alt={typeof item.alt === 'string' ? item.alt : 'AKNETH Studio'}
+                                    width={item.width}
+                                    height={item.height}
+                                    className={item.class}
+                                />
+                            ))}
+                        </Link>
                     </div>
                     <hr />
                     <Nav as='ul' className='flex-column'>
@@ -122,8 +139,8 @@ export default function AdminSidebar() {
                         })}
                     </Nav>
                 </div>
-                {/* Sekcja na dole sidebara */}
 
+                {/* Sekcja na dole sidebara */}
                 <div className="mt-auto pt-4">
                     <hr />
                     {user ? (

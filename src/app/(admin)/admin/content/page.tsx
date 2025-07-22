@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { CmsFile } from '@/lib/content';
 import Auth from '@/components/admin/auth';
 import CTAButton from '@/components/CTAButton';
@@ -12,14 +12,24 @@ export default function ContentManagementPage() {
     const [error, setError] = useState<string | null>(null);
     const [fileToUpload, setFileToUpload] = useState<File | null>(null);
 
+    const groupedFiles = useMemo(() => {
+        return files.reduce((acc, file) => {
+            const lastSlashIndex = file.path.lastIndexOf('/');
+            const folder = lastSlashIndex > -1 ? file.path.substring(0, lastSlashIndex) : '/';
+            if (!acc[folder]) {
+                acc[folder] = [];
+            }
+            acc[folder].push(file);
+            return acc;
+        }, {} as Record<string, CmsFile[]>);
+    }, [files]);
+
     const fetchFiles = useCallback(async () => {
         setIsLoading(true);
         setError(null);
         try {
             const response = await fetch('/api/cms/files');
-            if (!response.ok) {
-                throw new Error('Odpowiedź sieciowa nie była poprawna.');
-            }
+            if (!response.ok) throw new Error('Odpowiedź sieciowa nie była poprawna.');
             const fileList = await response.json();
             setFiles(fileList);
         } catch (e) {
@@ -37,6 +47,14 @@ export default function ContentManagementPage() {
     useEffect(() => {
         setFileToUpload(null);
     }, [selectedFile]);
+
+    // Efekt do dynamicznego importu i inicjalizacji JavaScriptu Bootstrapa
+    useEffect(() => {
+        // Sprawdzamy, czy kod działa w przeglądarce przed importem
+        if (typeof window !== 'undefined') {
+            import('bootstrap/dist/js/bootstrap.bundle.min.js');
+        }
+    }, []);
 
     const handleDownload = async () => {
         if (!selectedFile) return;
@@ -76,13 +94,12 @@ export default function ContentManagementPage() {
             setFileToUpload(null);
             fetchFiles();
         } catch (e) {
-        console.error('Błąd podczas aktualizacji pliku:', e);
-        let errorMessage = 'Wystąpił błąd podczas aktualizacji pliku.';
-        if (e instanceof Error) {
-        // Teraz bezpiecznie odwołujemy się do `e.message`
-        errorMessage = `Wystąpił błąd podczas aktualizacji pliku: ${e.message}`;
-        }
-        alert(errorMessage);
+            console.error('Błąd podczas aktualizacji pliku:', e);
+            let errorMessage = 'Wystąpił błąd podczas aktualizacji pliku.';
+            if (e instanceof Error) {
+                errorMessage = `Wystąpił błąd podczas aktualizacji pliku: ${e.message}`;
+            }
+            alert(errorMessage);
         }
     };
 
@@ -104,17 +121,30 @@ export default function ContentManagementPage() {
                                 ) : files.length === 0 ? (
                                     <div className="card-body"><p>Brak plików w buckecie.</p></div>
                                 ) : (
-                                    <div className="list-group list-group-flush">
-                                    {files.map((file) => (
-                                    <button
-                                    type="button"
-                                    key={file.path}
-                                    onClick={() => setSelectedFile(file)}
-                                    className={`list-group-item list-group-item-action text-start ${selectedFile?.path === file.path ? 'active' : ''}`}
-                                    >
-                                    {file.path}
-                                    </button>
-                                    ))}
+                                    <div className="accordion accordion-flush" id="cmsFilesAccordion">
+                                        {Object.entries(groupedFiles).sort(([folderA], [folderB]) => folderA.localeCompare(folderB)).map(([folder, folderFiles], index) => (
+                                            <div className="accordion-item" key={folder}>
+                                                <h2 className="accordion-header" id={`heading-${index}`}>
+                                                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse-${index}`} aria-expanded="false" aria-controls={`collapse-${index}`}>
+                                                        {folder}
+                                                    </button>
+                                                </h2>
+                                                <div id={`collapse-${index}`} className="accordion-collapse collapse" aria-labelledby={`heading-${index}`} data-bs-parent="#cmsFilesAccordion">
+                                                    <div className="list-group list-group-flush">
+                                                        {folderFiles.map((file) => (
+                                                            <button
+                                                                type="button"
+                                                                key={file.path}
+                                                                onClick={() => setSelectedFile(file)}
+                                                                className={`list-group-item list-group-item-action text-start ${selectedFile?.path === file.path ? 'active' : ''}`}
+                                                            >
+                                                                {file.name}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 )}
                             </div>
