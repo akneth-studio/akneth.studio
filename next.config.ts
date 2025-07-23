@@ -40,7 +40,8 @@ const ContentSecurityPolicy = `
     https://betterstack.com
     https://betteruptime.com
     https://*.betteruptime.com
-    https://va.vercel-scripts.com/v1/script.debug.js;
+    https://va.vercel-scripts.com/v1/script.debug.js
+    https://vercel.live/_next-live/feedback/feedback.js;
   frame-src 'self' https://calendar.google.com https://www.google.com/recaptcha/ https://www.google.com https://www.gstatic.com https://apis.google.com https://www.google-analytics.com https://www.googletagmanager.com https://cookie-script.com https://cdn.cookie-script.com/s/ https://betterstack.com https://betteruptime.com https://betterstack.com https://betteruptime.com/ https://betterstack.com/uptime-monitoring https://betterstack.com/uptime-monitoring/ https://betterstack.com/uptime-monitoring/monitoring-dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/ https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/ https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/dashboard/dashboard https://*.betteruptime.com;
   frame-ancestors 'self' https://www.google.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://googletagmanager.com https://www.googletagmanager.com/debug/badge.css https://www.google-analytics.com https://cookie-script.com https://cdn.cookie-script.com/s/;
