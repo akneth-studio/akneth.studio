@@ -7,7 +7,8 @@ export function middleware(request: NextRequest) {
     if (host.startsWith('admin.')) {
         // Odcinamy 'admin.' i konstruujemy główny adres domeny
         const mainDomain = host.replace(/^admin\./, '')
-        const redirectUrl = `${mainDomain}/admin`
+        const protocol = request.nextUrl.protocol
+        const redirectUrl = `${protocol}//${mainDomain}/admin`
         return NextResponse.redirect(redirectUrl, 308)
     }
     // Dla innych – bez przekierowania
