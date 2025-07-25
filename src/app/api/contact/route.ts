@@ -1,7 +1,7 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from '@upstash/redis';
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/suprabaseClient';
+import { supabase } from '@/lib/supabaseClient';
 import { contactSchema } from '@/schemas/contactSchema';
 import { withBetterStack, BetterStackRequest } from '@logtail/next';
 
