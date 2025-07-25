@@ -4,7 +4,7 @@ import { supabase as supabaseAuth } from '@/lib/supabaseClient';
 
 export async function GET(req: NextRequest) {
     const healthCheckSecret = process.env.HEALTH_CHECK_SECRET;
-    const authHeader = req.headers.get('authorization');
+    const authHeader = req.headers.get('Authorization');
 
     // Zabezpieczenie endpointu, aby uniemożliwić nadużycia
     if (!healthCheckSecret) {
