@@ -1,8 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClientServ';
-import { supabase as supabaseAuth } from '@/lib/suprabaseClient';
+import { supabase as supabaseAuth } from '@/lib/supabaseClient';
 
 export async function GET(req: NextRequest) {
+    const healthCheckSecret = process.env.HEALTH_CHECK_SECRET;
+    const authHeader = req.headers.get('authorization');
+
+    // Zabezpieczenie endpointu, aby uniemożliwić nadużycia
+    if (!healthCheckSecret) {
+        // Jeśli sekret nie jest skonfigurowany, endpoint nie powinien działać publicznie.
+        // Zwracamy błąd, aby administrator wiedział, że musi ustawić zmienną.
+        console.error("HEALTH_CHECK_SECRET is not set. The health endpoint is misconfigured.");
+        return NextResponse.json({ status: 'error', message: 'Endpoint not configured' }, { status: 500 });
+    }
+    if (authHeader !== `Bearer ${healthCheckSecret}`) {
+        return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
     const errors: Record<string, string> = {};
 
     const sup_mail = process.env.SUPABASE_MAIL;
