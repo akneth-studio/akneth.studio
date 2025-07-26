@@ -16,8 +16,8 @@ export default function Popup({ message, onClose, show, type }: PopupProps) {
       show={show}
       onHide={onClose}
       centered
-      backdrop="static"
-      keyboard={false}
+      backdrop={true}
+      keyboard={true}
       className="popup-modal"
     >
       <Modal.Header closeButton>

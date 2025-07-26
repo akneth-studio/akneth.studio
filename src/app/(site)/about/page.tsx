@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
-import AboutServicesMarquee from '@/app/about/AboutServicesMarquee';
+import AboutServicesMarquee from '@/app/(site)/about/AboutServicesMarquee';
 import { Metadata } from 'next';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;

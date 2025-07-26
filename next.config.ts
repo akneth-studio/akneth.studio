@@ -1,5 +1,6 @@
 import path from "path";
 import type { NextConfig } from "next";
+import { withBetterStack } from "@logtail/next";
 
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -34,20 +35,26 @@ const ContentSecurityPolicy = `
     https://www.google-analytics.com
     https://www.googletagmanager.com
     https://cookie-script.com
-    https://cdn.cookie-script.com/s/;
-  frame-src 'self' https://calendar.google.com https://www.google.com/recaptcha/ https://www.google.com https://www.gstatic.com https://apis.google.com https://www.google-analytics.com https://www.googletagmanager.com https://cookie-script.com https://cdn.cookie-script.com/s/;
+    https://cdn.cookie-script.com/s/
+    https://betteruptime.com
+    https://betterstack.com
+    https://betteruptime.com
+    https://*.betteruptime.com
+    https://va.vercel-scripts.com/v1/script.debug.js
+    https://vercel.live/_next-live/feedback/feedback.js;
+  frame-src 'self' https://calendar.google.com https://www.google.com/recaptcha/ https://www.google.com https://www.gstatic.com https://apis.google.com https://www.google-analytics.com https://www.googletagmanager.com https://cookie-script.com https://cdn.cookie-script.com/s/ https://betterstack.com https://betteruptime.com https://betterstack.com https://betteruptime.com/ https://betterstack.com/uptime-monitoring https://betterstack.com/uptime-monitoring/ https://betterstack.com/uptime-monitoring/monitoring-dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/ https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/ https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/dashboard https://betterstack.com/uptime-monitoring/monitoring-dashboard/monitoring-dashboard/dashboard/dashboard https://*.betteruptime.com https://vercel.live/;
   frame-ancestors 'self' https://www.google.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://googletagmanager.com https://www.googletagmanager.com/debug/badge.css https://www.google-analytics.com https://cookie-script.com https://cdn.cookie-script.com/s/;
   font-src 'self' https://fonts.gstatic.com data:;
   img-src 'self' data: blob: https:;
-  connect-src 'self' https://api.supabase.io https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://apis.google.com https://cookie-script.com https://cdn.cookie-script.com/s/;
+  connect-src 'self' https://*.google-analytics.com https://api.supabase.io https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://apis.google.com https://cookie-script.com https://cdn.cookie-script.com/s/ https://vercel.live/;
 `
   .replace(/\s{2,}/g, " ")
   .trim();
 
 const nextConfig: NextConfig = {
   /* config options here */
-  productionBrowserSourceMaps: true, // W��cza source mapy dla frontendowej cz�ci produkcji
+  productionBrowserSourceMaps: true, // Włącza source mapy dla frontendowej części produkcji
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
@@ -67,4 +74,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBetterStack(nextConfig);

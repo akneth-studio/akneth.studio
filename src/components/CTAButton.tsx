@@ -2,9 +2,11 @@
 
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
 interface CTAButtonProps {
     text: string;
+    icon?: ReactNode;
     variant?: 'primary' | 'outline-primary' | 'secondary' | 'outline-secondary' | string;
     size?: 'sm' | 'lg' | '';
     className?: string;
@@ -20,6 +22,7 @@ interface CTAButtonProps {
  */
 export default function CTAButton({
     text,
+    icon,
     to,
     onClick,
     variant = 'outline-primary',
@@ -49,6 +52,7 @@ export default function CTAButton({
             aria-label={text}
             disabled={disabled}
         >
+            {icon ? icon : null}
             {text}
         </Button>
     );
