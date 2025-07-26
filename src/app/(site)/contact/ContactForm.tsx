@@ -72,7 +72,7 @@ export function ContactForm() {
                     else delete newErrors.name;
                     break;
                 case 'email':
-                    if (!value.match(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
+                    if (!value.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
                     else delete newErrors.email;
                     break;
                 case 'subject':
@@ -95,7 +95,7 @@ export function ContactForm() {
     const validate = () => {
         const newErrors: ContactFormErrors = {};
         if (!form.name.trim()) newErrors.name = 'Imię i nazwisko są wymagane';
-        if (!form.email.match(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
+        if (!form.email.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/i)) newErrors.email = 'Nieprawidłowy e-mail';
         if (!form.subject.trim()) newErrors.subject = 'Temat jest wymagany';
         if (!form.message.trim() || form.message.length < 10) newErrors.message = 'Wiadomość musi mieć min. 10 znaków';
         if (!consent) newErrors.consent = 'Musisz wyrazić zgodę na przetwarzanie danych.';

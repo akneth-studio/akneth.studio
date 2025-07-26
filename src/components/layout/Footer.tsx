@@ -42,13 +42,15 @@ const Footer = () => {
         <div className="hr-footer mx-5 px-5">
           <hr />
         </div>
-        <ul className="nav flex-column flex-md-row align-items-center">
-          {policyLinks.map(({ href, title }) => (
-            <li className="nav-item" key={href}>
-              <Link href={href} className="nav-link px-2" aria-label={title} title={title}>{`${title}`}</Link>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Nawigacja po politykach">
+          <ul className="nav flex-column flex-md-row align-items-center">
+            {policyLinks.map(({ href, title }) => (
+              <li className="nav-item" key={href}>
+                <Link href={href} className="nav-link px-2" aria-label={title} title={title}>{`${title}`}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   );
