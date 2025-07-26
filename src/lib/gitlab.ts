@@ -1,4 +1,3 @@
-// src/lib/gitlab.ts
 import { Buffer } from 'buffer';
 
 const gitlabToken = process.env.GITLAB_ACCESS_TOKEN;

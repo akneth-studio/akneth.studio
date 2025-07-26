@@ -1,4 +1,3 @@
-// lib/content.ts
 import { supabase } from '@/lib/supabaseClientServ';
 import { commitFileToGitLab } from '@/lib/gitlab';
 
