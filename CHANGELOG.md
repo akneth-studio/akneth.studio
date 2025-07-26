@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://gitlab.com/akneth.studio/akneth-website/compare/v1.0.0...v1.2.0) (2025-07-26)
+
+
+### Features
+
+* add auto-assign workflow and configuration files ([5f2d10b](https://gitlab.com/akneth.studio/akneth-website/commit/5f2d10b291b92623e0c614cb06366ccb98f5ecdd))
+* add canonical URLs and robots/sitemap functionality for SEO optimization ([180855e](https://gitlab.com/akneth.studio/akneth-website/commit/180855e7ec1ca86697ac7b58096899cd972dd773))
+* add FuzzyText component and integrate it into NotFound page; update HeroSection styles ([3b64d7f](https://gitlab.com/akneth.studio/akneth-website/commit/3b64d7fcbeba610280c1a82d03324666bd6109fb))
+* add Vercel Analytics integration to layout and update dependencies ([ed90540](https://gitlab.com/akneth.studio/akneth-website/commit/ed90540e2cf8d3d5c3169df2df84c2f6547465bf))
+* implement sitemap generation with XML response ([1ac615a](https://gitlab.com/akneth.studio/akneth-website/commit/1ac615a09fdef01344762f6db2f46833fa18d5a9))
+
+
+### Bug Fixes
+
+* correct formatting in Vercel deployment instructions ([e50b0e2](https://gitlab.com/akneth.studio/akneth-website/commit/e50b0e2ecddc4b792f547d10668bde3e7f7db506))
+* remove Bootstrap JS import from layout and load it dynamically in Navbar component ([8e5451e](https://gitlab.com/akneth.studio/akneth-website/commit/8e5451ed9dc605008b57f3512aa293f6b5433adf))
+* remove commented-out URL placeholder for author in metadata ([139cb0b](https://gitlab.com/akneth.studio/akneth-website/commit/139cb0b91951b690e539ced33d43f999c9642a64))
+* update deployment instructions from Render to Vercel in README.md ([04f9d50](https://gitlab.com/akneth.studio/akneth-website/commit/04f9d507d0d422107f983ed409e71594ff0385b4))
+* update permissions in auto-assign workflow ([05bfd0e](https://gitlab.com/akneth.studio/akneth-website/commit/05bfd0e3f251bae6c6c407786d5725398389ec21))
+* update README.md with project badges ([825be12](https://gitlab.com/akneth.studio/akneth-website/commit/825be12d551358cb7ef091c2f5036983e0cc2f2f))
+
+## [1.1.0](https://gitlab.com/akneth.studio/akneth-website/compare/v1.0.0...v1.1.0) (2025-07-26)
+
+
+### Features
+
+* add auto-assign workflow and configuration files ([5f2d10b](https://gitlab.com/akneth.studio/akneth-website/commit/5f2d10b291b92623e0c614cb06366ccb98f5ecdd))
+* add canonical URLs and robots/sitemap functionality for SEO optimization ([180855e](https://gitlab.com/akneth.studio/akneth-website/commit/180855e7ec1ca86697ac7b58096899cd972dd773))
+* add FuzzyText component and integrate it into NotFound page; update HeroSection styles ([3b64d7f](https://gitlab.com/akneth.studio/akneth-website/commit/3b64d7fcbeba610280c1a82d03324666bd6109fb))
+* add Vercel Analytics integration to layout and update dependencies ([ed90540](https://gitlab.com/akneth.studio/akneth-website/commit/ed90540e2cf8d3d5c3169df2df84c2f6547465bf))
+* implement sitemap generation with XML response ([1ac615a](https://gitlab.com/akneth.studio/akneth-website/commit/1ac615a09fdef01344762f6db2f46833fa18d5a9))
+
+
+### Bug Fixes
+
+* correct formatting in Vercel deployment instructions ([e50b0e2](https://gitlab.com/akneth.studio/akneth-website/commit/e50b0e2ecddc4b792f547d10668bde3e7f7db506))
+* remove Bootstrap JS import from layout and load it dynamically in Navbar component ([8e5451e](https://gitlab.com/akneth.studio/akneth-website/commit/8e5451ed9dc605008b57f3512aa293f6b5433adf))
+* remove commented-out URL placeholder for author in metadata ([139cb0b](https://gitlab.com/akneth.studio/akneth-website/commit/139cb0b91951b690e539ced33d43f999c9642a64))
+* update deployment instructions from Render to Vercel in README.md ([04f9d50](https://gitlab.com/akneth.studio/akneth-website/commit/04f9d507d0d422107f983ed409e71594ff0385b4))
+* update permissions in auto-assign workflow ([05bfd0e](https://gitlab.com/akneth.studio/akneth-website/commit/05bfd0e3f251bae6c6c407786d5725398389ec21))
+* update README.md with project badges ([825be12](https://gitlab.com/akneth.studio/akneth-website/commit/825be12d551358cb7ef091c2f5036983e0cc2f2f))
+
 ## [1.0.0](https://gitlab.com/akneth.studio/akneth-website/compare/v0.6.0...v1.0.0) (2025-06-21)
 
 
