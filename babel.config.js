@@ -1,3 +1,3 @@
-export default {
-  presets: ['next/babel', ['@babel/preset-react', { runtime: 'automatic' }]],
+module.exports = {
+  presets: ['next/babel'],
 };
