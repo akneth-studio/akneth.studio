@@ -35,7 +35,7 @@ describe('ContactInfo component', () => {
         };
 
         // Dynamicznie importujemy komponent, aby użył zmockowanych zmiennych
-        const ContactInfo = require('./src/components/contact/ContactInfo').default;
+        const ContactInfo = require('../src/components/contact/ContactInfo').default;
         render(<ContactInfo />);
 
         // Sprawdzamy, czy komponent renderuje dane ze zmiennych środowiskowych
@@ -57,7 +57,7 @@ describe('ContactInfo component', () => {
         delete process.env.NEXT_PUBLIC_EMAIL;
 
         // Dynamicznie importujemy komponent
-        const ContactInfo = require('./src/components/contact/ContactInfo').default;
+        const ContactInfo = require('../src/components/contact/ContactInfo').default;
         render(<ContactInfo />);
 
         // Sprawdzamy, czy komponent renderuje domyślne (fallback) dane

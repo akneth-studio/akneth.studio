@@ -1,9 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CTAButton from '../src/components/CTAButton';
-import { RouterContext } from '../test-utils/RouterContext';
-import { createMockRouter } from '../test-utils/createMockRouter';
 import '@testing-library/jest-dom';
+
+const pushMock = jest.fn();
+
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: pushMock,
+  }),
+}));
 
 describe('CTAButton component', () => {
   const onClickMock = jest.fn();
@@ -14,9 +20,7 @@ describe('CTAButton component', () => {
 
   it('renders with children and calls onClick when clicked', () => {
     render(
-      <RouterContext.Provider value={createMockRouter({})}>
-        <CTAButton onClick={onClickMock} text="Click me" type="button" />
-      </RouterContext.Provider>
+      <CTAButton onClick={onClickMock} text="Click me" type="button" />
     );
     const button = screen.getByLabelText('Click me');
     expect(button).toBeInTheDocument();
@@ -27,22 +31,15 @@ describe('CTAButton component', () => {
 
   it('renders disabled button when disabled prop is true', () => {
     render(
-      <RouterContext.Provider value={createMockRouter({})}>
-        <CTAButton disabled text="Disabled" type="button" />
-      </RouterContext.Provider>
+      <CTAButton disabled text="Disabled" type="button" />
     );
     const button = screen.getByLabelText('Disabled');
     expect(button).toBeDisabled();
   });
 
   it('navigates to href when href prop is provided', async () => {
-    const pushMock = jest.fn();
-    const router = createMockRouter({ push: pushMock });
-
     render(
-      <RouterContext.Provider value={router}>
-        <CTAButton to="/test" text="Navigate" type="button" />
-      </RouterContext.Provider>
+      <CTAButton to="/test" text="Navigate" type="button" />
     );
     const button = screen.getByLabelText('Navigate');
     fireEvent.click(button);

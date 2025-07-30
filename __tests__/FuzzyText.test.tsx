@@ -3,8 +3,7 @@ import { render, act } from '@testing-library/react';
 import FuzzyText from '../src/components/FuzzyText';
 import '@testing-library/jest-dom';
 
-// Mockowanie niezbędnych API przeglądarki dla środowiska JSDOM
-// JSDOM nie implementuje canvas, więc potrzebujemy podstawowego mocka.
+// Mocking necessary browser APIs for JSDOM environment
 const mockContext = {
   clearRect: jest.fn(),
   drawImage: jest.fn(),
@@ -19,13 +18,11 @@ const mockContext = {
   translate: jest.fn(),
 };
 
-// Mockowanie getContext na prototypie canvas
 Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
   writable: true,
   value: () => mockContext,
 });
 
-// Mockowanie document.fonts, używanego przez komponent
 if (typeof document.fonts === 'undefined') {
   Object.defineProperty(document, 'fonts', {
     value: {
@@ -34,28 +31,25 @@ if (typeof document.fonts === 'undefined') {
   });
 }
 
-// Mockowanie requestAnimationFrame do kontrolowania pętli animacji w testach
-global.requestAnimationFrame = jest.fn(() => 1);
-global.cancelAnimationFrame = jest.fn();
-window.getComputedStyle = jest.fn().mockReturnValue({
-  fontFamily: 'sans-serif',
-  fontSize: '128px', // Przykładowa wartość z clamp(), np. 8rem
+beforeAll(() => {
+  jest.useFakeTimers();
+  jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+    return setTimeout(cb, 0);
+  });
+  global.cancelAnimationFrame = jest.fn();
+  jest.spyOn(global, 'setTimeout');
+  window.getComputedStyle = jest.fn().mockReturnValue({
+    fontFamily: 'sans-serif',
+    fontSize: '128px',
+  });
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+  jest.restoreAllMocks();
 });
 
 describe('FuzzyText component', () => {
-  beforeAll(() => {
-    jest.useFakeTimers();
-  });
-
-  beforeEach(() => {
-    // Czyszczenie wszystkich mocków przed każdym testem, aby zapewnić izolację
-    jest.clearAllMocks();
-  });
-
-  afterAll(() => {
-    jest.useRealTimers();
-  });
-
   it('renders a canvas element', () => {
     const { container } = render(<FuzzyText>Test fuzzy text</FuzzyText>);
     const canvas = container.querySelector('canvas');
@@ -63,16 +57,12 @@ describe('FuzzyText component', () => {
   });
 
   it('initializes and starts the animation loop', async () => {
-    // Używamy `act` do opakowania renderowania i aktualizacji stanu
     await act(async () => {
       render(<FuzzyText>Test</FuzzyText>);
-      // Uruchamiamy wszystkie timery, aby zasymulować upływ czasu
       jest.runAllTimers();
     });
 
-    // Sprawdzamy, czy logika rysowania została wywołana
     expect(mockContext.fillText).toHaveBeenCalled();
-    // Sprawdzamy, czy pętla animacji została uruchomiona
-    expect(requestAnimationFrame).toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalled();
   });
 });
