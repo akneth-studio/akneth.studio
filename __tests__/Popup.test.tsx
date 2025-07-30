@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Popup from '../Popup';
-import { AppRouterContextProvider } from '../../test-utils/AppRouterContext';
+import Popup from '../src/components/Popup';
+import { AppRouterContextProvider } from '../test-utils/AppRouterContext';
 import '@testing-library/jest-dom';
 
 describe('Popup component', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import AdminSidebar from '../layout/AdminSidebar';
+import AdminSidebar from '../src/components/layout/AdminSidebar';
 import '@testing-library/jest-dom';
 
 jest.mock('../../utils/supabase/client', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import ReplyForm from '../admin/replyForm';
+import ReplyForm from '../src/components/admin/replyForm';
 import '@testing-library/jest-dom';
 
 // Mock Popup component to render popup when show is true
@@ -26,13 +26,17 @@ const mockMsg = {
 
 global.fetch = jest.fn();
 
-function flushPromises() {
-  return new Promise(resolve => setTimeout(resolve, 0));
-}
-
 describe('ReplyForm component', () => {
+  let consoleLogSpy: jest.SpyInstance;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    // Tłumimy console.log, aby uniknąć zaśmiecania wyników testów
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
   });
 
   it('renders message details and form', () => {
@@ -56,13 +60,10 @@ describe('ReplyForm component', () => {
     render(<ReplyForm msg={mockMsg} />);
     const textarea = screen.getByLabelText('Odpowiedź do klienta');
     fireEvent.change(textarea, { target: { value: 'Test reply' } });
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
-      await flushPromises();
-    });
+    fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
 
     await waitFor(() => {
-      expect(screen.getByText(/Odpowiedź została wysłana i zapisana./i)).toBeInTheDocument();
+      expect(screen.getByTestId('popup')).toHaveTextContent(/Odpowiedź została wysłana i zapisana./i);
     });
   });
 
@@ -76,17 +77,10 @@ describe('ReplyForm component', () => {
     render(<ReplyForm msg={mockMsg} />);
     const textarea = screen.getByLabelText('Odpowiedź do klienta');
     fireEvent.change(textarea, { target: { value: 'Test reply' } });
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
-      await flushPromises();
-    });
+    fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
 
     await waitFor(() => {
-      const popup = screen.queryByTestId('popup');
-      expect(popup).not.toBeNull();
-      if (popup) {
-        expect(popup.textContent).toMatch(/Błąd wysyłki lub zapisu/i);
-      }
+      expect(screen.getByTestId('popup')).toHaveTextContent(/Błąd wysyłki lub zapisu/i);
     });
   });
 
@@ -104,17 +98,10 @@ describe('ReplyForm component', () => {
     render(<ReplyForm msg={mockMsg} />);
     const textarea = screen.getByLabelText('Odpowiedź do klienta');
     fireEvent.change(textarea, { target: { value: 'Test reply' } });
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
-      await flushPromises();
-    });
+    fireEvent.click(screen.getByRole('button', { name: /Wyślij odpowiedź/i }));
 
     await waitFor(() => {
-      const popup = screen.queryByTestId('popup');
-      expect(popup).not.toBeNull();
-      if (popup) {
-        expect(popup.textContent).toMatch(/Błąd wysyłki lub zapisu/i);
-      }
+      expect(screen.getByTestId('popup')).toHaveTextContent(/Błąd wysyłki lub zapisu/i);
     });
   });
 });

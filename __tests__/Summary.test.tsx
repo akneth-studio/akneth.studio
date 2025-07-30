@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Summary from '../admin/Summary';
+import Summary from '../src/components/admin/Summary';
 
 describe('Summary component', () => {
   it('renders iframe with correct title and src', () => {

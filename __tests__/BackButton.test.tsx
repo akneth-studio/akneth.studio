@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import BackButton from '../admin/BackButton';
-import { RouterContext } from '../../test-utils/RouterContext';
-import { createMockRouter } from '../../test-utils/createMockRouter';
+import BackButton from '../src/components/admin/BackButton';
+import { RouterContext } from '../test-utils/RouterContext';
+import { createMockRouter } from '../test-utils/createMockRouter';
 import '@testing-library/jest-dom';
 
 describe('BackButton component', () => {

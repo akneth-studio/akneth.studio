@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import MessagesPreview from '../admin/MessagesPreview';
+import MessagesPreview from '../src/components/admin/MessagesPreview';
 import '@testing-library/jest-dom';
 
 // Mock MessagesPreview as a simple component for testing because it is an async server component

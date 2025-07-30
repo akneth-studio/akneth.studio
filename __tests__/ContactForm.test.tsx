@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import ContactFormWrapper from '../contact/ContactForm';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import ContactFormWrapper from '../src/components/contact/ContactForm';
 import '@testing-library/jest-dom';
 
 jest.mock('react-google-recaptcha-v3', () => ({
@@ -13,9 +13,17 @@ jest.mock('react-google-recaptcha-v3', () => ({
 global.fetch = jest.fn();
 
 describe('ContactForm component', () => {
+  let consoleLogSpy: jest.SpyInstance;
+
   beforeEach(() => {
     jest.clearAllMocks();
     process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY = 'test-key';
+    // Tłumimy console.log, aby uniknąć zaśmiecania wyników testów
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
   });
 
   it('renders form fields and submit button when reCAPTCHA key is set', () => {
@@ -35,14 +43,13 @@ describe('ContactForm component', () => {
 
   it('validates form and shows errors on submit with empty fields', async () => {
     render(<ContactFormWrapper />);
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
-    });
-    expect(screen.getByText(/imię i nazwisko są wymagane/i)).toBeInTheDocument();
-    expect(screen.getByText(/nieprawidłowy e-mail/i)).toBeInTheDocument();
-    expect(screen.getByText(/temat jest wymagany/i)).toBeInTheDocument();
-    expect(screen.getByText(/wiadomość musi mieć min. 10 znaków/i)).toBeInTheDocument();
-    expect(screen.getByText(/musisz wyrazić zgodę/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
+
+    expect(await screen.findByText(/imię i nazwisko są wymagane/i)).toBeInTheDocument();
+    expect(await screen.findByText(/nieprawidłowy e-mail/i)).toBeInTheDocument();
+    expect(await screen.findByText(/temat jest wymagany/i)).toBeInTheDocument();
+    expect(await screen.findByText(/wiadomość musi mieć min. 10 znaków/i)).toBeInTheDocument();
+    expect(await screen.findByText(/musisz wyrazić zgodę/i)).toBeInTheDocument();
   });
 
   it('submits form successfully and shows success popup', async () => {
@@ -56,9 +63,8 @@ describe('ContactForm component', () => {
     fireEvent.change(screen.getByLabelText(/temat\*/i), { target: { value: 'Test Subject' } });
     fireEvent.change(screen.getByLabelText(/treść wiadomości\*/i), { target: { value: 'This is a test message.' } });
     fireEvent.click(screen.getByLabelText(/wyrażam zgodę/i));
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
-    });
+    fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
+
     await waitFor(() => {
       expect(screen.getByText(/dziękujemy za kontakt/i)).toBeInTheDocument();
     });
@@ -75,9 +81,8 @@ describe('ContactForm component', () => {
     fireEvent.change(screen.getByLabelText(/temat\*/i), { target: { value: 'Test Subject' } });
     fireEvent.change(screen.getByLabelText(/treść wiadomości\*/i), { target: { value: 'This is a test message.' } });
     fireEvent.click(screen.getByLabelText(/wyrażam zgodę/i));
-    await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
-    });
+    fireEvent.click(screen.getByRole('button', { name: /wyślij wiadomość/i }));
+
     await waitFor(() => {
       expect(screen.getByText(/nie udało się wysłać wiadomości/i)).toBeInTheDocument();
     });

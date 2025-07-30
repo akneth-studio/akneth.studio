@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import CTAButton from '../CTAButton';
-import { RouterContext } from '../../test-utils/RouterContext';
-import { createMockRouter } from '../../test-utils/createMockRouter';
+import CTAButton from '../src/components/CTAButton';
+import { RouterContext } from '../test-utils/RouterContext';
+import { createMockRouter } from '../test-utils/createMockRouter';
 import '@testing-library/jest-dom';
 
 describe('CTAButton component', () => {
