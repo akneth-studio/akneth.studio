@@ -13,6 +13,7 @@ const customJestConfig = {
   transformIgnorePatterns: [
     '/node_modules/(?!(isows|@supabase|@supabase/supabase-js|@supabase/realtime-js|@supabase/gotrue-js|@supabase/postgrest-js|@supabase/supabase-auth-helpers-js)/)', // Transform these modules
   ],
+  coverageReporters: ['text', 'lcov', 'cobertura'],
 };
 
 module.exports = createJestConfig(customJestConfig);
