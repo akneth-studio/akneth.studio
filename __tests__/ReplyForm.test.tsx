@@ -4,7 +4,7 @@ import ReplyForm from '../src/components/admin/replyForm';
 import '@testing-library/jest-dom';
 
 // Mock Popup component to render popup when show is true
-jest.mock('../Popup', () => {
+jest.mock('../src/components/Popup', () => {
   return function MockPopup(props: { show: boolean; message: string }) {
     if (!props.show) return null;
     return <div data-testid="popup">{props.message}</div>;

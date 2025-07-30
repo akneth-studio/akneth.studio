@@ -43,9 +43,17 @@ window.getComputedStyle = jest.fn().mockReturnValue({
 });
 
 describe('FuzzyText component', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
   beforeEach(() => {
     // Czyszczenie wszystkich mocków przed każdym testem, aby zapewnić izolację
     jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
   });
 
   it('renders a canvas element', () => {
@@ -58,8 +66,8 @@ describe('FuzzyText component', () => {
     // Używamy `act` do opakowania renderowania i aktualizacji stanu
     await act(async () => {
       render(<FuzzyText>Test</FuzzyText>);
-      // Pozwalamy na rozwiązanie promisów wewnątrz useEffect
-      await new Promise(resolve => setTimeout(resolve, 0));
+      // Uruchamiamy wszystkie timery, aby zasymulować upływ czasu
+      jest.runAllTimers();
     });
 
     // Sprawdzamy, czy logika rysowania została wywołana

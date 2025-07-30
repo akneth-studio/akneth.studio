@@ -3,7 +3,7 @@ import { render, screen, act } from '@testing-library/react';
 import AdminSidebar from '../src/components/layout/AdminSidebar';
 import '@testing-library/jest-dom';
 
-jest.mock('../../utils/supabase/client', () => {
+jest.mock('../src/utils/supabase/client', () => {
   return {
     supabase: {
       auth: {

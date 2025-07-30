@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CTAButton from '../src/components/CTAButton';
 import { RouterContext } from '../test-utils/RouterContext';
 import { createMockRouter } from '../test-utils/createMockRouter';
@@ -35,7 +35,7 @@ describe('CTAButton component', () => {
     expect(button).toBeDisabled();
   });
 
-  it('navigates to href when href prop is provided', () => {
+  it('navigates to href when href prop is provided', async () => {
     const pushMock = jest.fn();
     const router = createMockRouter({ push: pushMock });
 
@@ -46,9 +46,8 @@ describe('CTAButton component', () => {
     );
     const button = screen.getByLabelText('Navigate');
     fireEvent.click(button);
-    // Wait for any async router push calls
-    setTimeout(() => {
+    await waitFor(() => {
       expect(pushMock).toHaveBeenCalledWith('/test');
-    }, 0);
+    });
   });
 });

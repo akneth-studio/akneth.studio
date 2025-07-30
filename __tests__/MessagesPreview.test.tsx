@@ -4,7 +4,7 @@ import MessagesPreview from '../src/components/admin/MessagesPreview';
 import '@testing-library/jest-dom';
 
 // Mock MessagesPreview as a simple component for testing because it is an async server component
-jest.mock('../admin/MessagesPreview', () => () => (
+jest.mock('../src/components/admin/MessagesPreview', () => () => (
   <div>
     <h2>Wiadomości z formularza kontaktowego</h2>
     <p>John Doe</p>
