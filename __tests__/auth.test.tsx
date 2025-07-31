@@ -81,6 +81,9 @@ describe('Auth component', () => {
   });
 
   it('redirects to login when getUser returns an error', async () => {
+    // Temporarily mock console.error to suppress the expected error message
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
     // Mock an error during user fetch
     getUserMock.mockResolvedValue({
       data: { user: null },
@@ -100,5 +103,33 @@ describe('Auth component', () => {
 
     // It should NOT render the children
     expect(screen.queryByTestId('child-component')).not.toBeInTheDocument();
+
+    // Restore the original console.error
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('redirects to login when getUser rejects', async () => {
+    // Temporarily mock console.error to suppress the expected error message
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    // Mock a rejection during user fetch
+    getUserMock.mockRejectedValue(new Error('Fetch rejected'));
+
+    render(
+      <Auth>
+        <div data-testid="child-component">Protected Content</div>
+      </Auth>,
+    );
+
+    // It should redirect
+    await waitFor(() => {
+      expect(pushMock).toHaveBeenCalledWith('/admin/login');
+    });
+
+    // It should NOT render the children
+    expect(screen.queryByTestId('child-component')).not.toBeInTheDocument();
+
+    // Restore the original console.error
+    consoleErrorSpy.mockRestore();
   });
 });
