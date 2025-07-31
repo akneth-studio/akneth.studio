@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ShortAboutSection component matches snapshot 1`] = `
+<div>
+  <section
+    class="about-preview container bg-light py-5 px-4"
+  >
+    <h2>
+      O mnie
+    </h2>
+    <p>
+      Nazywam się Katarzyna Pawłowska-Malesa. Jestem osobą otwartą, elastyczną i nie boję się żadnych wyzwań - zarówno w życiu, jak i w pracy. Programuję, tworzę szablony i automatyzacje, a każdemu projektowi poświęcam maksimum uwagi. Wierzę, że indywidualne podejście i szczerość to podstawa dobrej współpracy.
+    </p>
+    <button
+      aria-label="Dowiedz się więcej"
+      class="btn btn-outline-primary  btn btn-primary"
+      data-testid="cta-button"
+      role="button"
+      tabindex="0"
+      type="button"
+    >
+      Dowiedz się więcej
+    </button>
+  </section>
+</div>
+`;
