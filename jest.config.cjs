@@ -32,8 +32,8 @@ const customJestConfig = {
 const esmModulesToTransform = [
   'isows', 'react-markdown', 'rehype-raw', 'comma-separated-tokens',
   'space-separated-tokens', 'web-namespaces', 'zwitch', 'html-void-elements',
-  'isomorphic-ws', '@supabase/.*', 'unified', 'remark-.*', 'rehype-.*',
-  'unist-.*', 'hast-.*', 'mdast-.*', 'micromark-.*', 'vfile.*', 'bail',
+  'isomorphic-ws', '@supabase/.*', 'unified', 'is-plain-obj', 'remark-.*', 'rehype-.*', 'estree-util-is-identifier-name', 'html-url-attributes',
+  'unist-.*', 'hast-.*', 'mdast-.*', 'micromark', 'micromark-.*', 'decode-named-character-reference', 'trim-lines', 'vfile.*', 'bail',
   'trough', 'd3-.*', 'internmap', 'delaunator', 'robust-predicates',
   'devlop', 'hastscript', 'property-information',
 ].join('|');

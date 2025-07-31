@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PolicyContent component renders the policy content with all props and creates a snapshot 1`] = `
+<div>
+  <article
+    class="article p-3 p-md-5"
+    data-testid="policy-content"
+  >
+    <h1
+      class="page-title"
+    >
+      Test Heading
+    </h1>
+    <div
+      class="text-center"
+      id="last-updated"
+    >
+      <p
+        class="mx-auto px-3 py-2 fw-normal lh-base shadow-sm badge text-light bg-secondary"
+        style="font-size: 0.9rem;"
+      >
+        Data ostatniej aktualizacji: 
+        <br
+          class="d-block d-md-none py-1"
+        />
+        <span
+          class="fw-bold"
+        >
+          2024-01-01
+        </span>
+      </p>
+    </div>
+    <hr />
+    <p>
+      This is some test content.
+Here is an 
+      <a
+        href="/internal-page"
+      >
+        internal link
+      </a>
+      .
+And here is an 
+      <a
+        aria-label="external link"
+        href="https://example.com"
+        node="[object Object]"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        external link
+      </a>
+      .
+    </p>
+  </article>
+</div>
+`;
