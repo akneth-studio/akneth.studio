@@ -14,7 +14,7 @@ interface PolicyContentProps {
 
 export default function PolicyContent({ h1Text, content, lastUpdated }: PolicyContentProps) {
     return (
-        <article className={`${styles.article} p-3 p-md-5`}>
+        <article data-testid="policy-content" className={`${styles.article} p-3 p-md-5`}>
             <h1 className='page-title'>{h1Text}</h1>
             <div className='text-center' id='last-updated'>
                 <Badge
