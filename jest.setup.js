@@ -1,5 +1,8 @@
 // Add any global setup actions here
 
+// Polyfill Web APIs for Jest's Node.js environment
+import 'next/dist/server/web/globals';
+
 // Import Jest DOM for custom matchers
 import '@testing-library/jest-dom';
 

@@ -11,9 +11,11 @@ const customJestConfig = {
   testEnvironment: 'jsdom',
   // Lepsza konfiguracja aliasów i pokrycia kodu
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '\\.(css|less|scss|sass)$'
+: 'identity-obj-proxy',
     // Obsługa aliasów ścieżek (jeśli używasz `@/` w `tsconfig.json`)
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$'
+: '<rootDir>/src/$1',
   },
   coverageReporters: ['text', 'lcov', 'cobertura'],
   // Określenie, które pliki mają być uwzględnione w raporcie pokrycia kodu
