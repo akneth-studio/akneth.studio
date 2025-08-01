@@ -11,6 +11,7 @@ process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
 process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
 process.env.SUPABASE_URL = 'http://localhost:54321';
 process.env.SUPABASE_SERVICE_ROLE_KEY = 'dummy-key-for-testing';
+process.env.NEXT_PUBLIC_SITE_URL = 'https://akneth.pl';
 // Mock next/navigation useRouter to avoid invariant errors in tests
 jest.mock('next/navigation', () => {
   const actual = jest.requireActual('next/navigation');
