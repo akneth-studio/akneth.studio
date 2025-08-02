@@ -12,7 +12,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "release": "standard-version",
     "prepare": "husky install"
   },
