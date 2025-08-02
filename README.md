@@ -154,7 +154,36 @@ Każdy push lub merge do gałęzi `main` uruchamia automatyczne wdrożenie – n
 ---
 
 ## 🧪 Testowanie
-- (Opcjonalnie) Dodaj testy jednostkowe lub integracyjne według potrzeb
+
+Projekt wykorzystuje [Jest](https://jestjs.io/) i [React Testing Library](https://testing-library.com/react/) do testów jednostkowych i integracyjnych.
+
+### Uruchamianie testów
+
+Aby uruchomić wszystkie testy, użyj komendy:
+
+```bash
+npm test
+```
+
+Aby uruchomić testy z pokryciem kodu, użyj:
+
+```bash
+npm test -- --coverage
+```
+
+Aby uruchomić konkretny plik testowy (np. dla `messages/page`), użyj:
+
+```bash
+npm test -- messages/page
+```
+
+Testy znajdują się w katalogu `__tests__/` i są zorganizowane zgodnie ze strukturą katalogów `src/app/`.
+
+### Konfiguracja testów
+
+- **`jest.setup.js`**: Ten plik konfiguruje środowisko testowe, dodając globalne polifille, rozszerzenia `jest-dom` dla asercji DOM oraz globalne mocki dla modułów takich jak `next/navigation` i zmiennych środowiskowych Supabase.
+- **`jest.config.cjs`**: Główny plik konfiguracyjny Jest, definiujący m.in. środowisko testowe (`jsdom`), mapowanie modułów (alias `@/`), raportowanie pokrycia kodu oraz ścieżki ignorowane podczas wyszukiwania testów.
+- **`test-utils/`**: Katalog zawierający pomocnicze narzędzia do testowania, w szczególności mocki dla routera Next.js, co pozwala na izolowane testowanie komponentów bez konieczności uruchamiania pełnego środowiska Next.js.
 
 ---
 
@@ -170,3 +199,4 @@ Projekt objęty licencją [Creative Commons Attribution 4.0 International (CC BY
 ---
 
 > Stworzono z pasją przez AKNETH Studio Katarzyna Pawłowska-Malesa
+
