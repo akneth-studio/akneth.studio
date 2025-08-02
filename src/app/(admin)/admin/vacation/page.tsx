@@ -265,10 +265,10 @@ export default function VacationAdminPage() {
                                         </td>
                                         <td>{MODES.find((m) => m.value === b.mode)?.label || b.mode}</td>
                                         <td>
-                                            {new Date(b.date_start).toLocaleString("pl-PL")} —<br />
-                                            {new Date(b.date_end).toLocaleString("pl-PL")}
+                                            {new Date(b.date_start).toLocaleDateString("pl-PL", { timeZone: 'Europe/Warsaw' })} —<br />
+                                            {new Date(b.date_end).toLocaleDateString("pl-PL", { timeZone: 'Europe/Warsaw' })}
                                         </td>
-                                        <td>{new Date(b.announce_from).toLocaleString("pl-PL")}</td>
+                                        <td>{new Date(b.announce_from).toLocaleString("pl-PL", { timeZone: 'Europe/Warsaw' })}</td>
                                         <td>{b.visible ? "TAK" : "NIE"}</td>
                                         <td className="d-flex gap-2">
                                             <CTAButton
