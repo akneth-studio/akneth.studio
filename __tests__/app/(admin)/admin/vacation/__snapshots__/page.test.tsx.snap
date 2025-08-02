@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`VacationAdminPage matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="py-4"
+  >
+    <div
+      class="d-flex justify-content-between align-items-center mb-4"
+    >
+      <h2
+        class="fw-bold mb-0"
+      >
+        Zarządzanie komunikatami (urlop, serwis, historia)
+      </h2>
+      <button
+        aria-label="Dodaj komunikat"
+        class="btn btn-primary d-flex align-items-center btn btn-primary"
+        data-testid="add-banner-button"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          class="me-2"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"
+          />
+        </svg>
+        Dodaj komunikat
+      </button>
+    </div>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-bordered table-hover"
+      >
+        <thead
+          class="table-light"
+        >
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              Typ
+            </th>
+            <th>
+              Zakres
+            </th>
+            <th>
+              Ogłoszenie
+            </th>
+            <th>
+              Widoczny
+            </th>
+            <th>
+              Akcje
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span>
+                2…
+              </span>
+            </td>
+            <td>
+              Prace serwisowe
+            </td>
+            <td>
+              5.09.2025, 02:00:00 —
+              <br />
+              6.09.2025, 02:00:00
+            </td>
+            <td>
+              1.09.2025, 14:00:00
+            </td>
+            <td>
+              NIE
+            </td>
+            <td
+              class="d-flex gap-2"
+            >
+              <button
+                aria-label="Edytuj"
+                class="btn btn-outline-primary d-flex align-items-center btn btn-primary"
+                data-testid="edit-banner-2"
+                role="button"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
+                  />
+                </svg>
+                Edytuj
+              </button>
+              <button
+                aria-label="Usuń"
+                class="btn btn-outline-danger d-flex align-items-center btn btn-primary"
+                data-testid="delete-banner-2"
+                role="button"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"
+                  />
+                  <path
+                    d="M9 10h2v8H9zm4 0h2v8h-2z"
+                  />
+                </svg>
+                Usuń
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>
+                1…
+              </span>
+            </td>
+            <td>
+              Urlop
+            </td>
+            <td>
+              10.08.2025, 02:00:00 —
+              <br />
+              20.08.2025, 02:00:00
+            </td>
+            <td>
+              1.08.2025, 12:00:00
+            </td>
+            <td>
+              TAK
+            </td>
+            <td
+              class="d-flex gap-2"
+            >
+              <button
+                aria-label="Edytuj"
+                class="btn btn-outline-primary d-flex align-items-center btn btn-primary"
+                data-testid="edit-banner-1"
+                role="button"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
+                  />
+                </svg>
+                Edytuj
+              </button>
+              <button
+                aria-label="Usuń"
+                class="btn btn-outline-danger d-flex align-items-center btn btn-primary"
+                data-testid="delete-banner-1"
+                role="button"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"
+                  />
+                  <path
+                    d="M9 10h2v8H9zm4 0h2v8h-2z"
+                  />
+                </svg>
+                Usuń
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</DocumentFragment>
+`;
