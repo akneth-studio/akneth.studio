@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ServicesPage should match snapshot 1`] = `
+<div>
+  <article
+    class="container mt-5"
+  >
+    <h1
+      class="display-4 mb-4"
+    >
+      Nasze Usługi
+    </h1>
+    <div
+      data-testid="services-accordion"
+    >
+      Services Accordion
+    </div>
+    <div
+      data-testid="pricing-table"
+    >
+      Pricing Table
+    </div>
+    <div
+      data-testid="how-we-work"
+    >
+      How We Work
+    </div>
+    <div
+      class="text-center my-5"
+    >
+      <div
+        data-testid="cta-button"
+      >
+        CTA Button
+      </div>
+    </div>
+  </article>
+</div>
+`;

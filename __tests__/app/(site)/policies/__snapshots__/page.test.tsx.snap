@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PoliciesPage should match snapshot 1`] = `
+<div>
+  <div
+    class="policiesSection my-3"
+  >
+    <h1
+      class="heading"
+    >
+      Polityki i regulaminy
+    </h1>
+    <div
+      class="policiesList"
+    >
+      <a
+        href="/policies/privacy"
+      >
+        <div>
+          <h2>
+            Polityka prywatności
+          </h2>
+          <p>
+            Jak przetwarzamy i chronimy Twoje dane osobowe.
+          </p>
+        </div>
+        <span
+          data-testid="arrow-icon"
+        >
+          →
+        </span>
+      </a>
+      <a
+        href="/policies/rodo"
+      >
+        <div>
+          <h2>
+            RODO
+          </h2>
+          <p>
+            Informacje o przetwarzaniu danych zgodnie z RODO.
+          </p>
+        </div>
+        <span
+          data-testid="arrow-icon"
+        >
+          →
+        </span>
+      </a>
+      <a
+        href="/policies/terms"
+      >
+        <div>
+          <h2>
+            Regulamin
+          </h2>
+          <p>
+            Warunki korzystania z serwisu i usług AKNETH Studio.
+          </p>
+        </div>
+        <span
+          data-testid="arrow-icon"
+        >
+          →
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;

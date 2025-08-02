@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ContactPage should match snapshot 1`] = `
+<div>
+  <h1
+    class="mb-4 pt-5 text-center"
+  >
+    Kontakt
+  </h1>
+  <div
+    class="row"
+  >
+    <section
+      class="col-md-6 mb-4 mb-md-0 contact-info text-center align-md-start align-content-center"
+    >
+      <div
+        data-testid="contact-info"
+      >
+        Contact Info
+      </div>
+    </section>
+    <aside
+      class="col-md-6"
+    >
+      <div
+        data-testid="contact-form"
+      >
+        Contact Form
+      </div>
+    </aside>
+  </div>
+  <div
+    data-testid="schedule"
+  >
+    Schedule
+  </div>
+</div>
+`;
