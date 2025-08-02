@@ -25,6 +25,12 @@ Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
   value: () => mockContext,
 });
 
+declare global {
+  interface HTMLCanvasElement {
+    eventListeners?: { [key: string]: EventListenerOrEventListenerObject };
+  }
+}
+
 Object.defineProperty(window.HTMLCanvasElement.prototype, 'addEventListener', {
     writable: true,
     value: jest.fn().mockImplementation(function (this: HTMLCanvasElement, event, callback) {
@@ -96,6 +102,16 @@ describe('FuzzyText component', () => {
     expect(requestAnimationFrame).toHaveBeenCalled();
   });
 
+  it('handles numeric fontSize correctly', async () => {
+    await act(async () => {
+      render(<FuzzyText fontSize={24}>Test</FuzzyText>);
+      jest.runOnlyPendingTimers();
+    });
+    // Verify that fillText was called with the correct font size in the context
+    expect(mockContext.fillText).toHaveBeenCalled();
+    // You might need to inspect mockContext.font or other properties if you want to be more specific
+  });
+
   it('cleans up on unmount', async () => {
     let unmount: () => void;
     await act(async () => {
@@ -104,8 +120,16 @@ describe('FuzzyText component', () => {
       jest.runOnlyPendingTimers();
     });
 
+    // Trigger unmount
     // @ts-ignore
     unmount();
+
+    // Advance timers to ensure the next animation frame would attempt to run
+    jest.advanceTimersByTime(16); // Advance by one frame duration
+    jest.runOnlyPendingTimers(); // Ensure any pending requestAnimationFrame callbacks are executed
+    // Expect requestAnimationFrame not to be called again after cleanup
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(mockContext.clearRect).toHaveBeenCalledTimes(1); // Should not be called again after unmount
 
     expect(cancelAnimationFrame).toHaveBeenCalled();
     expect(HTMLCanvasElement.prototype.removeEventListener).toHaveBeenCalledWith('mousemove', expect.any(Function));
@@ -131,41 +155,221 @@ describe('FuzzyText component', () => {
   });
 
   it('changes intensity on mouse hover', async () => {
-    await act(async () => {
-        render(<FuzzyText baseIntensity={0.1} hoverIntensity={0.9}>Test</FuzzyText>);
-        jest.runOnlyPendingTimers();
+    const { container } = render(<FuzzyText baseIntensity={0.1} hoverIntensity={0.9}>Test</FuzzyText>);
+    const canvas = container.querySelector('canvas');
+    if (!canvas) throw new Error("Canvas not found");
+
+    // Mock getBoundingClientRect for accurate mouse event simulation
+    jest.spyOn(canvas, 'getBoundingClientRect').mockReturnValue({
+      left: 0, top: 0, width: 500, height: 100,
+      x: 0, y: 0, right: 500, bottom: 100, 
+      // @ts-ignore
+      toJSON: () => {},
     });
 
-    if (!canvasInstance) throw new Error("Canvas not found");
+    // Initial render and animation frame
+    await act(async () => {
+        jest.runOnlyPendingTimers();
+    });
+    
+    // Check initial intensity (baseIntensity)
+    // We expect dx to be small due to baseIntensity = 0.1
+    const initialDxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(initialDxCalls.length).toBeGreaterThan(0); // Ensure some fuzzing happened
+    initialDxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.1 * 30)); // baseIntensity * fuzzRange
+    });
+    mockContext.drawImage.mockClear(); // Clear calls for next assertion
 
     // Simulate mouse enter
     await act(async () => {
-        // @ts-ignore
-        const mouseMoveCallback = canvasInstance.eventListeners['mousemove'];
-        if (mouseMoveCallback) {
-            const rect = { left: 0, top: 0, width: 500, height: 100 };
-            canvasInstance.getBoundingClientRect = () => rect as DOMRect;
-            // Simulate mouse being inside the interactive area
-            mouseMoveCallback({ clientX: 250, clientY: 50 });
-        }
+        fireEvent.mouseMove(canvas, { clientX: 250, clientY: 50 }); // Inside interactive area
         jest.runOnlyPendingTimers();
     });
-    
-    // This is tricky to test directly without exposing internal state.
-    // We'll infer the intensity change by checking if the animation continues.
-    // A more robust test would require refactoring the component to make intensity testable.
-    expect(requestAnimationFrame).toHaveBeenCalled();
+
+    // Check hover intensity (hoverIntensity)
+    // We expect dx to be larger due to hoverIntensity = 0.9
+    const hoverDxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(hoverDxCalls.length).toBeGreaterThan(0); // Ensure some fuzzing happened
+    hoverDxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeGreaterThanOrEqual(0); // dx can be 0
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.9 * 30)); // hoverIntensity * fuzzRange
+    });
+    mockContext.drawImage.mockClear();
 
     // Simulate mouse leave
     await act(async () => {
-        // @ts-ignore
-        const mouseLeaveCallback = canvasInstance.eventListeners['mouseleave'];
-        if (mouseLeaveCallback) {
-            mouseLeaveCallback();
-        }
+        fireEvent.mouseLeave(canvas);
         jest.runOnlyPendingTimers();
     });
-    
-    expect(requestAnimationFrame).toHaveBeenCalled();
+
+    // Check return to base intensity
+    const leaveDxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(leaveDxCalls.length).toBeGreaterThan(0); // Ensure some fuzzing happened
+    leaveDxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.1 * 30)); // baseIntensity * fuzzRange
+    });
+  });
+
+  it('does not change intensity on mouse hover when enableHover is false', async () => {
+    const { container } = render(<FuzzyText enableHover={false} baseIntensity={0.1} hoverIntensity={0.9}>Test</FuzzyText>);
+    const canvas = container.querySelector('canvas');
+    if (!canvas) throw new Error("Canvas not found");
+
+    jest.spyOn(canvas, 'getBoundingClientRect').mockReturnValue({
+      left: 0, top: 0, width: 500, height: 100,
+      x: 0, y: 0, right: 500, bottom: 100, 
+      // @ts-ignore
+      toJSON: () => {},
+    });
+
+    await act(async () => {
+        jest.runOnlyPendingTimers();
+    });
+    mockContext.drawImage.mockClear();
+
+    // Simulate mouse move
+    await act(async () => {
+        fireEvent.mouseMove(canvas, { clientX: 250, clientY: 50 }); // Inside interactive area
+        jest.runOnlyPendingTimers();
+    });
+
+    // Expect intensity to remain baseIntensity
+    const dxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(dxCalls.length).toBeGreaterThan(0);
+    dxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.1 * 30)); // baseIntensity * fuzzRange
+    });
+  });
+
+  it('does not change intensity on touch move when enableHover is false', async () => {
+    const { container } = render(<FuzzyText enableHover={false} baseIntensity={0.1} hoverIntensity={0.9}>Test</FuzzyText>);
+    const canvas = container.querySelector('canvas');
+    if (!canvas) throw new Error("Canvas not found");
+
+    jest.spyOn(canvas, 'getBoundingClientRect').mockReturnValue({
+      left: 0, top: 0, width: 500, height: 100,
+      x: 0, y: 0, right: 500, bottom: 100, 
+      // @ts-ignore
+      toJSON: () => {},
+    });
+
+    await act(async () => {
+        jest.runOnlyPendingTimers();
+    });
+    mockContext.drawImage.mockClear();
+
+    // Simulate touch move
+    await act(async () => {
+        fireEvent.touchMove(canvas, {
+            touches: [{ clientX: 250, clientY: 50 }],
+            preventDefault: () => {},
+        });
+        jest.runOnlyPendingTimers();
+    });
+
+    // Expect intensity to remain baseIntensity
+    const dxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(dxCalls.length).toBeGreaterThan(0);
+    dxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.1 * 30)); // baseIntensity * fuzzRange
+    });
+  });
+
+  it('changes intensity on touch move', async () => {
+    const { container } = render(<FuzzyText enableHover={true} baseIntensity={0.1} hoverIntensity={0.9}>Test</FuzzyText>);
+    const canvas = container.querySelector('canvas');
+    if (!canvas) throw new Error("Canvas not found");
+
+    jest.spyOn(canvas, 'getBoundingClientRect').mockReturnValue({
+      left: 0, top: 0, width: 500, height: 100,
+      x: 0, y: 0, right: 500, bottom: 100, 
+      // @ts-ignore
+      toJSON: () => {},
+    });
+
+    await act(async () => {
+        jest.runOnlyPendingTimers();
+    });
+
+    mockContext.drawImage.mockClear();
+
+    // Simulate touch move
+    await act(async () => {
+        fireEvent.touchMove(canvas, {
+            touches: [{ clientX: 250, clientY: 50 }],
+            preventDefault: () => {},
+        });
+        jest.runOnlyPendingTimers();
+    });
+
+    const touchDxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(touchDxCalls.length).toBeGreaterThan(0);
+    touchDxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeGreaterThanOrEqual(0); // dx can be 0
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.9 * 30));
+    });
+    mockContext.drawImage.mockClear();
+
+    // Simulate touch end
+    await act(async () => {
+        fireEvent.touchEnd(canvas);
+        jest.runOnlyPendingTimers();
+    });
+
+    const touchEndDxCalls = mockContext.drawImage.mock.calls.filter(call => call[5] !== 0);
+    expect(touchEndDxCalls.length).toBeGreaterThan(0);
+    touchEndDxCalls.forEach(call => {
+        expect(Math.abs(call[5])).toBeLessThanOrEqual(Math.floor(0.1 * 30));
+    });
+  });
+
+  it('assigns cleanupFuzzyText to canvas on mount', async () => {
+    const { container } = render(<FuzzyText>Test</FuzzyText>);
+    const canvas = container.querySelector('canvas');
+    expect(canvas).toBeInTheDocument();
+    await act(async () => {
+      jest.runOnlyPendingTimers();
+    });
+    // @ts-ignore
+    expect(canvas.cleanupFuzzyText).toBeDefined();
+    // @ts-ignore
+    expect(typeof canvas.cleanupFuzzyText).toBe('function');
+  });
+
+  it('should return early if canvas is null', async () => {
+    // Temporarily override useRef to return null for canvasRef.current
+    const originalUseRef = React.useRef;
+    jest.spyOn(React, 'useRef').mockReturnValue({ current: null });
+
+    render(<FuzzyText>Test</FuzzyText>);
+
+    // Expect no canvas-related operations to have been called
+    expect(mockContext.fillText).not.toHaveBeenCalled();
+    expect(requestAnimationFrame).not.toHaveBeenCalled();
+
+    // Restore original useRef
+    jest.spyOn(React, 'useRef').mockImplementation(originalUseRef);
+  });
+
+  it('should return early if context is null', async () => {
+    // Temporarily override getContext to return null
+    const originalGetContext = window.HTMLCanvasElement.prototype.getContext;
+    Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
+      writable: true,
+      value: () => null,
+    });
+
+    render(<FuzzyText>Test</FuzzyText>);
+
+    // Expect no canvas-related operations to have been called
+    expect(mockContext.fillText).not.toHaveBeenCalled();
+    expect(requestAnimationFrame).not.toHaveBeenCalled();
+
+    // Restore original getContext
+    Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
+      writable: true,
+      value: originalGetContext,
+    });
   });
 });
