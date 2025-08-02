@@ -14,7 +14,7 @@ unit_tests:
   script:
     - npm ci
     - npm run test:coverage
-  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)%/'  # regex dopasowujący % pokrycia
+  coverage: '/All files\s*\|\s*([\d\.]+)/'  # regex dopasowujący % pokrycia
   artifacts:
     paths:
       - coverage/
