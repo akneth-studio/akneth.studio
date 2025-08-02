@@ -20,7 +20,7 @@ describe('POST /api/save-reply', () => {
     jest.clearAllMocks();
   });
 
-  const createRequest = (body) => {
+  const createRequest = (body: any) => {
     return new NextRequest('http://localhost/api/save-reply', {
       method: 'POST',
       body: JSON.stringify(body),

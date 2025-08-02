@@ -17,9 +17,12 @@ jest.mock('@upstash/ratelimit', () => {
     limit: _mockLimit,
   }));
 
-  MockRatelimitConstructor.slidingWindow = jest.fn(() => ({
-    limit: _mockLimit,
-  }));
+  // Explicitly add slidingWindow to the mock constructor
+  Object.assign(MockRatelimitConstructor, {
+    slidingWindow: jest.fn(() => ({
+      limit: _mockLimit,
+    })),
+  });
 
   return {
     Ratelimit: MockRatelimitConstructor,
