@@ -3,6 +3,10 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) 
 [![Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel&link=https%3A%2F%2Fakneth-studio.vercel.app)](https://akneth-studio.vercel.app) 
 [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/20vu2.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+[![codecov](https://codecov.io/gh/akneth-studio/akneth.studio/graph/badge.svg?token=XOfUaIzQox)](https://codecov.io/gh/akneth-studio/akneth.studio)
+
+---
+
 
 # AKNETH Studio – Strona firmowa
 
