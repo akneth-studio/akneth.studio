@@ -7,8 +7,8 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-export default async function MessageDetail({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function MessageDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
   const { data: msg, error } = await supabase
     .from('messages')
@@ -33,3 +33,4 @@ export default async function MessageDetail({ params }: { params: { id: string }
     </section>
   )
 }
+

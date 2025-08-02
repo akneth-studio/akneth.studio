@@ -13,7 +13,7 @@ unit_tests:
   image: node:22  # lub inna wersja Node, jaką używasz
   script:
     - npm ci
-    - npm run test
+    - npm run test:coverage
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)%/'  # regex dopasowujący % pokrycia
   artifacts:
     paths:
