@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Admin Dashboard Page should match snapshot when user is not authenticated 1`] = `
+<div>
+  <div
+    class="text-center"
+  >
+    Witaj, 
+    <span
+      class="fw-bold"
+    >
+      Użytkowniku
+    </span>
+    !
+  </div>
+  <div
+    class="align-items-center"
+  >
+    <h2
+      class="text-center"
+    >
+      Dostęp tylko po zalogowaniu.
+    </h2>
+    <div
+      class="text-center"
+    >
+      <button
+        data-testid="cta-button"
+        data-text="Zaloguj się"
+        data-to="/admin/login"
+      >
+        Zaloguj się
+      </button>
+      <button
+        data-testid="cta-button"
+        data-text="Strona główna"
+        data-to="/"
+      >
+        Strona główna
+      </button>
+    </div>
+  </div>
+</div>
+`;
