@@ -1,21 +1,16 @@
-import { createClient } from '@supabase/supabase-js'
 import Link from 'next/link';
 import { Table } from 'react-bootstrap';
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { supabase } from '@/utils/supabase/client';
 
 export default async function MessagesPreview() {
     const { data: messages, error } = await supabase
         .from('messages')
         .select('id, name, company, email, subject, message, created_at, replied, reply_text')
         .order('created_at', { ascending: false })
-        .limit(5)
+        .limit(5);
 
     if (error) {
-        return <div className="alert alert-danger">Błąd ładowania wiadomości: {error.message}</div>
+        return <div className="alert alert-danger">Błąd ładowania wiadomości: {error.message}</div>;
     }
 
     return (
@@ -46,7 +41,8 @@ export default async function MessagesPreview() {
                                                 month: '2-digit',
                                                 year: 'numeric',
                                                 hour: '2-digit',
-                                                minute: '2-digit'
+                                                minute: '2-digit',
+                                                timeZone: 'Europe/Warsaw'
                                             })
                                             : '—'}
                                     </td>
@@ -78,5 +74,5 @@ export default async function MessagesPreview() {
                 </div>
             </section>
         </>
-    )
+    );
 }

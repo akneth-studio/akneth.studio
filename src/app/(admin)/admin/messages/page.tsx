@@ -95,6 +95,7 @@ export default function MessagesList() {
                                             <td>
                                                 <input
                                                     type="checkbox"
+                                                    data-testid={`message-checkbox-${msg.id}`}
                                                     checked={selectedIds.includes(msg.id)}
                                                     onChange={() => handleSelect(msg.id)}
                                                 />
@@ -142,3 +143,4 @@ export default function MessagesList() {
         </>
     )
 }
+

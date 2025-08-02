@@ -15,6 +15,7 @@ interface CTAButtonProps {
     type: 'button' | 'submit' | 'reset';
     tabIndex?: number;
     disabled?: boolean;
+    "data-testid"?: string;
 }
 
 /**
@@ -30,6 +31,7 @@ export default function CTAButton({
     className = '',
     type = 'button',
     disabled = false,
+    "data-testid": dataTestId = 'cta-button',
 }: CTAButtonProps) {
     const router = useRouter();
     // Obsługa przekierowania, jeśli podano adres URL
@@ -47,7 +49,7 @@ export default function CTAButton({
             onClick={handleClick}
             className={`btn btn-${variant}${size ? ` btn-${size}` : ''} ${className}`}
             role="button"
-            data-testid="cta-button"
+            data-testid={dataTestId}
             tabIndex={0}
             aria-label={text}
             disabled={disabled}

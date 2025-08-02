@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`HomePage should match snapshot 1`] = `
+<div>
+  <div
+    data-testid="hero-section"
+  >
+    Hero Section
+  </div>
+  <div
+    data-testid="short-about-section"
+  >
+    Short About Section
+  </div>
+  <div
+    class="gy-5"
+  >
+    <div
+      class="row gy-md-5 gy-0 gx-5 align-items-center"
+    >
+      <div
+        class="col-12 col-lg-6"
+      >
+        <div
+          data-testid="services-preview-section"
+        >
+          Services Preview Section
+        </div>
+      </div>
+      <div
+        class="col-12 col-lg-6"
+      >
+        <div
+          data-testid="portfolio-preview-section"
+        >
+          Portfolio Preview Section
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-testid="contact-cta-section"
+  >
+    Contact CTA Section
+  </div>
+</div>
+`;

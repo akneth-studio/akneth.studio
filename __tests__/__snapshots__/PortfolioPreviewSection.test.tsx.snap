@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PortfolioPreviewSection component matches snapshot 1`] = `
+<div>
+  <section
+    class="portfolio-preview container bg-light py-5 px-4"
+  >
+    <h2>
+      Portfolio
+    </h2>
+    <ul
+      class="list-unstyled"
+    >
+      <li>
+        <strong>
+          Szablon Google Sheets dla kawiarni
+        </strong>
+         - 
+        <a
+          href="https://drive.google.com/drive/folders/1NySz1o6OOxVM-yWps897LPPegkeOoqLG?usp=sharing"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          zobacz na Google Drive
+        </a>
+      </li>
+      <li>
+        <strong>
+          Strona pisarska
+        </strong>
+         - 
+        <a
+          href="https://github.com/reisene/wilczar.writer"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          repozytorium na GitHub
+        </a>
+      </li>
+      <li>
+        <strong>
+          Serwis hulajnóg (prototyp)
+        </strong>
+         - 
+        <a
+          href="https://github.com/reisene/HulajDusza-serwis"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          repozytorium na GitHub
+        </a>
+      </li>
+    </ul>
+    <p
+      class="mt-3"
+    >
+      Wkrótce więcej przykładów!
+    </p>
+  </section>
+</div>
+`;

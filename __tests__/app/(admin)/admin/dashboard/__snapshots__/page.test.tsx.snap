@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Dashboard Page matches snapshot 1`] = `
+<div>
+  <div
+    data-testid="auth-wrapper"
+  >
+    <h1
+      class="text-center"
+    >
+      DASHBOARD
+    </h1>
+    <div
+      data-testid="summary"
+    >
+      Summary Component
+    </div>
+    <div
+      data-testid="messages-preview"
+    >
+      Messages Preview Component
+    </div>
+  </div>
+</div>
+`;

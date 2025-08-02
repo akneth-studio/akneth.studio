@@ -82,19 +82,20 @@ export default function ReplyForm({ msg }: { msg: Message }) {
                 type: 'success',
                 message: 'Odpowiedź została wysłana i zapisana.'
             });
-        } catch (err) {
-            let errorMsg = 'Błąd wysyłki lub zapisu.'
-            if (err instanceof Error) {
-                errorMsg += `<br/>(${err.message})`
-            }
-            setPopup({
-                show: true,
-                type: 'error',
-                message: errorMsg
-            });
-        } finally {
-            setLoading(false);
+    } catch (err) {
+        let errorMsg = 'Błąd wysyłki lub zapisu.'
+        if (err instanceof Error) {
+            errorMsg += `<br/>(${err.message})`
         }
+        console.log('Setting popup error:', errorMsg); // Debug log
+        setPopup({
+            show: true,
+            type: 'error',
+            message: errorMsg
+        });
+    } finally {
+        setLoading(false);
+    }
     }
 
     return (
@@ -110,18 +111,18 @@ export default function ReplyForm({ msg }: { msg: Message }) {
                 ))}
             </dl>
             <Form onSubmit={handleSubmit} className="mt-4">
-                <Form.Group>
-                    <Form.Label>Odpowiedź do klienta</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={4}
-                        value={reply}
-                        onChange={e => setReply(e.target.value)}
-                        placeholder="Wpisz treść odpowiedzi"
-                        required
-                        disabled={loading}
-                    />
-                </Form.Group>
+            <Form.Group controlId="replyTextarea">
+                <Form.Label>Odpowiedź do klienta</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    rows={4}
+                    value={reply}
+                    onChange={e => setReply(e.target.value)}
+                    placeholder="Wpisz treść odpowiedzi"
+                    required
+                    disabled={loading}
+                />
+            </Form.Group>
 
                 {/* PODGLĄD WIADOMOŚCI */}
                 <div

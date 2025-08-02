@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TermsPage should match snapshot 1`] = `
+<div>
+  <div
+    data-filename="terms.md"
+    data-testid="policy-view"
+  >
+    Policy Content for
+terms.md
+  </div>
+</div>
+`;

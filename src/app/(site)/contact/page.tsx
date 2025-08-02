@@ -1,6 +1,6 @@
-import ContactFormWrapper from './ContactForm';
-import Schedule from './Schedule';
-import ContactInfo from './ContactInfo';
+import ContactFormWrapper from '../../../components/contact/ContactForm';
+import Schedule from '../../../components/contact/Schedule';
+import ContactInfo from '../../../components/contact/ContactInfo';
 
 import { Metadata } from "next";
 

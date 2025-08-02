@@ -14,20 +14,22 @@ interface PolicyContentProps {
 
 export default function PolicyContent({ h1Text, content, lastUpdated }: PolicyContentProps) {
     return (
-        <article className={`${styles.article} p-3 p-md-5`}>
+        <article data-testid="policy-content" className={`${styles.article} p-3 p-md-5`}>
             <h1 className='page-title'>{h1Text}</h1>
-            <div className='text-center' id='last-updated'>
-                <Badge
-                    bg='secondary'
-                    text='light'
-                    as='p'
-                    style={{ fontSize: '0.9rem' }}
-                    className='mx-auto px-3 py-2 fw-normal lh-base shadow-sm'
-                >
-                    Data ostatniej aktualizacji: <br className='d-block d-md-none py-1' />
-                    <span className='fw-bold'>{lastUpdated}</span>
-                </Badge>
-            </div>
+            {lastUpdated && (
+                <div className='text-center' id='last-updated'>
+                    <Badge
+                        bg='secondary'
+                        text='light'
+                        as='p'
+                        style={{ fontSize: '0.9rem' }}
+                        className='mx-auto px-3 py-2 fw-normal lh-base shadow-sm'
+                    >
+                        Data ostatniej aktualizacji: <br className='d-block d-md-none py-1' />
+                        <span className='fw-bold'>{lastUpdated}</span>
+                    </Badge>
+                </div>
+            )}
             <hr />
             <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}

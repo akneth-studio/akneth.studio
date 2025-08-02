@@ -33,7 +33,8 @@ export default function AdminLogin() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const result = await supabase.auth.signInWithPassword({ email, password });
+    const error = result?.error;
     if (error) {
       setError(error.message);
       handleFailedLoginAttempt();
@@ -44,12 +45,13 @@ export default function AdminLogin() {
   };
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const result = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth`,
       },
     });
+    const error = result?.error;
     if (error) {
         setError(error.message);
         handleFailedLoginAttempt();
@@ -58,7 +60,7 @@ export default function AdminLogin() {
 
   // Nasłuchiwanie na błędy autoryzacji po powrocie z Google
   useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+    const authStateChange = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
         // W Supabase Auth masz listę autoryzowanych użytkowników.
         // Jeśli ktoś zaloguje się przez Google, a jego e-mail nie jest na liście
@@ -75,9 +77,12 @@ export default function AdminLogin() {
       }
     });
 
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
+    if (authStateChange && authStateChange.data && authStateChange.data.subscription) {
+      return () => {
+        authStateChange.data.subscription.unsubscribe();
+      };
+    }
+    return undefined;
   }, []);
 
   return (

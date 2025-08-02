@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ContactCtaSection component matches snapshot 1`] = `
+<div>
+  <section
+    class="contact-cta text-center bg-light py-5 px-4"
+  >
+    <h2>
+      Kontakt
+    </h2>
+    <p>
+      Masz pytania lub chcesz zlecić projekt? 
+      <br />
+      Umów się na bezpłatną konsultację lub napisz przez formularz kontaktowy.
+    </p>
+    <div
+      class="d-flex justify-content-center gap-3 mt-3"
+    >
+      <button
+        aria-label="Formularz kontaktowy"
+        class="btn btn-primary  btn btn-primary"
+        data-testid="cta-button"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        Formularz kontaktowy
+      </button>
+      <button
+        aria-label="Harmonogram spotkań"
+        class="btn btn-outline-primary  btn btn-primary"
+        data-testid="cta-button"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        Harmonogram spotkań
+      </button>
+    </div>
+  </section>
+</div>
+`;

@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MessagesList renders correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="messg"
+  >
+    <h1
+      class="mb-4"
+    >
+      Wszystkie wiadomości
+    </h1>
+    <button
+      aria-label="Oznacz jako przeczytane"
+      class="btn btn-success btn-sm mb-3 btn btn-primary"
+      data-testid="cta-button"
+      disabled=""
+      role="button"
+      tabindex="0"
+      type="button"
+    >
+      Oznacz jako przeczytane
+    </button>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="align-middle table table-striped table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th />
+            <th>
+              Data
+            </th>
+            <th>
+              Imię i nazwisko
+            </th>
+            <th>
+              Firma
+            </th>
+            <th>
+              E-mail
+            </th>
+            <th>
+              Temat
+            </th>
+            <th>
+              Odpowiedziano?
+            </th>
+            <th>
+              Akcje
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              <input
+                data-testid="message-checkbox-1"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="white-space: nowrap;"
+            >
+              01.01.2023, 11:00
+            </td>
+            <td>
+              John Doe
+            </td>
+            <td>
+              ABC Corp
+            </td>
+            <td>
+              <a
+                href="mailto:john@example.com"
+              >
+                john@example.com
+              </a>
+            </td>
+            <td>
+              Inquiry 1
+            </td>
+            <td
+              class="text-center"
+            >
+              <span
+                class="badge bg-danger"
+              >
+                Nie
+              </span>
+            </td>
+            <td>
+              <a
+                href="/admin/messages/1"
+              >
+                Podgląd / Odpowiedz
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2
+            </td>
+            <td>
+              <input
+                data-testid="message-checkbox-2"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="white-space: nowrap;"
+            >
+              02.01.2023, 12:00
+            </td>
+            <td>
+              Jane Smith
+            </td>
+            <td>
+              <span
+                class="text-muted"
+              >
+                —
+              </span>
+            </td>
+            <td>
+              <a
+                href="mailto:jane@example.com"
+              >
+                jane@example.com
+              </a>
+            </td>
+            <td>
+              Inquiry 2
+            </td>
+            <td
+              class="text-center"
+            >
+              <span
+                class="badge bg-success"
+              >
+                Tak
+              </span>
+            </td>
+            <td>
+              <a
+                href="/admin/messages/2"
+              >
+                Podgląd / Odpowiedz
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              3
+            </td>
+            <td>
+              <input
+                data-testid="message-checkbox-3"
+                type="checkbox"
+              />
+            </td>
+            <td
+              style="white-space: nowrap;"
+            >
+              03.01.2023, 13:00
+            </td>
+            <td>
+              <span
+                class="text-muted"
+              >
+                —
+              </span>
+            </td>
+            <td>
+              <span
+                class="text-muted"
+              >
+                —
+              </span>
+            </td>
+            <td>
+              <span
+                class="text-muted"
+              >
+                —
+              </span>
+            </td>
+            <td>
+              <span
+                class="text-muted"
+              >
+                —
+              </span>
+            </td>
+            <td
+              class="text-center"
+            >
+              <span
+                class="badge bg-danger"
+              >
+                Nie
+              </span>
+            </td>
+            <td>
+              <a
+                href="/admin/messages/3"
+              >
+                Podgląd / Odpowiedz
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</DocumentFragment>
+`;

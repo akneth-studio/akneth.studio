@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ServicesPreviewSection component matches snapshot 1`] = `
+<div>
+  <section
+    class="services-preview bg-light py-5 px-4"
+  >
+    <div
+      class="container"
+    >
+      <h2>
+        Usługi
+      </h2>
+      <ul
+        class="list-unstyled"
+      >
+        <li>
+          <strong>
+            Szablony Google
+          </strong>
+           - projektowanie funkcjonalnych arkuszy dla firm i osób prywatnych.
+        </li>
+        <li>
+          <strong>
+            Automatyzacje
+          </strong>
+           - usprawnianie codziennej pracy dzięki prostym, praktycznym rozwiązaniom.
+        </li>
+      </ul>
+      <button
+        aria-label="Zobacz pełną ofertę"
+        class="btn btn-outline-primary  btn btn-primary"
+        data-testid="cta-button"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        Zobacz pełną ofertę
+      </button>
+    </div>
+  </section>
+</div>
+`;

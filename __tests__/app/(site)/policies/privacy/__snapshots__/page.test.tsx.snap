@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PrivacyPage should match snapshot 1`] = `
+<div>
+  <div
+    data-filename="privacy.md"
+    data-testid="policy-view"
+  >
+    Policy Content for
+privacy.md
+  </div>
+</div>
+`;

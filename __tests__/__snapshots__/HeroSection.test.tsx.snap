@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`HeroSection component matches snapshot 1`] = `
+<div>
+  <section
+    class="hero text-center py-4"
+  >
+    <div
+      class="px-4 mb-4"
+      id="lead-gradient"
+    >
+      <h1
+        class="shinydark"
+      >
+        Szablony, automatyzacje i indywidualne rozwiązania
+        <br />
+        dla firm i klientów indywidualnych.
+      </h1>
+      <br />
+      <p
+        class="lead fs-1"
+      >
+        Elastyczność, uczciwość i szybka realizacja - Twoje potrzeby, mój priorytet.
+      </p>
+    </div>
+    <button
+      aria-label="Skontaktuj się"
+      class="btn btn-primary btn-lg  btn btn-primary"
+      data-testid="cta-button"
+      role="button"
+      tabindex="0"
+      type="button"
+    >
+      Skontaktuj się
+    </button>
+  </section>
+</div>
+`;

@@ -60,8 +60,9 @@ export function Banner({ banners }: BannersProps) {
     return (
         <>
             {banners
-                .filter(({ visible, announce_from, date_end }) =>
+                .filter(({ id, visible, announce_from, date_end }) =>
                     visible &&
+                    !closedIds.includes(id) &&
                     now >= new Date(announce_from) &&
                     now <= new Date(date_end)
                 )

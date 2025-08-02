@@ -233,6 +233,7 @@ export default function VacationAdminPage() {
                             type="button"
                             className="d-flex align-items-center"
                             onClick={openAddModal}
+                            data-testid="add-banner-button"
                         />
                     </div>
                     <Table bordered hover responsive>
@@ -264,10 +265,10 @@ export default function VacationAdminPage() {
                                         </td>
                                         <td>{MODES.find((m) => m.value === b.mode)?.label || b.mode}</td>
                                         <td>
-                                            {new Date(b.date_start).toLocaleString("pl-PL")} —<br />
-                                            {new Date(b.date_end).toLocaleString("pl-PL")}
+                                            {new Date(b.date_start).toLocaleDateString("pl-PL", { timeZone: 'Europe/Warsaw' })} —<br />
+                                            {new Date(b.date_end).toLocaleDateString("pl-PL", { timeZone: 'Europe/Warsaw' })}
                                         </td>
-                                        <td>{new Date(b.announce_from).toLocaleString("pl-PL")}</td>
+                                        <td>{new Date(b.announce_from).toLocaleString("pl-PL", { timeZone: 'Europe/Warsaw' })}</td>
                                         <td>{b.visible ? "TAK" : "NIE"}</td>
                                         <td className="d-flex gap-2">
                                             <CTAButton
@@ -277,6 +278,7 @@ export default function VacationAdminPage() {
                                                 type="button"
                                                 className="d-flex align-items-center"
                                                 onClick={() => openEditModal(b)}
+                                                data-testid={`edit-banner-${b.id}`}
                                             />
                                             <CTAButton
                                                 icon={<BiTrash className="me-2" />}
@@ -285,6 +287,7 @@ export default function VacationAdminPage() {
                                                 type="button"
                                                 className="d-flex align-items-center"
                                                 onClick={() => handleDelete(b.id)}
+                                                data-testid={`delete-banner-${b.id}`}
                                             />
                                         </td>
                                     </tr>
@@ -303,15 +306,16 @@ export default function VacationAdminPage() {
                     >
                         <Form onSubmit={handleFormSubmit}>
                             <Modal.Header closeButton>
-                                <Modal.Title>
+                                <Modal.Title data-testid="modal-title">
                                     {modalType === "edit" ? "Edytuj komunikat" : "Dodaj komunikat"}
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 {modalType === "edit" && editRecord && (
                                     <Form.Group className="mb-3">
-                                        <Form.Label className="fw-bold">ID (readonly)</Form.Label>
+                                        <Form.Label htmlFor="id" className="fw-bold">ID (readonly)</Form.Label>
                                         <Form.Control
+                                            id="id"
                                             type="text"
                                             value={editRecord.id}
                                             readOnly
@@ -320,8 +324,9 @@ export default function VacationAdminPage() {
                                     </Form.Group>
                                 )}
                                 <Form.Group className="mb-3">
-                                    <Form.Label className="fw-bold">Typ komunikatu</Form.Label>
+                                    <Form.Label htmlFor="mode" className="fw-bold">Typ komunikatu</Form.Label>
                                     <Form.Select
+                                        id="mode"
                                         name="mode"
                                         value={form.mode}
                                         onChange={handleSelectChange}
@@ -335,8 +340,9 @@ export default function VacationAdminPage() {
                                     <Form.Control.Feedback type="invalid">{formError.mode}</Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label className="fw-bold">Ogłoszenie od</Form.Label>
+                                    <Form.Label htmlFor="announce_from" className="fw-bold">Ogłoszenie od</Form.Label>
                                     <Form.Control
+                                        id="announce_from"
                                         type="datetime-local"
                                         name="announce_from"
                                         value={form.announce_from}
@@ -347,8 +353,9 @@ export default function VacationAdminPage() {
                                     <Form.Control.Feedback type="invalid">{formError.announce_from}</Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label className="fw-bold">Początek</Form.Label>
+                                    <Form.Label htmlFor="date_start" className="fw-bold">Początek</Form.Label>
                                     <Form.Control
+                                        id="date_start"
                                         type="datetime-local"
                                         name="date_start"
                                         value={form.date_start}
@@ -359,8 +366,9 @@ export default function VacationAdminPage() {
                                     <Form.Control.Feedback type="invalid">{formError.date_start}</Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label className="fw-bold">Koniec</Form.Label>
+                                    <Form.Label htmlFor="date_end" className="fw-bold">Koniec</Form.Label>
                                     <Form.Control
+                                        id="date_end"
                                         type="datetime-local"
                                         name="date_end"
                                         value={form.date_end}
@@ -371,8 +379,9 @@ export default function VacationAdminPage() {
                                     <Form.Control.Feedback type="invalid">{formError.date_end}</Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group className="mb-2">
-                                    <Form.Label className="fw-bold">Widoczny</Form.Label>
+                                    <Form.Label htmlFor="visible" className="fw-bold">Widoczny</Form.Label>
                                     <Form.Check
+                                        id="visible"
                                         type="checkbox"
                                         name="visible"
                                         label="Komunikat widoczny"
@@ -394,6 +403,7 @@ export default function VacationAdminPage() {
                                     variant="primary"
                                     type="submit"
                                     disabled={processing}
+                                    data-testid="modal-submit-button"
                                 />
                             </Modal.Footer>
                         </Form>

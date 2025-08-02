@@ -188,8 +188,14 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const bannerRes = await fetch(`${siteUrl}/api/banners/public`, {cache: 'no-store'});
-  const banners = bannerRes.ok ? await bannerRes.json() : [];
+  let banners = [];
+  try {
+    const bannerRes = await fetch(`${siteUrl}/api/banners/public`, {next: { revalidate: 3600 }});
+    banners = bannerRes.ok ? await bannerRes.json() : [];
+  } catch (error) {
+    console.error("Failed to fetch banners:", error);
+    banners = [];
+  }
   return (
     <html lang="pl">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />

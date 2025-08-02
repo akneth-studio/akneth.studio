@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Content Management Page matches snapshot 1`] = `
+<div>
+  <div
+    data-testid="auth-wrapper"
+  >
+    <div
+      class="container-fluid mt-4"
+    >
+      <h1
+        class="mb-4"
+      >
+        Zarządzanie Plikami CMS
+      </h1>
+      <div
+        class="row g-4"
+      >
+        <div
+          class="col-lg-5"
+        >
+          <div
+            class="card"
+          >
+            <div
+              class="card-header"
+            >
+              <h2
+                class="h5 mb-0"
+              >
+                Pliki w buckecie \`cms\`
+              </h2>
+            </div>
+            <div
+              class="card-body"
+            >
+              <p>
+                Brak plików w buckecie.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-7"
+        >
+          <div
+            class="card"
+          >
+            <div
+              class="card-body"
+            >
+              <p
+                class="text-muted mb-0"
+              >
+                Wybierz plik z listy, aby zobaczyć opcje.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
