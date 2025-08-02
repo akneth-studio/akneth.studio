@@ -1,4 +1,6 @@
 name: Run Tests & Collect Coverage
+permissions:
+  contents: read
 
 on:
   push:
