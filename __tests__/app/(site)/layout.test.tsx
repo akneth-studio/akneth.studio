@@ -73,7 +73,7 @@ describe('RootLayout (site)', () => {
       render(layout);
     });
 
-    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { cache: 'no-store' });
+    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { next: { revalidate: 3600 } });
     expect(screen.getByText('Test Children')).toBeInTheDocument();
     expect(screen.getByTestId('mock-navbar')).toBeInTheDocument();
     expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe('RootLayout (site)', () => {
       render(layout);
     });
 
-    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { cache: 'no-store' });
+    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { next: { revalidate: 3600 } });
     expect(screen.getByTestId('mock-banner')).toHaveTextContent('Mock Banner: 0 banners');
   });
 
@@ -110,7 +110,7 @@ describe('RootLayout (site)', () => {
       render(layout);
     });
 
-    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { cache: 'no-store' });
+    expect(mockFetch).toHaveBeenCalledWith('https://test.com/api/banners/public', { next: { revalidate: 3600 } });
     expect(screen.getByTestId('mock-banner')).toHaveTextContent('Mock Banner: 0 banners');
   });
 
