@@ -58,7 +58,7 @@ export default function AdminLogin() {
 
   // Nasłuchiwanie na błędy autoryzacji po powrocie z Google
   useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+    const authStateChange = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
         // W Supabase Auth masz listę autoryzowanych użytkowników.
         // Jeśli ktoś zaloguje się przez Google, a jego e-mail nie jest na liście
@@ -75,9 +75,12 @@ export default function AdminLogin() {
       }
     });
 
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
+    if (authStateChange && authStateChange.data && authStateChange.data.subscription) {
+      return () => {
+        authStateChange.data.subscription.unsubscribe();
+      };
+    }
+    return undefined;
   }, []);
 
   return (
