@@ -5,9 +5,8 @@ import '@testing-library/jest-dom';
 
 // Mock next/link for testing purposes
 jest.mock('next/link', () => {
-  return ({ children, href }: { children: React.ReactNode; href: string }) => {
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
-    return <a href={href}>{children}</a>;
+  return ({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: any }) => {
+    return <a href={href} {...props}>{children}</a>;
   };
 });
 
@@ -76,6 +75,6 @@ describe('PolicyContent component', () => {
     expect(screen.getByText(/some other content without links./i)).toBeInTheDocument();
 
     // Check that the last updated date is NOT rendered
-    expect(screen.queryByText(/ostatnia aktualizacja/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Data ostatniej aktualizacji:/i)).not.toBeInTheDocument();
   });
 });

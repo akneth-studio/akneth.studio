@@ -13,8 +13,7 @@ jest.mock('@/lib/supabaseClientServ', () => ({
         list: mockList,
         createSignedUrl: mockCreateSignedUrl,
         upload: mockUpload,
-      }),
-      )
+      })),
     },
   },
 }));

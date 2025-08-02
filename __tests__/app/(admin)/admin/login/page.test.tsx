@@ -57,7 +57,7 @@ Object.defineProperty(window, 'sessionStorage', {
 describe('AdminLogin Page', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    +    sessionStorageMock.clear();
+    sessionStorageMock.clear();
     mockSignInWithPassword.mockResolvedValue({ data: null, error: null });
     mockSignInWithOAuth.mockResolvedValue({ data: null, error: null });
     mockOnAuthStateChange.mockReturnValue({
@@ -67,14 +67,7 @@ describe('AdminLogin Page', () => {
         },
       },
     });
-    // Ensure router.push is a jest.fn() to avoid errors
-    const nextNavigation = require('next/navigation');
-    if (nextNavigation.useRouter) {
-      const router = nextNavigation.useRouter();
-      if (!router.push) {
-        router.push = jest.fn();
-      }
-    }
+    
     
   });
 

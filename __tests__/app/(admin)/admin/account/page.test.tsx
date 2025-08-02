@@ -16,19 +16,15 @@ jest.mock('@/utils/supabase/client', () => ({
 }));
 
 describe('Account Page', () => {
-  const mockGetUser = jest.fn();
-  const mockUpdateUser = jest.fn();
+  let mockSupabase: any;
 
   beforeEach(() => {
     jest.clearAllMocks();
     
-    // Get the actual mock functions from the module
-    const { supabase } = require('@/utils/supabase/client');
-    Object.assign(mockGetUser, supabase.auth.getUser);
-    Object.assign(mockUpdateUser, supabase.auth.updateUser);
+    mockSupabase = require('@/utils/supabase/client').supabase;
     
     // Default mock implementations
-    mockGetUser.mockResolvedValue({
+    mockSupabase.auth.getUser.mockResolvedValue({
       data: {
         user: {
           id: 'user123',
@@ -40,7 +36,7 @@ describe('Account Page', () => {
       }
     });
     
-    mockUpdateUser.mockResolvedValue({ error: null });
+        mockSupabase.auth.updateUser.mockResolvedValue({ error: null });
   });
 
   it('renders account information', async () => {
@@ -81,7 +77,7 @@ describe('Account Page', () => {
     fireEvent.click(saveButton);
     
     await waitFor(() => {
-      expect(mockUpdateUser).toHaveBeenCalledWith({ 
+      expect(mockSupabase.auth.updateUser).toHaveBeenCalledWith({ 
         data: { display_name: 'New Name' } 
       });
     });
@@ -99,7 +95,7 @@ describe('Account Page', () => {
     fireEvent.click(changeEmailButton);
     
     await waitFor(() => {
-      expect(mockUpdateUser).toHaveBeenCalledWith({ 
+      expect(mockSupabase.auth.updateUser).toHaveBeenCalledWith({ 
         email: 'new@example.com' 
       });
     });
@@ -120,7 +116,7 @@ describe('Account Page', () => {
     fireEvent.click(changePasswordButton);
     
     await waitFor(() => {
-      expect(mockUpdateUser).toHaveBeenCalledWith({ 
+      expect(mockSupabase.auth.updateUser).toHaveBeenCalledWith({ 
         // deepcode ignore NoHardcodedPasswords/test: test file
         password: 'test-password' 
       });
@@ -145,7 +141,7 @@ describe('Account Page', () => {
       expect(screen.getByText('Hasła muszą być identyczne.')).toBeInTheDocument();
     });
     
-    expect(mockUpdateUser).not.toHaveBeenCalled();
+    expect(mockSupabase.auth.updateUser).not.toHaveBeenCalled();
   });
 
   it('shows error when display name is empty', async () => {
@@ -171,6 +167,6 @@ describe('Account Page', () => {
       expect(screen.getByText('Podaj nazwę konta.')).toBeInTheDocument();
     }, { timeout: 2000 });
     
-    expect(mockUpdateUser).not.toHaveBeenCalled();
+    expect(mockSupabase.auth.updateUser).not.toHaveBeenCalled();
   });
 });

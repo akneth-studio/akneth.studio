@@ -22,7 +22,7 @@ describe('CTAButton component', () => {
     render(
       <CTAButton onClick={onClickMock} text="Click me" type="button" />
     );
-    const button = screen.getByLabelText('Click me');
+    const button = screen.getByRole('button', { name: 'Click me' });
     expect(button).toBeInTheDocument();
 
     fireEvent.click(button);
@@ -33,7 +33,7 @@ describe('CTAButton component', () => {
     render(
       <CTAButton disabled text="Disabled" type="button" />
     );
-    const button = screen.getByLabelText('Disabled');
+    const button = screen.getByRole('button', { name: 'Disabled' });
     expect(button).toBeDisabled();
   });
 
@@ -41,7 +41,7 @@ describe('CTAButton component', () => {
     render(
       <CTAButton to="/test" text="Navigate" type="button" />
     );
-    const button = screen.getByLabelText('Navigate');
+    const button = screen.getByRole('button', { name: 'Navigate' });
     fireEvent.click(button);
     await waitFor(() => {
       expect(pushMock).toHaveBeenCalledWith('/test');

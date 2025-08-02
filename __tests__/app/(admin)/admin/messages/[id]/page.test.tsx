@@ -107,7 +107,7 @@ describe('MessageDetail', () => {
 
     it('calls notFound when message is not found', async () => {
         mockSingle.mockResolvedValue({ data: null, error: { message: 'Not found' } });
-        render(await MessageDetail({ params: Promise.resolve({ id: 'non-existent-id' }) }));
+        render(await MessageDetail({ params: { id: 'non-existent-id' } }));
         await waitFor(() => {
             expect(notFound).toHaveBeenCalled();
         });

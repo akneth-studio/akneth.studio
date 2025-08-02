@@ -35,7 +35,9 @@ exports[`PolicyContent component renders the policy content with all props and c
       This is some test content.
 Here is an 
       <a
+        aria-label="internal link"
         href="/internal-page"
+        node="[object Object]"
       >
         internal link
       </a>

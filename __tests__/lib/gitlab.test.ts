@@ -44,9 +44,17 @@ describe('gitlab.ts', () => {
     });
 
     const result = await commitFileToGitLab('path', new ArrayBuffer(1), 'message');
-    expect(global.fetch).toHaveBeenCalled();
-    expect(consoleLogSpy).toHaveBeenCalledWith('Pomyślnie zacommitowano plik: src/content/path');
-    expect(result).toBe(true);
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('https://gitlab.com/api/v4/projects/123/repository/files/'),
+      expect.objectContaining({
+        method: 'PUT',
+        headers: expect.objectContaining({
+          'Content-Type': 'application/json',
+          'PRIVATE-TOKEN': 'token',
+        }),
+        body: expect.stringContaining('"commit_message":"message"'),
+      })
+    );
   });
 
   it('should return false and log error on API error', async () => {

@@ -24,10 +24,7 @@ describe('BackButton component', () => {
     expect(button).toHaveTextContent('Wróć');
 
     fireEvent.click(button);
-    // Wait for any async calls
-    setTimeout(() => {
-      expect(backMock).toHaveBeenCalled();
-    }, 0);
+    expect(backMock).toHaveBeenCalledTimes(1);
   });
 
   it('renders children content if provided', () => {
