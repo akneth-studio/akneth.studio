@@ -49,7 +49,7 @@ describe('Policies component', () => {
     // The component under test seems to have a bug: it passes the markdown content
     // as the heading text, instead of the title from the frontmatter.
     // These assertions are adjusted to match the current (buggy) behavior.
-    expect(screen.getByRole('heading', { name: /this is the test content/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /test policy title/i })).toBeInTheDocument();
     expect(screen.getByText(/ostatnia aktualizacja: 2024-01-01/i)).toBeInTheDocument();
     expect(screen.getByText('This is the test content.')).toBeInTheDocument();
   });
@@ -79,8 +79,8 @@ describe('Policies component', () => {
     // as the heading text, and provides a fallback for the date.
     // These assertions are adjusted to match the current (buggy) behavior.
     expect(
-      screen.getByRole('heading', { name: /some content without title/i }),
-    ).toBeInTheDocument();
+      screen.queryByRole('heading', { name: /some content without title/i }),
+    ).not.toBeInTheDocument();
     expect(screen.getByText(/ostatnia aktualizacja: nieznana data/i)).toBeInTheDocument();
   });
 });

@@ -1,0 +1,38 @@
+# Used in Codecov after updating
+coverage:
+  round: up
+  range: 70..100
+  precision: 5
+
+codecov:
+  branch: main
+  bot: "codecov-io"
+  strict_yaml_branch: default
+  max_report_age: off
+  token: secrets.CODECOV_TOKEN
+
+flag_management:
+  default_rules:
+    carryforward: true
+  individual_flags:
+    - name: components
+      paths:
+        - src/components/*
+    - name: utils
+      paths:
+        - src/utils/*
+    - name: pages
+      paths:
+        - src/*/page*
+    - name: api
+      paths:
+        - src/api/*
+    - name: lib
+      paths:
+        - src/lib/*
+    - name: site
+      paths: 
+        - src/(site)/*
+    - name: admin
+      paths:
+        - src/(admin)/*

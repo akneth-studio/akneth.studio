@@ -25,9 +25,24 @@ export default async function PolicyView({ filename }: PolicyViewProps) {
     const { content, data } = matter(fileContent);
     const lastUpdated = data.lastUpdated || 'Nieznana data';
     const withVars = injectVars(content, vars);
-    const [firstLine, ...restContent] = withVars.split('\n');
-    const h1Text = firstLine.replace(/^# /, '');
-    const bodyContent = restContent.join('\n');
+    let h1Text: string;
+    let bodyContent: string;
+
+    const lines = withVars.split('\n');
+    const firstLineIsH1 = lines.length > 0 && lines[0].startsWith('# ');
+
+    if (data.title) {
+        h1Text = data.title as string;
+        bodyContent = firstLineIsH1 ? lines.slice(1).join('\n') : withVars;
+    } else {
+        if (firstLineIsH1) {
+            h1Text = lines[0].replace(/^# /, '');
+            bodyContent = lines.slice(1).join('\n');
+        } else {
+            h1Text = '';
+            bodyContent = withVars;
+        }
+    }
 
     return <PolicyContent h1Text={h1Text} content={bodyContent} lastUpdated={lastUpdated} />;
 }
