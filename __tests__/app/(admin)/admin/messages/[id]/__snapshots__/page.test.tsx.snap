@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MessageDetail renders message details and matches snapshot when message is fetched successfully 1`] = `
+<DocumentFragment>
+  <section
+    class="messg"
+  >
+    <div
+      data-testid="mock-reply-form"
+    >
+      Mock Reply Form for test-id
+    </div>
+  </section>
+</DocumentFragment>
+`;

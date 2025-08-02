@@ -24,6 +24,7 @@ export default async function MessageDetail({ params }: { params: Promise<{ id: 
       .from('messages')
       .update({ is_read: true })
       .eq('id', id)
+      .single()
   }
 
   return (
