@@ -18,6 +18,10 @@ unit_tests:
   artifacts:
     paths:
       - coverage/
+    reports:
+      coverage_report:
+        coverage_format: cobertura  # or jacoco
+        path: coverage/cobertura-coverage.xml
   only:
     - main
     - merge_requests
