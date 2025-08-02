@@ -33,7 +33,8 @@ export default function AdminLogin() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const result = await supabase.auth.signInWithPassword({ email, password });
+    const error = result?.error;
     if (error) {
       setError(error.message);
       handleFailedLoginAttempt();
@@ -44,12 +45,13 @@ export default function AdminLogin() {
   };
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const result = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth`,
       },
     });
+    const error = result?.error;
     if (error) {
         setError(error.message);
         handleFailedLoginAttempt();
