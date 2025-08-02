@@ -26,3 +26,13 @@ jest.mock('next/navigation', () => {
     usePathname: jest.fn().mockReturnValue('/'),
   };
 });
+
+export const mockSignInWithPassword = jest.fn();
+export const mockSignInWithOAuth = jest.fn();
+export const mockOnAuthStateChange = jest.fn().mockReturnValue({
+  data: {
+    subscription: {
+      unsubscribe: jest.fn(),
+    },
+  },
+});
