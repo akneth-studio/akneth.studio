@@ -93,7 +93,7 @@ describe('MessageDetail', () => {
     });
 
     it('renders message details and matches snapshot when message is fetched successfully', async () => {
-        const { asFragment } = render(await MessageDetail({ params: Promise.resolve({ id: mockMessage.id }) }));
+        const { asFragment } = render(await MessageDetail({ params: { id: mockMessage.id } }));
         await waitFor(() => {
             expect(screen.getByTestId('mock-reply-form')).toBeInTheDocument();
         });
@@ -118,7 +118,7 @@ describe('MessageDetail', () => {
         mockSingle.mockResolvedValueOnce({ data: unreadMessage, error: null });
         mockUpdateSingle.mockResolvedValueOnce({ data: null, error: null }); // Mock the update call
 
-        render(await MessageDetail({ params: Promise.resolve({ id: unreadMessage.id }) }));
+        render(await MessageDetail({ params: { id: unreadMessage.id } }));
 
         await waitFor(() => {
             expect(mockUpdate).toHaveBeenCalledWith({ is_read: true });
@@ -131,7 +131,7 @@ describe('MessageDetail', () => {
         const readMessage = { ...mockMessage, is_read: true };
         mockSingle.mockResolvedValueOnce({ data: readMessage, error: null });
 
-        render(await MessageDetail({ params: Promise.resolve({ id: readMessage.id }) }));
+        render(await MessageDetail({ params: { id: readMessage.id } }));
 
         await waitFor(() => {
             expect(mockUpdate).not.toHaveBeenCalled();

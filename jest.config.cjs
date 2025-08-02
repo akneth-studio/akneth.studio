@@ -43,6 +43,7 @@ const esmModulesToTransform = [
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 // We wrap it in an async function to modify the config after it's created.
 module.exports = async () => {
+  process.env.TZ = 'Europe/Warsaw';
   const jestConfig = await createJestConfig(customJestConfig)();
   // The following line is the key fix for the ESM-related errors.
   // It modifies the default transformIgnorePatterns from next/jest.

@@ -11,18 +11,19 @@ jest.mock('@upstash/redis', () => ({
 }));
 
 jest.mock('@upstash/ratelimit', () => {
-  const mockLimit = jest.fn().mockResolvedValue({ success: true });
-  
-  class MockRatelimit {
-    limit = mockLimit;
-    
-    static slidingWindow = jest.fn(() => ({
-      limit: mockLimit,
-    }));
-  }
-  
+  const _mockLimit = jest.fn();
+
+  const MockRatelimitConstructor = jest.fn(() => ({
+    limit: _mockLimit,
+  }));
+
+  MockRatelimitConstructor.slidingWindow = jest.fn(() => ({
+    limit: _mockLimit,
+  }));
+
   return {
-    Ratelimit: MockRatelimit,
+    Ratelimit: MockRatelimitConstructor,
+    _mockLimit: _mockLimit, // Export the mockLimit
   };
 });
 
@@ -78,13 +79,8 @@ describe('POST /api/contact', () => {
     });
     
     // Reset rate limit mock for each test
-    const { Ratelimit } = require('@upstash/ratelimit');
-    if (Ratelimit.mockImplementation) {
-      const mockLimit = jest.fn().mockResolvedValue({ success: true });
-      Ratelimit.mockImplementation(() => ({
-        limit: mockLimit,
-      }));
-    }
+    const { _mockLimit } = require('@upstash/ratelimit');
+    _mockLimit.mockResolvedValue({ success: true });
   });
 
   const createRequest = (body: any) => {
@@ -111,27 +107,8 @@ describe('POST /api/contact', () => {
   });
 
   it('should return 429 on rate limit exceeded', async () => {
-    // Mock rate limit failure by redefining the mock implementation
-    const mockLimit = jest.fn().mockResolvedValue({ success: false });
-    
-    // Redefine the Ratelimit mock to use the failing limit function
-    jest.mock('@upstash/ratelimit', () => {
-      class MockRatelimit {
-        limit = mockLimit;
-        
-        static slidingWindow = jest.fn(() => ({
-          limit: mockLimit,
-        }));
-      }
-      
-      return {
-        Ratelimit: MockRatelimit,
-      };
-    });
-    
-    // Re-import the module to use the new mock
-    jest.resetModules();
-    const { POST } = require('@/app/api/contact/route');
+    const { _mockLimit } = require('@upstash/ratelimit');
+    _mockLimit.mockResolvedValueOnce({ success: false });
 
     const req = createRequest(validData);
     const response = await POST(req);
