@@ -108,6 +108,7 @@ describe('AdminLogin Page', () => {
     await waitFor(() => {
       expect(mockSignInWithPassword).toHaveBeenCalledWith({
         email: 'user@example.com',
+        // deepcode ignore NoHardcodedPasswords/test: test file
         password: 'password123',
       });
     });

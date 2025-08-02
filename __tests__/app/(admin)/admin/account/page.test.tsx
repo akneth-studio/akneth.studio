@@ -112,8 +112,8 @@ describe('Account Page', () => {
     const passwordInput = screen.getByPlaceholderText('Nowe hasło');
     const confirmPasswordInput = screen.getByPlaceholderText('Powtórz nowe hasło');
     
-    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } });
-    fireEvent.change(confirmPasswordInput, { target: { value: 'newpassword123' } });
+    fireEvent.change(passwordInput, { target: { value: 'test-password' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: 'test-password' } });
     
     // Submit form
     const changePasswordButton = screen.getByText('Zmień hasło');
@@ -121,7 +121,8 @@ describe('Account Page', () => {
     
     await waitFor(() => {
       expect(mockUpdateUser).toHaveBeenCalledWith({ 
-        password: 'newpassword123' 
+        // deepcode ignore NoHardcodedPasswords/test: test file
+        password: 'test-password' 
       });
     });
   });
@@ -133,8 +134,8 @@ describe('Account Page', () => {
     const passwordInput = screen.getByPlaceholderText('Nowe hasło');
     const confirmPasswordInput = screen.getByPlaceholderText('Powtórz nowe hasło');
     
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-    fireEvent.change(confirmPasswordInput, { target: { value: 'different123' } });
+    fireEvent.change(passwordInput, { target: { value: 'test-password' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: 'different-test-password' } });
     
     // Submit form
     const changePasswordButton = screen.getByText('Zmień hasło');
