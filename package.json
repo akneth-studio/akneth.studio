@@ -2,7 +2,7 @@
   "name": "akneth-studio-website",
   "type": "module",
   "engines": {
-    "node": ">=18.0.0"
+    "node": "22.x"
   },
   "repository": "gitlab:akneth.studio/akneth-website",
   "homepage": "https://akneth-studio.onrender.com",
