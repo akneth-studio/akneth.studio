@@ -190,7 +190,7 @@ export default async function RootLayout({
 }) {
   let banners = [];
   try {
-    const bannerRes = await fetch(`${siteUrl}/api/banners/public`, {cache: 'no-store'});
+    const bannerRes = await fetch(`${siteUrl}/api/banners/public`, {next: { revalidate: 3600 }});
     banners = bannerRes.ok ? await bannerRes.json() : [];
   } catch (error) {
     console.error("Failed to fetch banners:", error);
